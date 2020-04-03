@@ -3,11 +3,11 @@
     "line": 1,
     "elements": [
       {
-        "start_timestamp": "2020-04-03T17:30:45.052Z",
+        "start_timestamp": "2020-04-03T18:41:25.017Z",
         "before": [
           {
             "result": {
-              "duration": 43282500,
+              "duration": 21555000,
               "status": "passed"
             },
             "match": {
@@ -16,7 +16,7 @@
           },
           {
             "result": {
-              "duration": 294600,
+              "duration": 410700,
               "status": "passed"
             },
             "match": {
@@ -31,7 +31,7 @@
         "after": [
           {
             "result": {
-              "duration": 865466000,
+              "duration": 1537380300,
               "status": "passed"
             },
             "match": {
@@ -40,7 +40,7 @@
           },
           {
             "result": {
-              "duration": 1114170000,
+              "duration": 980948500,
               "status": "passed"
             },
             "match": {
@@ -53,28 +53,28 @@
         "steps": [
           {
             "result": {
-              "duration": 29995820300,
+              "duration": 17842685700,
               "status": "passed"
             },
-            "line": 6,
-            "name": "the user launch the \"facebook\" application in new window",
+            "line": 21,
+            "name": "the user launch the \"demoAutomation\" application in new window",
             "match": {
               "arguments": [
                 {
-                  "val": "facebook",
+                  "val": "demoAutomation",
                   "offset": 21
                 }
               ],
               "location": "Steps_Launch.launchApplication(String)"
             },
-            "keyword": "Given "
+            "keyword": "Then "
           },
           {
             "result": {
-              "duration": 43213100,
+              "duration": 31693600,
               "status": "passed"
             },
-            "line": 7,
+            "line": 22,
             "name": "the user wait for page to load",
             "match": {
               "location": "Steps_Common.waitForPageLoad()"
@@ -83,40 +83,10 @@
           },
           {
             "result": {
-              "duration": 960058400,
+              "duration": 47281716800,
               "status": "passed"
             },
-            "line": 17,
-            "name": "the user validate that the value 5338429106 is present in the column Phone in the table having xpath \"//div[@class\u003d\u0027ui-grid-contents-wrapper\u0027]\"",
-            "match": {
-              "arguments": [
-                {
-                  "val": "5338429106",
-                  "offset": 33
-                },
-                {
-                  "val": "Phone",
-                  "offset": 69
-                },
-                {
-                  "val": "xpath",
-                  "offset": 95
-                },
-                {
-                  "val": "//div[@class\u003d\u0027ui-grid-contents-wrapper\u0027]",
-                  "offset": 102
-                }
-              ],
-              "location": "Steps_Select.validateTextFoundInColum(String,String,String,String)"
-            },
-            "keyword": "Then "
-          },
-          {
-            "result": {
-              "duration": 222697100,
-              "status": "passed"
-            },
-            "line": 18,
+            "line": 23,
             "name": "the user validate that the value: 5338429106 is present in the column: Phone in the table where table locator: tableLoc header locator: headerLoc rows locator: rowLoc and column locator colLoc at the page LoginPage",
             "match": {
               "arguments": [

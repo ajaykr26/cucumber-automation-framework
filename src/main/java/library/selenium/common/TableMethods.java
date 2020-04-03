@@ -18,12 +18,13 @@ public class TableMethods extends CommonMethods implements MethodObjects {
         int column = 0;
         int columns_count = 0;
         List<WebElement> columns_row = null;
+        first:
         for (row = 0; row < rows_count; row++) {
             columns_row = table_rows.get(row).findElements(By.tagName("td"));
             columns_count = columns_row.size();
             for (column = 0; column < columns_count; column++) {
                 if (columns_row.get(column).getText().equals(textToFind)) {
-                    break;
+                    break first;
                 }
             }
         }
@@ -36,24 +37,25 @@ public class TableMethods extends CommonMethods implements MethodObjects {
 
     public WebElement getMatchingCellElement(String textToFind, String columnName, String type, String access_name) throws Exception {
         WebElement table = getDriver().findElement(getObjectBy(type, access_name));
-        List<WebElement> table_headers = table.findElements(By.xpath("//th | //div[@class='ui-grid-header-cell-row']//div/span[@class='ui-grid-header-cell-label ng-binding']"));
+        List<WebElement> table_headers = table.findElements(By.xpath("//th | //div/span[@class='ui-grid-header-cell-label ng-binding']"));
         List<WebElement> table_rows = table.findElements(By.xpath("//tr | //div[@class='ui-grid-canvas']/div"));
-        int col = 1;
-        List<WebElement> columns_row = null;
-
+        int col;
+        List<WebElement> columns = new ArrayList<>();
+        First:
         for (col = 1; col <= table_headers.size(); col++) {
             if (table_headers.get(col).getText().trim().equals(columnName))
-                break;
+                for (int row = 1; row <= table_rows.size(); row++) {
+                    columns = getDriver().findElements(By.xpath("//tr" + "[" + row + "]//td | " +
+                            "//div[@class='ui-grid-canvas']/div" + "[" + row + "]//div[@role='gridcell']"));
+                    if (columns.get(col).getText().equals(textToFind)) {
+                        break First;
+                    }
+                }
         }
 
-        for (int row = 1; row <= table_rows.size(); row++) {
-            columns_row = getDriver().findElements(By.xpath("//tr" + "[" + row + "]//td | //div[@class='ui-grid-canvas']/div"+ "[" + row + "]//div[@role='gridcell']"));
-            if (columns_row.get(col).getText().equals(textToFind)) {
-                break;
-            }
-        }
-        if (columns_row.get(col)!=null){
-            return columns_row.get(col);
+
+        if (columns.get(col)!=null){
+            return columns.get(col);
         }else {
             return null;
         }
@@ -66,18 +68,17 @@ public class TableMethods extends CommonMethods implements MethodObjects {
         List<WebElement> table_rows = table.findElements(getObject(rowLocator, pageName));
         int col;
         List<WebElement> columns = new ArrayList<>();
-
+        First:
         for (col = 1; col <= table_headers.size(); col++) {
             if (table_headers.get(col).getText().trim().equals(columnName))
-                break;
-        }
-        for (int row = 1; row <= table_rows.size(); row++) {
+                for (int row = 1; row <= table_rows.size(); row++) {
             columns = getDriver().findElements(By.xpath(getObject(rowLocator, pageName).toString().split(":")[1] + "[" + row + "]" + getObject(columLocator, pageName).toString().split(":")[1]));
-
-            if (columns.get(col).getText().equals(textToFind)) {
-                break;
-            }
+                    if (columns.get(col).getText().equals(textToFind)) {
+                        break First;
+                    }
+                }
         }
+
         if (columns.get(col)!=null){
             return columns.get(col);
         }else {

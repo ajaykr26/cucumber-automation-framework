@@ -111,6 +111,7 @@ public class Steps_Select extends CommonMethods implements En {
     @Then("^the user validate that the value (.+) is present in the column (.+) in the table having (.+) \"(.*?)\"$")
     public void validateTextFoundInColum(String textToFind, String columnName, String type, String accessName) throws Exception {
         miscmethodObj.validateLocator(type);
+        textToFind = parse_value(textToFind);
        String actualText = tableObject.getMatchingCellElement(textToFind, columnName, type, accessName).getText();
         Reporter.addStepLog(String.format("user clicked at the cell contains \"%s\" in the table having \"%s\" \"%s\"", textToFind, actualText, accessName));
 
