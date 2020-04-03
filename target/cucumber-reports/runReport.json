@@ -1,0 +1,174 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "start_timestamp": "2020-04-03T17:30:45.052Z",
+        "before": [
+          {
+            "result": {
+              "duration": 43282500,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LambdaGlue.java:52"
+            }
+          },
+          {
+            "result": {
+              "duration": 294600,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LambdaGlue.java:52"
+            }
+          }
+        ],
+        "line": 5,
+        "name": "Facebook Registration",
+        "description": "",
+        "id": "login-validation;facebook-registration",
+        "after": [
+          {
+            "result": {
+              "duration": 865466000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LambdaGlue.java:258"
+            }
+          },
+          {
+            "result": {
+              "duration": 1114170000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LambdaGlue.java:258"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 29995820300,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "the user launch the \"facebook\" application in new window",
+            "match": {
+              "arguments": [
+                {
+                  "val": "facebook",
+                  "offset": 21
+                }
+              ],
+              "location": "Steps_Launch.launchApplication(String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 43213100,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "the user wait for page to load",
+            "match": {
+              "location": "Steps_Common.waitForPageLoad()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 960058400,
+              "status": "passed"
+            },
+            "line": 17,
+            "name": "the user validate that the value 5338429106 is present in the column Phone in the table having xpath \"//div[@class\u003d\u0027ui-grid-contents-wrapper\u0027]\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "5338429106",
+                  "offset": 33
+                },
+                {
+                  "val": "Phone",
+                  "offset": 69
+                },
+                {
+                  "val": "xpath",
+                  "offset": 95
+                },
+                {
+                  "val": "//div[@class\u003d\u0027ui-grid-contents-wrapper\u0027]",
+                  "offset": 102
+                }
+              ],
+              "location": "Steps_Select.validateTextFoundInColum(String,String,String,String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 222697100,
+              "status": "passed"
+            },
+            "line": 18,
+            "name": "the user validate that the value: 5338429106 is present in the column: Phone in the table where table locator: tableLoc header locator: headerLoc rows locator: rowLoc and column locator colLoc at the page LoginPage",
+            "match": {
+              "arguments": [
+                {
+                  "val": "5338429106",
+                  "offset": 34
+                },
+                {
+                  "val": "Phone",
+                  "offset": 71
+                },
+                {
+                  "val": "tableLoc",
+                  "offset": 111
+                },
+                {
+                  "val": "headerLoc",
+                  "offset": 136
+                },
+                {
+                  "val": "rowLoc",
+                  "offset": 160
+                },
+                {
+                  "val": "colLoc",
+                  "offset": 186
+                },
+                {
+                  "val": "LoginPage",
+                  "offset": 205
+                }
+              ],
+              "location": "Steps_Select.validateTextFoundInColumAtPage(String,String,String,String,String,String,String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@SmokeSuite"
+          },
+          {
+            "name": "@Scenario1"
+          }
+        ]
+      }
+    ],
+    "name": "Login Validation",
+    "description": "  Validating login functionality",
+    "id": "login-validation",
+    "keyword": "Feature",
+    "uri": "classpath:features/Login.feature",
+    "tags": []
+  }
+]
