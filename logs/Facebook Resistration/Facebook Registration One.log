@@ -1,0 +1,42 @@
+18:03:936 [TestNG-PoolService-0] INFO : library.engine.web.steps.Steps_Launch - returning the value from config.properties file
+18:04:211 [TestNG-PoolService-0] DEBUG: library.engine.web.steps.Steps_Launch - obtaining the driver for current thread
+18:30:227 [TestNG-PoolService-0] DEBUG: library.engine.web.steps.Steps_Common - obtaining the driver for current thread
+18:30:270 [TestNG-PoolService-0] INFO : library.engine.web.steps.Steps_Common - page loaded completely
+18:30:276 [TestNG-PoolService-0] DEBUG: library.engine.web.steps.Steps_Validates - obtaining the driver for current thread
+18:30:315 [TestNG-PoolService-0] DEBUG: library.engine.web.steps.Steps_Clicks - obtaining the wait for current thread
+18:31:301 [TestNG-PoolService-0] DEBUG: library.engine.web.steps.Steps_Clicks - obtaining the driver for current thread
+18:32:145 [TestNG-PoolService-0] INFO : library.engine.web.steps.Steps_Common - returning the value from JSON
+18:32:192 [TestNG-PoolService-0] DEBUG: library.selenium.common.ClickElementsMethods - obtaining the driver for current thread
+18:32:197 [TestNG-PoolService-0] DEBUG: library.selenium.common.ConfigurationMethods - obtaining the driver for current thread
+18:32:200 [TestNG-PoolService-0] DEBUG: library.selenium.common.JavascriptHandlingMethods - obtaining the driver for current thread
+18:32:202 [TestNG-PoolService-0] DEBUG: library.selenium.common.ScreenShotMethods - obtaining the driver for current thread
+18:32:203 [TestNG-PoolService-0] DEBUG: library.selenium.common.InputMethods - obtaining the wait for current thread
+18:41:385 [TestNG-PoolService-0] DEBUG: library.selenium.common.InputMethods - obtaining the driver for current thread
+18:45:022 [TestNG-PoolService-0] INFO : library.engine.web.steps.Steps_Common - returning the value from JSON
+18:45:023 [TestNG-PoolService-0] DEBUG: library.selenium.common.InputMethods - obtaining the wait for current thread
+18:45:114 [TestNG-PoolService-0] DEBUG: library.selenium.common.InputMethods - obtaining the driver for current thread
+18:45:772 [TestNG-PoolService-0] INFO : library.engine.web.steps.Steps_Common - returning the value from JSON
+18:45:774 [TestNG-PoolService-0] DEBUG: library.selenium.common.InputMethods - obtaining the wait for current thread
+18:45:848 [TestNG-PoolService-0] DEBUG: library.selenium.common.InputMethods - obtaining the driver for current thread
+18:46:322 [TestNG-PoolService-0] INFO : library.engine.web.steps.Steps_Common - returning the value from JSON
+18:46:323 [TestNG-PoolService-0] DEBUG: library.selenium.common.InputMethods - obtaining the wait for current thread
+18:59:002 [TestNG-PoolService-0] INFO : library.cucumber.core.Hooks - 
+| ---------------------------------------- | ---------------------------------------- |
+| Data Dictionary Key                      | Data Dictionary Value                    |
+| ---------------------------------------- | ---------------------------------------- |
+| firstname                                | One                                      |
+| lastname                                 | kumar                                    |
+| mobile                                   | 11111111                                 |
+| ---------------------------------------- | ---------------------------------------- |
+18:59:018 [TestNG-PoolService-0] INFO : library.cucumber.core.Hooks - 
+| ---------------------------------------- | ---------------------------------------- |
+| Data Key                                 | Data Value                               |
+| ---------------------------------------- | ---------------------------------------- |
+| browserName                              | chrome                                   |
+| defaultWait                              | 10                                       |
+| facebook                                 | https://www.facebook.com/                |
+| password                                 | ajay@123                                 |
+| serverName                               | local                                    |
+| username                                 | ajaykr26                                 |
+| waitForPageLoad                          | 10                                       |
+| ---------------------------------------- | ---------------------------------------- |
