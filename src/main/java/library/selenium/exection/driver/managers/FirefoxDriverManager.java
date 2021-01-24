@@ -10,7 +10,7 @@ public class FirefoxDriverManager extends DriverManager {
     protected Logger logger = LogManager.getLogger(this.getClass().getName());
 
     @Override
-    protected void createDriver() {
+    protected void setDriver() {
 
     }
 

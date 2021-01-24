@@ -86,11 +86,10 @@ public class CommonMethods extends BaseTest implements MethodObjects {
         Matcher matcherJSON = patternJSON.matcher(string);
 
         if (matcherJSON.matches()) {
-            parsed_data = matcherJSON.group(1);
+            return matcherJSON.group(1);
         } else {
-            parsed_data = string;
+            return null;
         }
-        return parsed_data;
     }
 
     public String parse_keyProps(String string) {
@@ -99,11 +98,10 @@ public class CommonMethods extends BaseTest implements MethodObjects {
         Matcher matcherProp = patternProp.matcher(string);
 
         if (matcherProp.matches()) {
-            parsed_data = matcherProp.group(1);
+            return matcherProp.group(1);
         } else {
-            parsed_data = string;
+            return null;
         }
-        return parsed_data;
 
     }
 
@@ -111,11 +109,11 @@ public class CommonMethods extends BaseTest implements MethodObjects {
         String parsed_value = null;
         String parsedkeyJSON = parse_keyJSON(string);
         String parsedkeyProps = parse_keyProps(string);
-        if (TestContext.getInstance().testdataGet(parsedkeyJSON) != null) {
+        if (parsedkeyJSON != null) {
             parsed_value = TestContext.getInstance().testdataGet(parsedkeyJSON).toString();
             logger.info("returning the value from JSON");
-        } else if (Property.getProperty(Constants.CONFIG_PATH + "config.properties", parsedkeyProps) != null) {
-            parsed_value = Property.getProperty(Constants.CONFIG_PATH + "config.properties", parse_keyProps(string));
+        } else if (parsedkeyProps != null) {
+            parsed_value = Property.getProperty(Constants.ENVIRONMENT_PATH, parse_keyProps(string));
             logger.info("returning the value from config.properties file");
         } else {
             parsed_value = string;
@@ -125,7 +123,7 @@ public class CommonMethods extends BaseTest implements MethodObjects {
     }
 
     public void waitForPageToLoad() {
-        long timeOut = Integer.parseInt(Property.getProperty(Constants.RUNTIME_PATH, "waitForPageLoad"))*1000;
+        long timeOut = Integer.parseInt(Property.getProperty(Constants.RUNTIME_PATH, "waitForPageLoad")) * 1000;
         long endTime = System.currentTimeMillis() + timeOut;
         while (System.currentTimeMillis() < endTime) {
             if (String.valueOf(((JavascriptExecutor) getDriver()).executeScript("return document.readyState")).equals("complete")) {

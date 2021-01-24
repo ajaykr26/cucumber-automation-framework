@@ -47,27 +47,26 @@ public class DriverContext {
         if (techStack == null) {
             return null;
         } else {
-            return this.techStack.get("browser");
-//            return this.techStack.get("browser") == null ? this.techStack.get("BROWSER") : this.techStack.get("browser");
+            return this.techStack.get("browserName") == null ? this.techStack.get("browser") : this.techStack.get("browserName");
         }
     }
 
-//    public String getBrowserVersion() {
-//        if (techStack == null) {
-//            return null;
-//        } else {
-//            return this.techStack.get("version") == null ? this.techStack.get("browser_version") : this.techStack.get("version");
-//        }
-//    }
-//
-//    public String getPlatform() {
-//        if (techStack == null) {
-//            return null;
-//        } else {
-//            return this.techStack.get("platform") == null ? this.techStack.get("os") + "_" + this.techStack.get("os_version") : this.techStack.get("platform");
-//        }
-//    }
-//
+    public String getBrowserVersion() {
+        if (techStack == null) {
+            return null;
+        } else {
+            return this.techStack.get("version") == null ? this.techStack.get("browser_version") : this.techStack.get("version");
+        }
+    }
+
+    public String getPlatform() {
+        if (techStack == null) {
+            return null;
+        } else {
+            return this.techStack.get("platform") == null ? this.techStack.get("os") + "_" + this.techStack.get("os_version") : this.techStack.get("platform");
+        }
+    }
+
     public Boolean getKeepBrowserOpen() {
         return this.keepBrowserOpen;
     }

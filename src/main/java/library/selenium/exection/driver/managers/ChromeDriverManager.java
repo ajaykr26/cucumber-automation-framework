@@ -6,7 +6,7 @@ import library.common.Constants;
 import library.common.Property;
 import library.selenium.exection.driver.factory.DriverContext;
 import library.selenium.exection.driver.factory.DriverManager;
-import org.apache.commons.configuration.PropertiesConfiguration;
+import org.apache.commons.configuration2.PropertiesConfiguration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -18,18 +18,18 @@ public class ChromeDriverManager extends DriverManager {
     protected Logger logger = LogManager.getLogger(this.getClass().getName());
 
     @Override
-    public void createDriver(){
+    public void setDriver(){
         PropertiesConfiguration propertiesConfiguration = Property.getProperties(Constants.RUNTIME_PATH);
 
         if(Property.getVariable("cukes.webdrivermanager") != null && Property.getVariable("cukes.webdrivermanager").equalsIgnoreCase("true")){
             if(Property.getVariable("cukes.chromedriver") != null){
-                WebDriverManager.chromedriver().version(Property.getVariable("cukes.webdrivermanager")).setup();
+                WebDriverManager.chromedriver().driverVersion(Property.getVariable("cukes.chromedriver")).setup();
             }else {
                 WebDriverManager.chromedriver().setup();
 
             }
         }else {
-            System.setProperty("webdriver.chrome.diver", Constants.DRIVER_PATH+"chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", getDriverPath("chromedriver"));
         }
         System.setProperty("webdriver.chrome.silentOutput", "true");
         ChromeOptions chromeOptions = new ChromeOptions();
@@ -40,7 +40,7 @@ public class ChromeDriverManager extends DriverManager {
 
         if (propertiesConfiguration.getString("options.chrome.useAutomationExtension") != null &&
                 propertiesConfiguration.getString("options.chrome.useAutomationExtension").equalsIgnoreCase("false")) {
-                chromeOptions.setExperimentalOption("options.chrome.useAutomationExtension", false);
+            chromeOptions.setExperimentalOption("options.chrome.useAutomationExtension", false);
 
         }
 
@@ -48,6 +48,7 @@ public class ChromeDriverManager extends DriverManager {
             chromeOptions.addArguments("--kiosk");
         }
         driver = new ChromeDriver(chromeOptions);
+        driver.manage().window().maximize();
     }
 
     @Override

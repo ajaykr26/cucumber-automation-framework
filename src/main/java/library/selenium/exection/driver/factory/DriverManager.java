@@ -7,24 +7,14 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
+
 
 public abstract class DriverManager {
     protected WebDriver driver;
     protected WebDriverWait wait;
 
-    public WebDriver getDriver() {
-        if (driver == null) {
-            createDriver();
-        }
-        return driver;
-    }
-
-    public void quitDriver() {
-
-        if (driver != null) {
-            driver.quit();
-            driver = null;
-        }
+    protected DriverManager() {
     }
 
     public WebDriverWait getWait() {
@@ -34,21 +24,42 @@ public abstract class DriverManager {
         return wait;
     }
 
+    public WebDriver getDriver() {
+        if (driver == null) {
+            setDriver();
+        }
+        return driver;
+    }
+
+    public void quitDriver() {
+        if (driver != null) {
+            driver.quit();
+            driver = null;
+        }
+    }
+
     public int getWaitDuration() {
-        final int defaultWit = 10;
+        final int defaultWait = 30;
         int duration;
         try {
             duration = Property.getProperties(Constants.RUNTIME_PATH).getInt("defaultWait");
         } catch (Exception e) {
-            duration = defaultWit;
+            duration = defaultWait;
         }
         return duration;
     }
 
+    public String getDriverPath(String driver) {
+        String extention = System.getProperty("os.name").split(" ")[0].toLowerCase().equalsIgnoreCase("windows") ? ".exe" : " ";
+        String drivername = driver + extention;
+        String driverPath = Property.getVariable("cuke.driverPath");
+        return (driverPath == null ? Constants.DRIVER_PATH + System.getProperty("os.name").split(" ")[0].toLowerCase() + File.separator + drivername : driverPath);
+    }
 
-    protected abstract void createDriver();
+    protected abstract void setDriver();
 
     public abstract void updateResults(String result);
+
 }
 
 

@@ -1,8 +1,6 @@
 package library.selenium.exection.driver.factory;
 
-import library.selenium.exection.driver.managers.ChromeDriverManager;
-import library.selenium.exection.driver.managers.FirefoxDriverManager;
-import library.selenium.exection.driver.managers.IEDriverManager;
+import library.selenium.exection.driver.managers.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -40,29 +38,49 @@ public class DriverFactory {
         return driverManager.get().getWait();
     }
 
-    public DriverManager setDriverManager() {
-        String browser = DriverContext.getInstance().getBrowserName();
-
-        switch (browser.toUpperCase()) {
-            case "CHROME":
-                driverManager.set(new ChromeDriverManager());
+    private DriverManager setDriverManager() {
+        Server server = Server.valueOf(DriverContext.getInstance().getTechStack().get("serverName").toLowerCase());
+        Browser browser = Browser.valueOf(DriverContext.getInstance().getBrowserName().toLowerCase());
+        switch (server) {
+            case remote_htmlunit:
+                driverManager.set(new HtmlUnitDriverManager());
                 break;
-            case "firefox":
-                driverManager.set(new FirefoxDriverManager());
+            case remote_phantomjs:
+                driverManager.set(new PantomJSDriverManager());
                 break;
-            case "iexplorer":
-                driverManager.set(new IEDriverManager());
-                break;
-
+            case local:
+                switch (browser) {
+                    case chrome:
+                        driverManager.set(new ChromeDriverManager());
+                        break;
+                    case firefox:
+                        driverManager.set(new FirefoxDriverManager());
+                        break;
+                    case iexplorer:
+                        driverManager.set(new IEDriverManager());
+                        break;
+                    case edge:
+                        driverManager.set(new EdgeDriverManager());
+                        break;
+                }
         }
+
         return driverManager.get();
     }
-
 
     public void quit() {
         driverManager.get().quitDriver();
         driverManager.remove();
     }
+
+    public enum Server {
+        local, grid, saucelabs, appium, browserstack, remote_htmlunit, remote_phantomjs;
+    }
+
+    public enum Browser {
+        chrome, iexplorer, edge, safari, firefox;
+    }
+
 }
 
 

@@ -1,6 +1,7 @@
 package library.selenium.core;
 
 import library.common.Constants;
+import library.common.FileHelper;
 import library.common.Property;
 import library.common.TestContext;
 import library.selenium.exection.driver.factory.DriverContext;
@@ -16,7 +17,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import pageobjects.LoginPage;
 
 import java.lang.reflect.Method;
 import java.util.Collections;
@@ -49,14 +49,8 @@ public class BaseTest{
         return TestContext.getInstance().softAssertions();
     }
 
-    @DataProvider(name = "techStackJSON", parallel = true)
-    public Object[][] techStackJSON() throws ConfigurationException {
 
-        Map<String, String> techStack = new HashMap<>();
-        techStack.put("seleniumServer", "local");
-        techStack.put("browser", Property.getProperty(Constants.CONFIG_PATH + "config.properties", "browser"));
-        return new Object[][]{Collections.singletonList(techStack).toArray()};
-    }
+
 
     @BeforeMethod
     public void startUp(Method method, Object[] args) {
