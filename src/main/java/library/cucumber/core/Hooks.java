@@ -29,8 +29,8 @@ public class Hooks implements En {
             TestContext.getInstance().testdata().putAll(dataTable);
         });
         After(20, (Scenario scenario) -> {
-            logger.info(DataTableFormatter.getDataDictionaryAsFormattedTable());
-            logger.info(DataTableFormatter.getMapAsFormattedTable(Property.getPropertiesAsMap(Constants.RUNTIME_PATH)));
+            logger.info(Formatter.getDataDictionaryAsFormattedTable());
+            logger.info(Formatter.getMapAsFormattedTable(Property.getPropertiesAsMap(Constants.RUNTIME_PATH)));
             checkForSoftAssertFailure();
         });
     }

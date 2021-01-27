@@ -1,10 +1,10 @@
 package pageobjects;
 
-import library.selenium.common.CommonMethods;
+import library.selenium.exec.BasePO;
 import org.openqa.selenium.*;
 
 
-public class Facebook_Registration extends CommonMethods {
+public class Facebook_Registration extends BasePO {
 
 
     private By register = By.xpath("//a[text()='Create New Account']");

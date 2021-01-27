@@ -3,7 +3,7 @@ package library.engine.web.steps;
 import io.cucumber.java.en.Given;
 import io.cucumber.java8.En;
 import library.reporting.Reporter;
-import library.selenium.common.CommonMethods;
+import library.selenium.utils.CommonMethods;
 
 public class Steps_Launch extends CommonMethods implements En {
 

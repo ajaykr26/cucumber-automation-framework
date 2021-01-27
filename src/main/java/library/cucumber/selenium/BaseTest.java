@@ -5,7 +5,6 @@ import io.cucumber.testng.CucumberOptions;
 import io.cucumber.testng.PickleEventWrapper;
 import io.cucumber.testng.TestNGCucumberRunner;
 import library.common.Constants;
-import library.common.FileHelper;
 import library.common.JSONHelper;
 import library.common.Property;
 import org.apache.commons.compress.utils.Lists;
@@ -22,7 +21,7 @@ import java.util.*;
         glue = "library",
         strict = true
 )
-public class BaseTest extends library.selenium.core.BaseTest {
+public class BaseTest extends library.selenium.exec.BaseTest {
 
     private TestNGCucumberRunner testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
 

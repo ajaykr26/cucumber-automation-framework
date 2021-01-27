@@ -1,8 +1,7 @@
 package library.engine.web.steps;
 
-import library.selenium.common.CommonMethods;
-import library.selenium.common.MethodObjects;
+import library.selenium.exec.BasePO;
 
-public class Steps_Window extends CommonMethods implements MethodObjects {
+public class Steps_Window extends BasePO {
 
 }
