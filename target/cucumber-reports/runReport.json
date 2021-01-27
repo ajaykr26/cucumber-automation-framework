@@ -1,0 +1,467 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "start_timestamp": "2021-01-27T14:40:56.890Z",
+        "before": [
+          {
+            "result": {
+              "duration": 978130400,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LambdaGlue.java:52"
+            }
+          },
+          {
+            "result": {
+              "duration": 251900,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LambdaGlue.java:52"
+            }
+          },
+          {
+            "result": {
+              "duration": 166100,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LambdaGlue.java:52"
+            }
+          },
+          {
+            "result": {
+              "duration": 173900,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LambdaGlue.java:52"
+            }
+          },
+          {
+            "result": {
+              "duration": 322700,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LambdaGlue.java:52"
+            }
+          },
+          {
+            "result": {
+              "duration": 1637400,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LambdaGlue.java:52"
+            }
+          },
+          {
+            "result": {
+              "duration": 171000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LambdaGlue.java:52"
+            }
+          }
+        ],
+        "line": 5,
+        "name": "Facebook Registration One",
+        "description": "",
+        "id": "login-validation;facebook-registration-one",
+        "after": [
+          {
+            "result": {
+              "duration": 2757600,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LambdaGlue.java:258"
+            }
+          },
+          {
+            "result": {
+              "duration": 524000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LambdaGlue.java:258"
+            }
+          },
+          {
+            "result": {
+              "duration": 647800,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LambdaGlue.java:258"
+            }
+          },
+          {
+            "result": {
+              "duration": 639000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LambdaGlue.java:258"
+            }
+          },
+          {
+            "result": {
+              "duration": 1622034200,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LambdaGlue.java:258"
+            }
+          },
+          {
+            "result": {
+              "duration": 7741784800,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LambdaGlue.java:258"
+            }
+          },
+          {
+            "result": {
+              "duration": 347700,
+              "status": "passed"
+            },
+            "match": {
+              "location": "LambdaGlue.java:258"
+            }
+          },
+          {
+            "result": {
+              "error_message": "java.lang.StringIndexOutOfBoundsException: begin 74, end 73, length 73\r\n\tat java.base/java.lang.String.checkBoundsBeginEnd(String.java:3734)\r\n\tat java.base/java.lang.String.substring(String.java:1903)\r\n\tat java.base/java.lang.String.substring(String.java:1876)\r\n\tat library.common.FileHelper.lambda$copyDir$0(FileHelper.java:21)\r\n\tat java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.accept(ForEachOps.java:183)\r\n\tat java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195)\r\n\tat java.base/java.util.Iterator.forEachRemaining(Iterator.java:133)\r\n\tat java.base/java.util.Spliterators$IteratorSpliterator.forEachRemaining(Spliterators.java:1801)\r\n\tat java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484)\r\n\tat java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)\r\n\tat java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)\r\n\tat java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)\r\n\tat java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)\r\n\tat java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:497)\r\n\tat library.common.FileHelper.copyDir(FileHelper.java:20)\r\n\tat library.reporting.Hooks.copyAllureResult(Hooks.java:35)\r\n\tat library.reporting.Hooks.lambda$new$0(Hooks.java:28)\r\n\tat cucumber.runtime.java8.Java8HookDefinition.lambda$new$0(Java8HookDefinition.java:43)\r\n\tat cucumber.runtime.java8.Java8HookDefinition.lambda$execute$1(Java8HookDefinition.java:59)\r\n\tat cucumber.runtime.Timeout.timeout(Timeout.java:16)\r\n\tat cucumber.runtime.java8.Java8HookDefinition.execute(Java8HookDefinition.java:57)\r\n\tat cucumber.runner.HookDefinitionMatch.runStep(HookDefinitionMatch.java:16)\r\n\tat cucumber.runner.TestStep.executeStep(TestStep.java:65)\r\n\tat cucumber.runner.TestStep.run(TestStep.java:50)\r\n\tat cucumber.runner.TestCase.run(TestCase.java:50)\r\n\tat cucumber.runner.Runner.runPickle(Runner.java:50)\r\n\tat io.cucumber.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:79)\r\n\tat library.cucumber.selenium.BaseTest.scenario(BaseTest.java:31)\r\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\r\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)\r\n\tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\r\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:564)\r\n\tat org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)\r\n\tat org.testng.internal.Invoker.invokeMethod(Invoker.java:583)\r\n\tat org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)\r\n\tat org.testng.internal.TestMethodWithDataProviderMethodWorker.call(TestMethodWithDataProviderMethodWorker.java:71)\r\n\tat org.testng.internal.TestMethodWithDataProviderMethodWorker.call(TestMethodWithDataProviderMethodWorker.java:14)\r\n\tat java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264)\r\n\tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java)\r\n\tat java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)\r\n\tat java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264)\r\n\tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java)\r\n\tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)\r\n\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)\r\n\tat java.base/java.lang.Thread.run(Thread.java:832)\r\n",
+              "duration": 7861392100,
+              "status": "failed"
+            },
+            "match": {
+              "location": "LambdaGlue.java:258"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 48726140900,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "the user launch the \"@(facebook)\" application in new window",
+            "match": {
+              "arguments": [
+                {
+                  "val": "@(facebook)",
+                  "offset": 21
+                }
+              ],
+              "location": "Steps_Launch.launchApplication(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 82313400,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "the user wait for page to load",
+            "match": {
+              "location": "Steps_Common.waitForPageLoad()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 137190500,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "the user validate that the page title exactly matched with \"Facebook – log in or sign up\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Facebook – log in or sign up",
+                  "offset": 60
+                }
+              ],
+              "location": "Steps_Validates.validatePageTitle(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 1824315000,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "the user clicks on the element \"register\" at the page \"Facebook_Registration\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "register",
+                  "offset": 32
+                },
+                {
+                  "val": "Facebook_Registration",
+                  "offset": 55
+                }
+              ],
+              "location": "Steps_Clicks.userclickOnElement(String,String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 3225694000,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "the user enter \"#(firstname)\" into input field having name \"firstname\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "#(firstname)",
+                  "offset": 16
+                },
+                {
+                  "val": "name",
+                  "offset": 54
+                },
+                {
+                  "val": "firstname",
+                  "offset": 60
+                }
+              ],
+              "location": "Steps_Common.enter_text(String,String,String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 617375900,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "the user enter \"#(lastname)\" into input field having xpath \"//input[@name\u003d\u0027lastname\u0027]\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "#(lastname)",
+                  "offset": 16
+                },
+                {
+                  "val": "xpath",
+                  "offset": 53
+                },
+                {
+                  "val": "//input[@name\u003d\u0027lastname\u0027]",
+                  "offset": 60
+                }
+              ],
+              "location": "Steps_Common.enter_text(String,String,String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 148628300,
+              "status": "passed"
+            },
+            "line": 12,
+            "name": "the user enter \"#(mobile)\" into input field having name \"reg_email__\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "#(mobile)",
+                  "offset": 16
+                },
+                {
+                  "val": "name",
+                  "offset": 51
+                },
+                {
+                  "val": "reg_email__",
+                  "offset": 57
+                }
+              ],
+              "location": "Steps_Common.enter_text(String,String,String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "error_message": "org.openqa.selenium.TimeoutException: Expected condition failed: waiting for presence of element located by: By.id: u_0_w (tried for 10 second(s) with 500 milliseconds interval)\r\n\tat org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)\r\n\tat org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:272)\r\n\tat library.selenium.utils.InputMethods.enterText(InputMethods.java:24)\r\n\tat library.engine.web.steps.Steps_Common.enter_text(Steps_Common.java:273)\r\n\tat ✽.the user enter \"#(password)\" into input field having id \"u_0_w\"(classpath:features/Login%20Validation.feature:13)\r\nCaused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"#u_0_w\"}\n  (Session info: chrome\u003d88.0.4324.104)\nFor documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html\nBuild info: version: \u00273.141.59\u0027, revision: \u0027e82be7d358\u0027, time: \u00272018-11-14T08:17:03\u0027\nSystem info: host: \u0027AJAY-PC\u0027, ip: \u0027192.168.43.220\u0027, os.name: \u0027Windows 10\u0027, os.arch: \u0027amd64\u0027, os.version: \u002710.0\u0027, java.version: \u002715.0.1\u0027\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 88.0.4324.104, chrome: {chromedriverVersion: 88.0.4324.96 (68dba2d8a0b14..., userDataDir: C:\\Users\\Ajay\\AppData\\Local...}, goog:chromeOptions: {debuggerAddress: localhost:60322}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}\nSession ID: b396d60a446676e967b30da93a63669c\n*** Element info: {Using\u003did, value\u003du_0_w}\r\n\tat jdk.internal.reflect.GeneratedConstructorAccessor24.newInstance(Unknown Source)\r\n\tat java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)\r\n\tat java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)\r\n\tat java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)\r\n\tat org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)\r\n\tat org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:372)\r\n\tat org.openqa.selenium.By$ById.findElement(By.java:188)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)\r\n\tat org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:182)\r\n\tat org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:179)\r\n\tat org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:249)\r\n\tat library.selenium.utils.InputMethods.enterText(InputMethods.java:24)\r\n\tat library.engine.web.steps.Steps_Common.enter_text(Steps_Common.java:273)\r\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\r\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)\r\n\tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\r\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:564)\r\n\tat cucumber.runtime.Utils$1.call(Utils.java:26)\r\n\tat cucumber.runtime.Timeout.timeout(Timeout.java:16)\r\n\tat cucumber.runtime.Utils.invoke(Utils.java:20)\r\n\tat cucumber.runtime.java.JavaStepDefinition.execute(JavaStepDefinition.java:57)\r\n\tat cucumber.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:50)\r\n\tat cucumber.runner.TestStep.executeStep(TestStep.java:65)\r\n\tat cucumber.runner.TestStep.run(TestStep.java:50)\r\n\tat cucumber.runner.PickleStepTestStep.run(PickleStepTestStep.java:43)\r\n\tat cucumber.runner.TestCase.run(TestCase.java:46)\r\n\tat cucumber.runner.Runner.runPickle(Runner.java:50)\r\n\tat io.cucumber.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:79)\r\n\tat library.cucumber.selenium.BaseTest.scenario(BaseTest.java:31)\r\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\r\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)\r\n\tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\r\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:564)\r\n\tat org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)\r\n\tat org.testng.internal.Invoker.invokeMethod(Invoker.java:583)\r\n\tat org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)\r\n\tat org.testng.internal.TestMethodWithDataProviderMethodWorker.call(TestMethodWithDataProviderMethodWorker.java:71)\r\n\tat org.testng.internal.TestMethodWithDataProviderMethodWorker.call(TestMethodWithDataProviderMethodWorker.java:14)\r\n\tat java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264)\r\n\tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java)\r\n\tat java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)\r\n\tat java.base/java.util.concurrent.FutureTask.run$$$capture(FutureTask.java:264)\r\n\tat java.base/java.util.concurrent.FutureTask.run(FutureTask.java)\r\n\tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)\r\n\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)\r\n\tat java.base/java.lang.Thread.run(Thread.java:832)\r\n",
+              "duration": 10250037900,
+              "status": "failed"
+            },
+            "line": 13,
+            "name": "the user enter \"#(password)\" into input field having id \"u_0_w\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "#(password)",
+                  "offset": 16
+                },
+                {
+                  "val": "id",
+                  "offset": 53
+                },
+                {
+                  "val": "u_0_w",
+                  "offset": 57
+                }
+              ],
+              "location": "Steps_Common.enter_text(String,String,String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 993600,
+              "status": "skipped"
+            },
+            "line": 14,
+            "name": "the user select \"5\" option by text from dropdown having name \"birthday_day\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "5",
+                  "offset": 17
+                },
+                {
+                  "val": "text",
+                  "offset": 30
+                },
+                {
+                  "val": "name",
+                  "offset": 56
+                },
+                {
+                  "val": "birthday_day",
+                  "offset": 62
+                }
+              ],
+              "location": "Steps_Common.select_option_from_dropdown(String,String,String,String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 1059100,
+              "status": "skipped"
+            },
+            "line": 15,
+            "name": "the user select \"Mar\" option by text from dropdown having id \"month\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Mar",
+                  "offset": 17
+                },
+                {
+                  "val": "text",
+                  "offset": 32
+                },
+                {
+                  "val": "id",
+                  "offset": 58
+                },
+                {
+                  "val": "month",
+                  "offset": 62
+                }
+              ],
+              "location": "Steps_Common.select_option_from_dropdown(String,String,String,String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 1290700,
+              "status": "skipped"
+            },
+            "line": 16,
+            "name": "the user select \"2005\" option by text from dropdown having name \"birthday_year\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "2005",
+                  "offset": 17
+                },
+                {
+                  "val": "text",
+                  "offset": 33
+                },
+                {
+                  "val": "name",
+                  "offset": 59
+                },
+                {
+                  "val": "birthday_year",
+                  "offset": 65
+                }
+              ],
+              "location": "Steps_Common.select_option_from_dropdown(String,String,String,String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 1374900,
+              "status": "skipped"
+            },
+            "line": 17,
+            "name": "the user select \"2\" option by value from radio button group having xpath \"//input[@name\u003d\u0027sex\u0027]\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "2",
+                  "offset": 17
+                },
+                {
+                  "val": "value",
+                  "offset": 30
+                },
+                {
+                  "val": "xpath",
+                  "offset": 67
+                },
+                {
+                  "val": "//input[@name\u003d\u0027sex\u0027]",
+                  "offset": 74
+                }
+              ],
+              "location": "Steps_Common.select_option_from_radio_btn_group(String,String,String,String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@SmokeSuite"
+          },
+          {
+            "name": "@ScenarioOne"
+          }
+        ]
+      }
+    ],
+    "name": "Login Validation",
+    "description": "  Validating login functionality",
+    "id": "login-validation",
+    "keyword": "Feature",
+    "uri": "classpath:features/Login%20Validation.feature",
+    "tags": []
+  }
+]

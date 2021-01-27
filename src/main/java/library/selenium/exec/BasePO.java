@@ -1,8 +1,8 @@
 package library.selenium.exec;
 
-import library.common.Constants;
 import library.common.Property;
 import library.common.TestContext;
+import library.cucumber.core.CukesConstants;
 import library.selenium.core.PageObject;
 import library.selenium.exec.driver.factory.DriverFactory;
 import org.apache.logging.log4j.LogManager;
@@ -127,7 +127,7 @@ public class BasePO extends PageObject {
             parsed_value = TestContext.getInstance().testdataGet(parsedkeyJSON).toString();
             logger.info("returning the value from JSON");
         } else if (parsedkeyProps != null) {
-            parsed_value = Property.getProperty(Constants.ENVIRONMENT_PATH, parse_keyProps(string));
+            parsed_value = Property.getProperty(CukesConstants.ENVIRONMENT_PATH, parse_keyProps(string));
             logger.info("returning the value from config.properties file");
         } else {
             parsed_value = string;
@@ -137,7 +137,7 @@ public class BasePO extends PageObject {
     }
 
     public void waitForPageToLoad() {
-        long timeOut = Integer.parseInt(Property.getProperty(Constants.RUNTIME_PATH, "waitForPageLoad")) * 1000;
+        long timeOut = Integer.parseInt(Property.getProperty(CukesConstants.RUNTIME_PATH, "waitForPageLoad")) * 1000;
         long endTime = System.currentTimeMillis() + timeOut;
         while (System.currentTimeMillis() < endTime) {
             if (String.valueOf(((JavascriptExecutor) getDriver()).executeScript("return document.readyState")).equals("complete")) {

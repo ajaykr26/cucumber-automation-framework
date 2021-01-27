@@ -2,8 +2,8 @@ package library.selenium.exec.driver.managers;
 
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import library.common.Constants;
 import library.common.Property;
+import library.cucumber.core.CukesConstants;
 import library.selenium.exec.driver.factory.DriverContext;
 import library.selenium.exec.driver.factory.DriverManager;
 import org.apache.commons.configuration2.PropertiesConfiguration;
@@ -19,7 +19,7 @@ public class EdgeDriverManager extends DriverManager {
 
     @Override
     public void setDriver(){
-        PropertiesConfiguration propertiesConfiguration = Property.getProperties(Constants.RUNTIME_PATH);
+        PropertiesConfiguration propertiesConfiguration = Property.getProperties(CukesConstants.RUNTIME_PATH);
 
         if(Property.getVariable("cukes.webdrivermanager") != null && Property.getVariable("cukes.webdrivermanager").equalsIgnoreCase("true")){
             if(Property.getVariable("cukes.chromedriver") != null){
@@ -29,7 +29,7 @@ public class EdgeDriverManager extends DriverManager {
 
             }
         }else {
-            System.setProperty("webdriver.chrome.diver", Constants.DRIVER_PATH+"chromedriver.exe");
+            System.setProperty("webdriver.chrome.diver", CukesConstants.DRIVER_PATH+"chromedriver.exe");
         }
         System.setProperty("webdriver.chrome.silentOutput", "true");
         ChromeOptions chromeOptions = new ChromeOptions();

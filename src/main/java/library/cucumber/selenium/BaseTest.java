@@ -4,22 +4,22 @@ import io.cucumber.testng.CucumberFeatureWrapper;
 import io.cucumber.testng.CucumberOptions;
 import io.cucumber.testng.PickleEventWrapper;
 import io.cucumber.testng.TestNGCucumberRunner;
-import library.common.Constants;
 import library.common.JSONHelper;
 import library.common.Property;
+import library.cucumber.core.CukesConstants;
+import library.selenium.exec.ExecConstants;
 import org.apache.commons.compress.utils.Lists;
 import org.apache.commons.configuration2.PropertiesConfiguration;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.*;
 
 @CucumberOptions(
-        plugin = {"json:target/cucumber-reports/runReport.json", "io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm"},
-        features = "classpath:features",
-        glue = "library",
-        strict = true
+        strict = true,
+        glue = "library"
 )
 public class BaseTest extends library.selenium.exec.BaseTest {
 
@@ -33,28 +33,22 @@ public class BaseTest extends library.selenium.exec.BaseTest {
 
     @DataProvider(name = "getTechStack", parallel = true)
     private Object[][] getTechStack() {
-        Map<String, String> techStack = new HashMap<>();
-        PropertiesConfiguration props =Property.getProperties(Constants.RUNTIME_PATH);
-        if (Property.getVariable("techstack") != null) {
-            techStack = JSONHelper.getJSONObjectToMap(Constants.TECHSTACK_PATH);
-            if (!techStack.isEmpty()) {
-                techStack.putAll(techStack);
-            }else {
-                logger.warn("Tech stack JSON file not found: {}. defaulting to local chrome driver instance.", Constants.TECHSTACK_PATH);
-                techStack.put("serverName", "local");
-                techStack.put("browserName", "chrome");
+        List<Map<String, String>> listOfTechStack = JSONHelper.getJSONAsListOfMaps(ExecConstants.TECHSTACK_PATH);
+        if (!listOfTechStack.isEmpty()) {
+            Object[][] objects = new Object[listOfTechStack.size()][1];
+            for (int i = 0; i < listOfTechStack.size(); i++) {
+                objects[i][0] = listOfTechStack.get(i);
             }
-        } else if (props.containsKey("serverName") && props.containsKey("browserName")){
-            logger.info("techstack is not defined in vm arguments. getting the configuration from runtime.properties file");
-            techStack.put("serverName", Property.getProperty(Constants.RUNTIME_PATH, "serverName").toLowerCase());
-            techStack.put("browserName", Property.getProperty(Constants.RUNTIME_PATH, "browserName").toLowerCase());
-        }else {
-            logger.info("nether techstack is not defined in vm arguments nor the configuration is defined in runtime.properties file");
-            techStack.put("serverName", Property.getProperty(Constants.RUNTIME_PATH, "serverName").toLowerCase());
-            techStack.put("browserName", Property.getProperty(Constants.RUNTIME_PATH, "browserName").toLowerCase());
+            return objects;
+        } else {
+            if (Property.getVariable("techstack") != null) {
+                logger.warn("techstack json file not found {}. defaulting to local chrome driver.", ExecConstants.TECHSTACK_PATH);
+            }
+            Map<String, String> techStack = new HashMap<>();
+            techStack.put("serverName", "local");
+            techStack.put("browserName", "chrome");
+            return new Object[][]{Collections.singletonList(techStack).toArray()};
         }
-        return new Object[][]{Collections.singletonList(techStack).toArray()};
-
     }
 
     @DataProvider(name = "techStackWithScenarioList", parallel = true)
