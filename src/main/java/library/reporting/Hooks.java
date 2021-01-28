@@ -25,14 +25,15 @@ public class Hooks implements En {
                     }
                 }
             }
-            copyAllureResult();
+            if (Boolean.parseBoolean(TestContext.getInstance().propDataGet("saveAllureResult").toString()))
+                copyAllureResult();
         });
     }
 
     private static void copyAllureResult() {
         String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-        String target = CukesConstants.ALLURE_RESULT_PATH + timeStamp;
-        copyDir(CukesConstants.ALLURE_RESULT_PATH, target, true);
+        String target = CukesConstants.USER_DIR + "/allure-results/" + timeStamp;
+        copyDir(CukesConstants.ALLURE_RESULT_PATH, target, false);
     }
 
 

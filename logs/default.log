@@ -1,1 +1,1 @@
-20:41:749 [main] WARN : runners.RegressionRunner - techstack json file not found C:\Users\Ajay\IdeaProjects\automation-framework-bdd/src/main/resources/config/techstacks/null.json. defaulting to local chrome driver.
+15:25:253 [main] WARN : runners.RegressionRunner - techstack json file not found C:\Users\Ajay\IdeaProjects\automation-framework-bdd/src/main/resources/config/techstacks/null.json. defaulting to local chrome driver.

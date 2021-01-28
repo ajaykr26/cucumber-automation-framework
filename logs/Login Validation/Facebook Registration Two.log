@@ -1,0 +1,27 @@
+15:51:111 [TestNG-PoolService-1] INFO : library.engine.web.steps.Steps_Launch - returning the value from config.properties file
+15:51:129 [TestNG-PoolService-1] DEBUG: library.engine.web.steps.Steps_Launch - obtaining the driver for current thread
+15:17:429 [TestNG-PoolService-1] DEBUG: library.engine.web.steps.Steps_Common - obtaining the driver for current thread
+15:19:026 [TestNG-PoolService-1] INFO : library.engine.web.steps.Steps_Common - page loaded completely
+15:19:029 [TestNG-PoolService-1] DEBUG: library.engine.web.steps.Steps_Validates - obtaining the driver for current thread
+15:20:616 [TestNG-PoolService-1] INFO : library.cucumber.core.Hooks - 
+| ---------------------------------------- | ---------------------------------------- |
+| Data Dictionary Key                      | Data Dictionary Value                    |
+| ---------------------------------------- | ---------------------------------------- |
+| country                                  | India                                    |
+| firstname                                | Two                                      |
+| lastname                                 | kumar                                    |
+| mobile                                   | 222222222                                |
+| state                                    | Bihar                                    |
+| village                                  | Motihari                                 |
+| ---------------------------------------- | ---------------------------------------- |
+15:20:632 [TestNG-PoolService-1] INFO : library.cucumber.core.Hooks - 
+| ---------------------------------------- | ---------------------------------------- |
+| Data Key                                 | Data Value                               |
+| ---------------------------------------- | ---------------------------------------- |
+| addScreenshotToWord                      | true                                     |
+| backupAllureResult                       | true                                     |
+| defaultWait                              | 10                                       |
+| screenshotOnEveryStep                    | true                                     |
+| screenshotOnFailure                      | true                                     |
+| waitForPageLoad                          | 10                                       |
+| ---------------------------------------- | ---------------------------------------- |

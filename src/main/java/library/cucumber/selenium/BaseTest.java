@@ -4,6 +4,7 @@ import io.cucumber.testng.CucumberFeatureWrapper;
 import io.cucumber.testng.CucumberOptions;
 import io.cucumber.testng.PickleEventWrapper;
 import io.cucumber.testng.TestNGCucumberRunner;
+import library.common.ExcelHelper;
 import library.common.JSONHelper;
 import library.common.Property;
 import library.cucumber.core.CukesConstants;
@@ -31,8 +32,8 @@ public class BaseTest extends library.selenium.exec.BaseTest {
         testNGCucumberRunner.runScenario(pickleEventWrapper.getPickleEvent());
     }
 
-    @DataProvider(name = "getTechStack", parallel = true)
-    private Object[][] getTechStack() {
+    @DataProvider(name = "techStackJSON", parallel = true)
+    private Object[][] techStackJSON() {
         List<Map<String, String>> listOfTechStack = JSONHelper.getJSONAsListOfMaps(ExecConstants.TECHSTACK_PATH);
         if (!listOfTechStack.isEmpty()) {
             Object[][] objects = new Object[listOfTechStack.size()][1];
@@ -51,13 +52,36 @@ public class BaseTest extends library.selenium.exec.BaseTest {
         }
     }
 
+//    @DataProvider(name = "techStackExcel", parallel = true)
+//    private Object[][] techStackExcel() {
+//        logger.debug("spnning up parallel executio thread for multi browser testing");
+//
+//        List<ArrayList<Object>> browsers = ExcelHelper.getDataAsArrayList(ExecConstants);
+//        if (!listOfTechStack.isEmpty()) {
+//            Object[][] objects = new Object[listOfTechStack.size()][1];
+//            for (int i = 0; i < listOfTechStack.size(); i++) {
+//                objects[i][0] = listOfTechStack.get(i);
+//            }
+//            return objects;
+//
+//        } else {
+//            if (Property.getVariable("techstack") != null) {
+//                logger.warn("techstack json file not found {}. defaulting to local chrome driver.", ExecConstants.TECHSTACK_PATH);
+//            }
+//            Map<String, String> techStack = new HashMap<>();
+//            techStack.put("serverName", "local");
+//            techStack.put("browserName", "chrome");
+//            return new Object[][]{Collections.singletonList(techStack).toArray()};
+//        }
+//    }
+
     @DataProvider(name = "techStackWithScenarioList", parallel = true)
     public Object[][] combineDataProvider() {
         List<Object[]> techStackList = Lists.newArrayList();
         List<Object[]> scenarioList = Lists.newArrayList();
         List<List<Object>> comboList = Lists.newArrayList();
 
-        techStackList.addAll(Arrays.asList(getTechStack()));
+        techStackList.addAll(Arrays.asList(techStackJSON()));
         scenarioList.addAll(Arrays.asList(testNGCucumberRunner.provideScenarios()));
 
         techStackList.forEach(techStack ->

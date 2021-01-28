@@ -1,8 +1,8 @@
 {
 	"Facebook Registration One": {
-		"firstname": "One",
-		"lastname": "kumar",
-		"mobile": "11111111",
+		"name": "One",
+		"address": "kumar",
+		"company": "11111111",
 		"password": "ajay@1234"
 	},
 	"Facebook Registration Two": {

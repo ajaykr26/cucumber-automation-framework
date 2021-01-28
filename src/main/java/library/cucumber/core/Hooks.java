@@ -8,6 +8,7 @@ import library.selenium.exec.ExecConstants;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.apache.logging.log4j.ThreadContext;
@@ -20,18 +21,21 @@ public class Hooks implements En {
     public Hooks() {
         Before(10, (Scenario scenario) -> {
             String scenarioName = scenario.getName();
-            String dataFile = CukesConstants.FEATURE_PATH + TestContext.getInstance().testdataGet("fw.featureName") + ".json";
+            String dataFileJSON = CukesConstants.FEATURE_PATH + TestContext.getInstance().testdataGet("fw.featureName") + ".json";
+//            String dataFileExcel = CukesConstants.TESTDATA_PATH + TestContext.getInstance().testdataGet("fw.featureName") + ".xlsx";
             TestContext.getInstance().testdataPut("fw.cucumberTest", "true");
             TestContext.getInstance().testdataPut("fw.testDescription", String.format("%s-%s",
                     TestContext.getInstance().testdataGet("fw.featureName"),
                     TestContext.getInstance().testdataGet("fw.scenarioName")));
-            Map<String, String> jsonDataTable = JSONHelper.getJSONToMap(JSONHelper.getJSONObject(dataFile, scenarioName));
-//            Map<String, String> excelDataTable = ExcelHelper.getDataAsMapWithoutIndex(dataFile, scenarioName).get(0);
+            Map<String, String> jsonDataTable = JSONHelper.getJSONToMap(JSONHelper.getJSONObject(dataFileJSON, scenarioName));
+            Map<String, Object> excelDataTable = ExcelHelper.getDataAsMap(CukesConstants.TESTDATA_EXCEL_PATH, TestContext.getInstance().testdataGet("fw.featureName").toString()).get(scenarioName);
             TestContext.getInstance().testdata().putAll(jsonDataTable);
+            TestContext.getInstance().testdata().putAll(excelDataTable);
+            TestContext.getInstance().propData().putAll(Property.getPropertiesAsMap(CukesConstants.RUNTIME_PATH));
         });
         After(20, (Scenario scenario) -> {
             logger.info(Formatter.getDataDictionaryAsFormattedTable());
-            logger.info(Formatter.getMapAsFormattedTable(Property.getPropertiesAsMap(CukesConstants.RUNTIME_PATH)));
+            logger.info(Formatter.getMapAsFormattedTable(TestContext.getInstance().propData()));
             checkForSoftAssertFailure();
         });
     }

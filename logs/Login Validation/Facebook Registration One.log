@@ -1,36 +1,26 @@
-20:00:484 [TestNG-PoolService-0] INFO : library.engine.web.steps.Steps_Launch - returning the value from config.properties file
-20:00:515 [TestNG-PoolService-0] DEBUG: library.engine.web.steps.Steps_Launch - obtaining the driver for current thread
-20:48:452 [TestNG-PoolService-0] DEBUG: library.engine.web.steps.Steps_Common - obtaining the driver for current thread
-20:48:515 [TestNG-PoolService-0] INFO : library.engine.web.steps.Steps_Common - page loaded completely
-20:48:520 [TestNG-PoolService-0] DEBUG: library.engine.web.steps.Steps_Validates - obtaining the driver for current thread
-20:48:657 [TestNG-PoolService-0] DEBUG: library.engine.web.steps.Steps_Clicks - obtaining the wait for current thread
-20:49:523 [TestNG-PoolService-0] DEBUG: library.engine.web.steps.Steps_Clicks - obtaining the driver for current thread
-20:50:484 [TestNG-PoolService-0] INFO : library.engine.web.steps.Steps_Common - returning the value from JSON
-20:50:506 [TestNG-PoolService-0] DEBUG: library.selenium.utils.InputMethods - obtaining the wait for current thread
-20:53:150 [TestNG-PoolService-0] DEBUG: library.selenium.utils.InputMethods - obtaining the driver for current thread
-20:53:712 [TestNG-PoolService-0] INFO : library.engine.web.steps.Steps_Common - returning the value from JSON
-20:53:715 [TestNG-PoolService-0] DEBUG: library.selenium.utils.InputMethods - obtaining the wait for current thread
-20:53:754 [TestNG-PoolService-0] DEBUG: library.selenium.utils.InputMethods - obtaining the driver for current thread
-20:54:329 [TestNG-PoolService-0] INFO : library.engine.web.steps.Steps_Common - returning the value from JSON
-20:54:329 [TestNG-PoolService-0] DEBUG: library.selenium.utils.InputMethods - obtaining the wait for current thread
-20:54:348 [TestNG-PoolService-0] DEBUG: library.selenium.utils.InputMethods - obtaining the driver for current thread
-20:54:478 [TestNG-PoolService-0] INFO : library.engine.web.steps.Steps_Common - returning the value from JSON
-20:54:479 [TestNG-PoolService-0] DEBUG: library.selenium.utils.InputMethods - obtaining the wait for current thread
-20:06:455 [TestNG-PoolService-0] INFO : library.cucumber.core.Hooks - 
+15:00:402 [TestNG-PoolService-0] INFO : library.engine.web.steps.Steps_Launch - returning the value from config.properties file
+15:00:418 [TestNG-PoolService-0] DEBUG: library.engine.web.steps.Steps_Launch - obtaining the driver for current thread
+15:23:381 [TestNG-PoolService-0] DEBUG: library.engine.web.steps.Steps_Common - obtaining the driver for current thread
+15:23:412 [TestNG-PoolService-0] INFO : library.engine.web.steps.Steps_Common - page loaded completely
+15:23:414 [TestNG-PoolService-0] DEBUG: library.engine.web.steps.Steps_Validates - obtaining the driver for current thread
+15:36:691 [TestNG-PoolService-0] INFO : library.cucumber.core.Hooks - 
 | ---------------------------------------- | ---------------------------------------- |
 | Data Dictionary Key                      | Data Dictionary Value                    |
 | ---------------------------------------- | ---------------------------------------- |
-| firstname                                | One                                      |
-| lastname                                 | kumar                                    |
-| mobile                                   | 11111111                                 |
+| account                                  | 784578457                                |
+| address                                  | kumar                                    |
+| bank                                     | SBI                                      |
+| company                                  | 11111111                                 |
+| email                                    | ajaykr.mailbox@gmail.com                 |
+| name                                     | One                                      |
 | ---------------------------------------- | ---------------------------------------- |
-20:06:471 [TestNG-PoolService-0] INFO : library.cucumber.core.Hooks - 
+15:36:706 [TestNG-PoolService-0] INFO : library.cucumber.core.Hooks - 
 | ---------------------------------------- | ---------------------------------------- |
 | Data Key                                 | Data Value                               |
 | ---------------------------------------- | ---------------------------------------- |
 | addScreenshotToWord                      | true                                     |
-| backupAllureResult                       | true                                     |
 | defaultWait                              | 10                                       |
+| saveAllureResult                         | true                                     |
 | screenshotOnEveryStep                    | true                                     |
 | screenshotOnFailure                      | true                                     |
 | waitForPageLoad                          | 10                                       |

@@ -63,8 +63,6 @@ public class BaseTest {
         return TestContext.getInstance().softAssertions();
     }
 
-
-
 //    @DataProvider(name = "getTechStack", parallel = true)
 //    public Object[][] getTechStack() {
 //        Map<String, String> techStack = new HashMap<>();
