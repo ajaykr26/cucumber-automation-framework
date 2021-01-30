@@ -15,7 +15,7 @@ public class HtmlUnitDriverManager extends DriverManager {
 
 
     @Override
-    public void setDriver() {
+    public void createDriver() {
         Browser browser = Browser.valueOf(DriverContext.getInstance().getBrowserName().toLowerCase());
         switch (browser) {
             case chrome:

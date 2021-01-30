@@ -1,5 +1,6 @@
 package library.engine.core.runner;
 
+import cucumber.api.PickleStepTestStep;
 import cucumber.api.event.*;
 import cucumber.runtime.formatter.TestSourcesModelProxy;
 import library.common.StringHelper;
@@ -37,15 +38,22 @@ public class EngFormatter implements ConcurrentEventListener {
     private void handleStepStartedHandler(TestStepStarted testStepStarted) {
     }
 
-    private void handleStepFinishedHandler(TestStepFinished testStepFinished) {
+    private void handleStepFinishedHandler(TestStepFinished event) {
+//        if (event.testStep instanceof PickleStepTestStep){
+//            setWindowType(event.testStep.getCodeLocation());
+//
+//            final PickleStepTestStep testStep=(PickleStepTestStep) event.testStep ;
+//            if (isBeforeStep(event.testStep.getCodeLocation(),testStep.getPickleStep().getText())){
+//                String stepText=getStepDescription()
+//            }
+//        }
     }
 
-    private void handleCaseFinishedHandler(TestCaseFinished testCaseFinished) {
+    private void handleCaseFinishedHandler(TestCaseFinished event) {
     }
 
     private void handleCaseStartedHandler(TestCaseStarted event) {
         currentFeatureFile.set(event.testCase.getUri());
-//        TestContext.getInstance().testdataPut("fw.featureFileName", this.currentFeatureFile.get().split("/")[1].replace("%20", " "));
         TestContext.getInstance().testdataPut("fw.featureName", this.testSources.getFeature(this.currentFeatureFile.get()).getName());
         TestContext.getInstance().testdataPut(FW_SCENARIO_NAME, event.testCase.getName());
         TestContext.getInstance().testdataPut("fw.logFileName", String.format("%s/%s",

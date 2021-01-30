@@ -1,4 +1,6 @@
-{
-  "serverName": "local",
-  "browserName": "chrome"
-}
+[
+  {
+    "serverType": "local",
+    "browserName": "chrome"
+  }
+]

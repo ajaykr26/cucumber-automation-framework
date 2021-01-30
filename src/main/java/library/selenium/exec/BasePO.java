@@ -4,6 +4,7 @@ import library.common.Property;
 import library.common.TestContext;
 import library.cucumber.core.CukesConstants;
 import library.selenium.core.PageObject;
+import library.selenium.exec.driver.factory.DriverContext;
 import library.selenium.exec.driver.factory.DriverFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -25,12 +26,12 @@ public class BasePO extends PageObject {
 
     public WebDriver getDriver() {
         logger.debug("obtaining the driver for current thread");
-        return DriverFactory.getInstance().getDriver();
+        return DriverContext.getInstance().getWebDriver();
     }
 
     public WebDriverWait getWait() {
         logger.debug("obtaining the wait for current thread");
-        return DriverFactory.getInstance().getWait();
+        return DriverContext.getInstance().getWait();
     }
 
 

@@ -38,12 +38,12 @@ public class BaseTest {
 
     public WebDriver getDriver() {
         logger.debug("obtaining the driver for current thread");
-        return DriverFactory.getInstance().getDriver();
+        return DriverContext.getInstance().getWebDriver();
     }
 
     public WebDriverWait getWait() {
         logger.debug("obtaining the wait for current thread");
-        return DriverFactory.getInstance().getWait();
+        return DriverContext.getInstance().getWait();
     }
 
     public BasePO getPO() {
@@ -106,8 +106,8 @@ public class BaseTest {
     @AfterMethod(groups = {"quitDriver"})
     public void closeDown(ITestResult result) {
         if (!TestContext.getInstance().testdata().containsKey(("fw.cucumberTest"))) {
-            DriverFactory.getInstance().driverManager().updateResults(result.isSuccess() ? "passed" : "failed");
-            DriverFactory.getInstance().quit();
+            DriverContext.getInstance().getWebDriverManager().updateResults(result.isSuccess() ? "passed" : "failed");
+            DriverContext.getInstance().quit();
         }
     }
 

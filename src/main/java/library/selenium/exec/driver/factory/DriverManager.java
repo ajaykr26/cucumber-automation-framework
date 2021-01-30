@@ -2,6 +2,9 @@ package library.selenium.exec.driver.factory;
 
 import library.common.Property;
 import library.cucumber.core.CukesConstants;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.codehaus.plexus.logging.LoggerManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -11,6 +14,7 @@ import java.io.File;
 public abstract class DriverManager {
     protected WebDriver driver;
     protected WebDriverWait wait;
+    private Logger logger= LogManager.getLogger(this.getClass().getName()) ;
 
     protected DriverManager() {
     }
@@ -24,7 +28,7 @@ public abstract class DriverManager {
 
     public WebDriver getDriver() {
         if (driver == null) {
-            setDriver();
+            createDriver();
         }
         return driver;
     }
@@ -54,7 +58,7 @@ public abstract class DriverManager {
         return (driverPath == null ? CukesConstants.DRIVER_PATH + System.getProperty("os.name").split(" ")[0].toLowerCase() + File.separator + drivername : driverPath);
     }
 
-    protected abstract void setDriver();
+    protected abstract void createDriver();
 
     public abstract void updateResults(String result);
 

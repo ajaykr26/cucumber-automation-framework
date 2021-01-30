@@ -18,7 +18,7 @@ public class EdgeDriverManager extends DriverManager {
     protected Logger logger = LogManager.getLogger(this.getClass().getName());
 
     @Override
-    public void setDriver(){
+    public void createDriver(){
         PropertiesConfiguration propertiesConfiguration = Property.getProperties(CukesConstants.RUNTIME_PATH);
 
         if(Property.getVariable("cukes.webdrivermanager") != null && Property.getVariable("cukes.webdrivermanager").equalsIgnoreCase("true")){

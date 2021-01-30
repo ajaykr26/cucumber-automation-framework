@@ -9,6 +9,7 @@ import io.qameta.allure.model.StepResult;
 import io.qameta.allure.util.ResultsUtils;
 import library.common.Property;
 import library.common.TestContext;
+import library.selenium.exec.ExecConstants;
 import org.apache.commons.io.IOUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -109,7 +110,7 @@ public class Reporter {
     }
 
     public static String getReportPath() {
-        String defaultReportPath = System.getProperty("user.dir") + File.separator + "target" + File.separator + "allure-results" + File.separator;
+        String defaultReportPath = ExecConstants.ALLURE_RESULT_PATH;
         String reportPath = Property.getVariable("reportPath");
         return (reportPath == null ? defaultReportPath : reportPath);
     }
@@ -120,7 +121,7 @@ public class Reporter {
     }
 
     public static String getScreenshotPath() {
-        return getReportPath() + "screenshots" + File.separator;
+        return getReportPath() + "/screenshots/" + TestContext.getInstance().testdataGet("fw.scenarioName");
     }
 
     public static void startFinalStep(Boolean scenarioIsFailed) {

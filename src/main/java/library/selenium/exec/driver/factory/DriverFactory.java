@@ -1,8 +1,11 @@
 package library.selenium.exec.driver.factory;
 
+import library.selenium.exec.driver.enums.BrowserType;
+import library.selenium.exec.driver.enums.ServerType;
 import library.selenium.exec.driver.managers.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.regexp.RE;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -10,76 +13,36 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class DriverFactory {
     private Logger logger = LogManager.getLogger(this.getClass().getName());
 
-    private static DriverFactory instance = new DriverFactory();
-    ThreadLocal<DriverManager> driverManager = new ThreadLocal<DriverManager>() {
-        protected DriverManager initialValue() {
-            return setDriverManager();
-        }
-    };
-
     protected DriverFactory() {
     }
 
-    public static DriverFactory getInstance() {
-        return instance;
-    }
+    public static DriverManager createDriver() {
 
-    public DriverManager driverManager() {
-        return driverManager.get();
-    }
-
-    public WebDriver getDriver() {
-
-        return driverManager.get().getDriver();
-    }
-
-    public WebDriverWait getWait() {
-
-        return driverManager.get().getWait();
+        return new DriverFactory().setDriverManager();
     }
 
     private DriverManager setDriverManager() {
-        Server server = Server.valueOf(DriverContext.getInstance().getTechStack().get("serverName").toLowerCase());
-        Browser browser = Browser.valueOf(DriverContext.getInstance().getBrowserName().toLowerCase());
-        switch (server) {
-            case remote_htmlunit:
-                driverManager.set(new HtmlUnitDriverManager());
-                break;
-            case remote_phantomjs:
-                driverManager.set(new PantomJSDriverManager());
-                break;
-            case local:
-                switch (browser) {
-                    case chrome:
-                        driverManager.set(new ChromeDriverManager());
-                        break;
-                    case firefox:
-                        driverManager.set(new FirefoxDriverManager());
-                        break;
-                    case iexplorer:
-                        driverManager.set(new IEDriverManager());
-                        break;
-                    case edge:
-                        driverManager.set(new EdgeDriverManager());
-                        break;
+        ServerType serverType = ServerType.get(DriverContext.getInstance().getTechStack().get("serverType"));
+        BrowserType browserType = BrowserType.get(DriverContext.getInstance().getBrowserName());
+        switch (serverType) {
+            case REMOTE:
+                return new HtmlUnitDriverManager();
+            default:
+                switch (browserType) {
+                    case CHROME:
+                        return new ChromeDriverManager();
+                    case FIREFOX:
+                        return new FirefoxDriverManager();
+                    case IE:
+                        return new IEDriverManager();
+                    case MICROSOFTEDGE:
+                        return new EdgeDriverManager();
+                    default:
+                        throw new UnsupportedOperationException("invalid driver type provide" + browserType);
                 }
         }
-
-        return driverManager.get();
     }
 
-    public void quit() {
-        driverManager.get().quitDriver();
-        driverManager.remove();
-    }
-
-    public enum Server {
-        local, grid, saucelabs, appium, browserstack, remote_htmlunit, remote_phantomjs;
-    }
-
-    public enum Browser {
-        chrome, iexplorer, edge, safari, firefox;
-    }
 
 }
 
