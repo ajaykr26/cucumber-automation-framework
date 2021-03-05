@@ -43,7 +43,7 @@ public class BaseTest extends library.selenium.exec.BaseTest {
             return objects;
         } else {
             if (Property.getVariable("techstack") != null) {
-                logger.warn("techstack json file not found {}. defaulting to local chrome driver.", ExecConstants.TECHSTACK_PATH);
+//                logger.warn("techstack json file not found {}. defaulting to local chrome driver.", ExecConstants.TECHSTACK_PATH);
             }
             Map<String, String> techStack = new HashMap<>();
             techStack.put("serverName", "local");

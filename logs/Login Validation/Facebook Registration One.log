@@ -1,20 +1,33 @@
-22:45:520 [TestNG-PoolService-0] INFO : library.engine.web.steps.Steps_Launch - returning the value from config.properties file
-22:45:630 [TestNG-PoolService-0] DEBUG: library.engine.web.steps.Steps_Launch - obtaining the driver for current thread
-22:49:949 [TestNG-PoolService-0] DEBUG: library.engine.web.steps.Steps_Common - obtaining the driver for current thread
-22:50:158 [TestNG-PoolService-0] INFO : library.engine.web.steps.Steps_Common - page loaded completely
-22:50:168 [TestNG-PoolService-0] DEBUG: library.engine.web.steps.Steps_Validates - obtaining the driver for current thread
-22:52:035 [TestNG-PoolService-0] INFO : library.cucumber.core.Hooks - 
+08:36:385 [TestNG-PoolService-0] INFO : library.engine.web.steps.Steps_Launch - returning the value from config.properties file
+08:36:430 [TestNG-PoolService-0] DEBUG: library.engine.web.steps.Steps_Launch - obtaining the driver for current thread
+08:48:606 [TestNG-PoolService-0] DEBUG: library.engine.web.steps.Steps_Common - obtaining the driver for current thread
+08:48:636 [TestNG-PoolService-0] INFO : library.engine.web.steps.Steps_Common - page loaded completely
+08:48:636 [TestNG-PoolService-0] DEBUG: library.engine.web.steps.Steps_Validates - obtaining the driver for current thread
+08:48:654 [TestNG-PoolService-0] DEBUG: library.engine.web.steps.Steps_Clicks - obtaining the wait for current thread
+08:49:056 [TestNG-PoolService-0] DEBUG: library.engine.web.steps.Steps_Clicks - obtaining the driver for current thread
+08:49:809 [TestNG-PoolService-0] INFO : library.engine.web.steps.Steps_Common - returning the value from JSON
+08:49:809 [TestNG-PoolService-0] DEBUG: library.selenium.utils.InputMethods - obtaining the wait for current thread
+08:51:706 [TestNG-PoolService-0] DEBUG: library.selenium.utils.InputMethods - obtaining the driver for current thread
+08:52:160 [TestNG-PoolService-0] INFO : library.engine.web.steps.Steps_Common - returning the value from JSON
+08:52:160 [TestNG-PoolService-0] DEBUG: library.selenium.utils.InputMethods - obtaining the wait for current thread
+08:52:335 [TestNG-PoolService-0] DEBUG: library.selenium.utils.InputMethods - obtaining the driver for current thread
+08:52:779 [TestNG-PoolService-0] INFO : library.engine.web.steps.Steps_Common - returning the value from JSON
+08:52:779 [TestNG-PoolService-0] DEBUG: library.selenium.utils.InputMethods - obtaining the wait for current thread
+08:52:810 [TestNG-PoolService-0] DEBUG: library.selenium.utils.InputMethods - obtaining the driver for current thread
+08:52:939 [TestNG-PoolService-0] INFO : library.engine.web.steps.Steps_Common - returning the value from JSON
+08:52:939 [TestNG-PoolService-0] DEBUG: library.selenium.utils.InputMethods - obtaining the wait for current thread
+08:03:890 [TestNG-PoolService-0] INFO : library.cucumber.core.Hooks - 
 | ---------------------------------------- | ---------------------------------------- |
 | Data Dictionary Key                      | Data Dictionary Value                    |
 | ---------------------------------------- | ---------------------------------------- |
 | account                                  | 784578457                                |
-| address                                  | kumar                                    |
 | bank                                     | SBI                                      |
-| company                                  | 11111111                                 |
 | email                                    | ajaykr.mailbox@gmail.com                 |
-| name                                     | One                                      |
+| firstname                                | One                                      |
+| lastname                                 | kumar                                    |
+| mobile                                   | 11111111                                 |
 | ---------------------------------------- | ---------------------------------------- |
-22:52:051 [TestNG-PoolService-0] INFO : library.cucumber.core.Hooks - 
+08:03:890 [TestNG-PoolService-0] INFO : library.cucumber.core.Hooks - 
 | ---------------------------------------- | ---------------------------------------- |
 | Data Key                                 | Data Value                               |
 | ---------------------------------------- | ---------------------------------------- |
