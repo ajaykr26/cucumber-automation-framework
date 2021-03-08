@@ -1,4 +1,4 @@
-# cucumber-automation-framework
+# automation-framework-bdd
 This is an sample project to demonstrate how to work with Selenium and cucumber for Java.
 
 ## Data Setup
@@ -20,4 +20,11 @@ This is an sample project to demonstrate how to work with Selenium and cucumber 
 1. use "@(testdata)" format to read data from config.properties file.
 2. use "#(testdata)" to read data from JSON.
 3. if you are passing "testdata" then it will be treated as same string.
+
+## To implement
+1. cross browser testing
+2. save allure result os each run
+3. save screenshot and add to wrod doc
+4. screenshot on every step
+5. allure result dashboard
 

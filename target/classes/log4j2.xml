@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="warn">
+    <Properties>
+        <Property name="filename">${ctx:logFileName}.log</Property>
+    </Properties>
+    <appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:ss:SSS} [%t] %highlight{%-5level:} %logger{36} - %msg%n"/>
+        </Console>
+        <Routing name="routingAppender">
+            <Routes pattern="$${ctx:logFileName}">
+                <Route>
+                    <RollingFile
+                            name="appender-${ctx:logFileName}" filename="logs/${filename}"
+                            filePattern="logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz"
+                            append="false">
+                        <PatternLayout>
+                            <pattern>%d{HH:ss:SSS} [%t] %highlight{%-5level:} %logger{36} - %msg%n</pattern>
+                        </PatternLayout>
+                        <TimeBasedTriggeringPolicy/>
+                    </RollingFile>
+                </Route>
+
+                <Route key="$${ctx:logFileName}">
+                    <RollingFile
+                            name="rollinf-default" filename="logs/default.log"
+                            filePattern="logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz"
+                            append="false">
+                        <PatternLayout>
+                            <pattern>%d{HH:ss:SSS} [%t] %highlight{%-5level:} %logger{36} - %msg%n</pattern>
+                        </PatternLayout>
+                        <TimeBasedTriggeringPolicy/>
+                    </RollingFile>
+                </Route>
+            </Routes>
+        </Routing>
+    </appenders>
+    <loggers>
+        <root level="debug">
+            <appender-ref ref="Console" level="debug"/>
+            <appender-ref ref="routingAppender" level="debug"/>
+        </root>
+    </loggers>
+</configuration>

@@ -1,0 +1,40 @@
+08:36:385 [TestNG-PoolService-1] INFO : library.engine.web.steps.Steps_Launch - returning the value from config.properties file
+08:36:455 [TestNG-PoolService-1] DEBUG: library.engine.web.steps.Steps_Launch - obtaining the driver for current thread
+08:49:079 [TestNG-PoolService-1] DEBUG: library.engine.web.steps.Steps_Common - obtaining the driver for current thread
+08:49:143 [TestNG-PoolService-1] INFO : library.engine.web.steps.Steps_Common - page loaded completely
+08:49:143 [TestNG-PoolService-1] DEBUG: library.engine.web.steps.Steps_Validates - obtaining the driver for current thread
+08:49:192 [TestNG-PoolService-1] DEBUG: library.engine.web.steps.Steps_Clicks - obtaining the wait for current thread
+08:49:457 [TestNG-PoolService-1] DEBUG: library.engine.web.steps.Steps_Clicks - obtaining the driver for current thread
+08:49:809 [TestNG-PoolService-1] INFO : library.engine.web.steps.Steps_Common - returning the value from JSON
+08:49:809 [TestNG-PoolService-1] DEBUG: library.selenium.utils.InputMethods - obtaining the wait for current thread
+08:52:335 [TestNG-PoolService-1] DEBUG: library.selenium.utils.InputMethods - obtaining the driver for current thread
+08:52:550 [TestNG-PoolService-1] INFO : library.engine.web.steps.Steps_Common - returning the value from JSON
+08:52:550 [TestNG-PoolService-1] DEBUG: library.selenium.utils.InputMethods - obtaining the wait for current thread
+08:52:582 [TestNG-PoolService-1] DEBUG: library.selenium.utils.InputMethods - obtaining the driver for current thread
+08:52:747 [TestNG-PoolService-1] INFO : library.engine.web.steps.Steps_Common - returning the value from JSON
+08:52:749 [TestNG-PoolService-1] DEBUG: library.selenium.utils.InputMethods - obtaining the wait for current thread
+08:52:778 [TestNG-PoolService-1] DEBUG: library.selenium.utils.InputMethods - obtaining the driver for current thread
+08:53:010 [TestNG-PoolService-1] INFO : library.engine.web.steps.Steps_Common - returning the value from JSON
+08:53:010 [TestNG-PoolService-1] DEBUG: library.selenium.utils.InputMethods - obtaining the wait for current thread
+08:03:909 [TestNG-PoolService-1] INFO : library.cucumber.core.Hooks - 
+| ---------------------------------------- | ---------------------------------------- |
+| Data Dictionary Key                      | Data Dictionary Value                    |
+| ---------------------------------------- | ---------------------------------------- |
+| country                                  | India                                    |
+| firstname                                | Two                                      |
+| lastname                                 | kumar                                    |
+| mobile                                   | 222222222                                |
+| state                                    | Bihar                                    |
+| village                                  | Motihari                                 |
+| ---------------------------------------- | ---------------------------------------- |
+08:03:909 [TestNG-PoolService-1] INFO : library.cucumber.core.Hooks - 
+| ---------------------------------------- | ---------------------------------------- |
+| Data Key                                 | Data Value                               |
+| ---------------------------------------- | ---------------------------------------- |
+| addScreenshotToWord                      | true                                     |
+| defaultWait                              | 10                                       |
+| saveAllureResult                         | false                                    |
+| screenshotOnEveryStep                    | true                                     |
+| screenshotOnFailure                      | true                                     |
+| waitForPageLoad                          | 10                                       |
+| ---------------------------------------- | ---------------------------------------- |

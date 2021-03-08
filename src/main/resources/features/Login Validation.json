@@ -1,0 +1,14 @@
+{
+	"Facebook Registration One": {
+		"firstname": "One",
+		"lastname": "kumar",
+		"mobile": "11111111",
+		"password": "ajay@1234"
+	},
+	"Facebook Registration Two": {
+		"firstname": "Two",
+		"lastname": "kumar",
+		"mobile": "222222222",
+		"password": "ajay@1234"
+	}
+}
