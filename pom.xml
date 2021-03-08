@@ -31,7 +31,7 @@
         <aspectj>1.8.10</aspectj>
         <assertj-core>3.18.1</assertj-core>
         <allure-maven>2.8</allure-maven>
-        <allure-testng>2.13.2</allure-testng>
+        <allure-testng>2.13.6</allure-testng>
         <allure-java>2.13.2</allure-java>
         <apache.poi>4.1.2</apache.poi>
         <commons.configuration2>2.7</commons.configuration2>
@@ -137,6 +137,7 @@
             <version>${allure-testng}</version>
             <scope>compile</scope>
         </dependency>
+
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-java-commons</artifactId>
@@ -212,6 +213,11 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>${allure-maven}</version>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
@@ -243,30 +249,16 @@
                     </dependency>
                 </dependencies>
             </plugin>
+        </plugins>
+    </build>
+    <reporting>
+        <excludeDefaults>true</excludeDefaults>
+        <plugins>
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
                 <version>${allure-maven}</version>
             </plugin>
-            <plugin>
-                <groupId>net.masterthought</groupId>
-                <artifactId>maven-cucumber-reporting</artifactId>
-                <version>${cucumber-maven-reporting}</version>
-                <executions>
-                    <execution>
-                        <id>execution</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <projectName>ExecuteAutomation</projectName>
-                            <outputDirectory>${project.build.directory}/cucumber-report-html</outputDirectory>
-                            <cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
-    </build>
+    </reporting>
 </project>

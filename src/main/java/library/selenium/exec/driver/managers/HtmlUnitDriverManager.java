@@ -2,6 +2,7 @@ package library.selenium.exec.driver.managers;
 
 
 import com.gargoylesoftware.htmlunit.BrowserVersion;
+import library.selenium.exec.driver.enums.BrowserType;
 import library.selenium.exec.driver.factory.DriverContext;
 import library.selenium.exec.driver.factory.DriverManager;
 import org.apache.logging.log4j.LogManager;
@@ -13,16 +14,15 @@ public class HtmlUnitDriverManager extends DriverManager {
 
     protected Logger logger = LogManager.getLogger(this.getClass().getName());
 
-
     @Override
     public void createDriver() {
-        Browser browser = Browser.valueOf(DriverContext.getInstance().getBrowserName().toLowerCase());
+        BrowserType browser = BrowserType.valueOf(DriverContext.getInstance().getBrowserName().toLowerCase());
         switch (browser) {
-            case chrome:
+            case CHROME:
                 driver = new HtmlUnitDriver(BrowserVersion.CHROME);
-            case firefox:
+            case FIREFOX:
                 driver = new HtmlUnitDriver(BrowserVersion.FIREFOX);
-            case iexplorer:
+            case IE:
                 driver = new HtmlUnitDriver(BrowserVersion.INTERNET_EXPLORER);
         }
 
@@ -33,7 +33,5 @@ public class HtmlUnitDriverManager extends DriverManager {
 
     }
 
-    public enum Browser {
-        chrome, iexplorer, firefox;
-    }
+
 }

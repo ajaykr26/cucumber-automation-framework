@@ -121,7 +121,7 @@ public class Reporter {
     }
 
     public static String getScreenshotPath() {
-        return getReportPath() + "/screenshots/" + TestContext.getInstance().testdataGet("fw.scenarioName");
+        return getReportPath() + "/screenshots/" + TestContext.getInstance().testdataGet("fw.scenarioName") + "/";
     }
 
     public static void startFinalStep(Boolean scenarioIsFailed) {

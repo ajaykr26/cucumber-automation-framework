@@ -144,7 +144,7 @@
     <orderEntry type="library" name="Maven: org.apache.maven:maven-jxr:2.5" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven.wagon:wagon-provider-api:1.0" level="project" />
     <orderEntry type="library" name="Maven: io.qameta.allure:allure-cucumber4-jvm:2.13.2" level="project" />
-    <orderEntry type="library" name="Maven: io.qameta.allure:allure-testng:2.13.2" level="project" />
+    <orderEntry type="library" name="Maven: io.qameta.allure:allure-testng:2.13.6" level="project" />
     <orderEntry type="library" name="Maven: io.qameta.allure:allure-java-commons:2.13.2" level="project" />
     <orderEntry type="library" name="Maven: io.qameta.allure:allure-model:2.13.2" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.9.8" level="project" />

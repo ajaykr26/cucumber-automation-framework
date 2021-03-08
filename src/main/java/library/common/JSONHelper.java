@@ -121,5 +121,17 @@ public class JSONHelper {
     public static Map<String, String> getJSONToListOfMap(String filepath) {
         return getJSONToMap(getJSONObject(filepath));
     }
+
+    public static Map<String, String> loadJSONMapFromResources(Class clazz, String filepath) {
+        InputStream inputStream = clazz.getClassLoader().getResourceAsStream(filepath);
+
+        if (inputStream != null) {
+            return new Gson().fromJson(new InputStreamReader(inputStream), Map.class);
+        } else {
+            return null;
+        }
+    }
+
+
 }
 
