@@ -1,12 +1,10 @@
 package library.selenium.core;
 
-import io.cucumber.java8.Fi;
 import library.common.Property;
 import library.cucumber.core.CukesConstants;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.velocity.texen.util.FileUtil;
 import org.openqa.selenium.NoSuchWindowException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
