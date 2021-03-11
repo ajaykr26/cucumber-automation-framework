@@ -39,7 +39,7 @@
         <commons.io>2.8.0</commons.io>
         <commons.lang3>3.11</commons.lang3>
         <commons.collections4>4.4</commons.collections4>
-        <testsuite>RegressionSuite</testsuite>
+        <suiteXmlFile>suiteXmlFile</suiteXmlFile>
     </properties>
     <dependencies>
         <dependency>
@@ -238,7 +238,7 @@
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj}/aspectjweaver-${aspectj}.jar"
                     </argLine>
                     <suiteXmlFiles>
-                        <suiteXmlFile>src/main/resources/testsuites/${testsuite}.xml</suiteXmlFile>
+                        <suiteXmlFile>src/test/resources/testsuite/${suiteXmlFile}.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
                 <dependencies>

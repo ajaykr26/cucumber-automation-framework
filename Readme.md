@@ -10,6 +10,13 @@ This is an sample project to demonstrate how to work with Selenium and cucumber 
 2. application url should be mentioned in config.properties file kept in the resources/config folder.
 3. user details should be mentioned in config.properties file kept in the resources/config folder.
 
+## vm arguments
+-ea
+-Denvironment=UAT
+-DtechStack=LOCAL_CHROME
+-Dorg.apache.logging.log4j.level=DEBUG
+-Dcukes.selenium.defaultFindRetries=2
+
 ## requirement
 1. java 8 and above.
 2. maven
