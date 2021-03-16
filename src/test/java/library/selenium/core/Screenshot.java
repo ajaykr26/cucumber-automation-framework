@@ -1,5 +1,6 @@
 package library.selenium.core;
 
+import io.cucumber.java8.Fi;
 import library.common.Property;
 import library.cucumber.core.CukesConstants;
 import org.apache.commons.io.FileUtils;
@@ -10,7 +11,13 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
-import java.io.File;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBuffer;
+import java.io.*;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.UUID;
 
 public class Screenshot {
@@ -77,6 +84,37 @@ public class Screenshot {
             return file;
         }
         return null;
+    }
+
+    public static boolean compareScreenshot(File fileExpected, File fileActual) throws IOException {
+        boolean matchFlag = true;
+        try {
+            BufferedImage bufferedImageActual = ImageIO.read(fileActual);
+            BufferedImage bufferedImageExpected = ImageIO.read(fileExpected);
+            DataBuffer dataBufferFileActual = bufferedImageActual.getData().getDataBuffer();
+            DataBuffer dataBufferFileExpected = bufferedImageExpected.getData().getDataBuffer();
+
+            int sizeFileActual = dataBufferFileActual.getSize();
+            for (int i = 0; i < sizeFileActual; i++) {
+                if (dataBufferFileActual.getElem(i) != dataBufferFileExpected.getElem(i)) {
+                    matchFlag = false;
+                    break;
+                }
+            }
+        } catch (FileNotFoundException exception) {
+            logger.error(exception.getMessage());
+        }
+        return matchFlag;
+    }
+
+    public static void getImageFromUrl(String imageUrl, String destinationFile, String filename) throws IOException {
+        URL url = new URL(imageUrl);
+        InputStream inputStream = url.openStream();
+        File file = new File(destinationFile + filename);
+        if (!new File(destinationFile).exists()) new File(destinationFile).mkdir();
+        if (file.exists()) file.delete();
+        Files.copy(inputStream, file.toPath());
+        inputStream.close();
     }
 
 }
