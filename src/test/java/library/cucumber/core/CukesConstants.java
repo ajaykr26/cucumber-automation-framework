@@ -6,7 +6,7 @@ public class CukesConstants {
     public static final String USER_DIR = System.getProperty("user.dir");
     public static final String BASE_PATH = USER_DIR + "/src/test/resources/";
     public static final String DRIVER_PATH = USER_DIR + "/lib/drivers/";
-    public static final String SCREENSHOT_PATH = BASE_PATH + "target/allure-results/screenshots/";
+    public static final String SCREENSHOT_PATH = USER_DIR + "/target/allure-results/screenshots/";
     public static final String ALLURE_RESULT_PATH = USER_DIR + "/target/allure-results";
     public static final String ACTUAL_IMAGE_PATH = USER_DIR + "/target/actual-image/";
     public static final String EXPECTED_IMAGE_PATH = USER_DIR + "/expected-image/";

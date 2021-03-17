@@ -31,8 +31,8 @@ public class DriverContext {
         setTechStack(techStack);
     }
 
-    public void updateDriverContext(Map<String, String> newTechStack) {
-        DriverContextUtil.updateDriverContext(newTechStack);
+    public void updateDriverContext(String browserName) {
+        DriverContextUtil.updateDriverContext(browserName);
     }
 
     public void updateDriverPath(String browserName) {

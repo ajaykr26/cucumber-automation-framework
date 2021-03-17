@@ -15,7 +15,7 @@ import static library.common.FileHelper.copyDir;
 public class Regression extends EngBaseTest {
 
     @AfterClass
-    private static void copyAllureResult() {
+    private void copyAllureResult() {
         if (Boolean.parseBoolean(Property.getProperty(CukesConstants.RUNTIME_PATH, "saveAllureResult"))) {
             String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
             String target = CukesConstants.USER_DIR + "/allure-results/" + timeStamp;

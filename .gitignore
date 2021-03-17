@@ -12,6 +12,8 @@
 
 *logs
 *allure-results
+*run-reports
+*expected-image
 *target
 *lib
 
