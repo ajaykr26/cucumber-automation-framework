@@ -1,10 +1,8 @@
 package library.selenium.exec.driver.utils;
 
+import library.common.Constants;
 import library.common.JSONHelper;
-import library.common.TestContext;
-import library.cucumber.core.CukesConstants;
 import library.selenium.exec.driver.factory.DriverContext;
-import library.selenium.utils.TestCaseFailed;
 
 import java.util.List;
 import java.util.Map;
@@ -32,7 +30,7 @@ public class DriverContextUtil {
                 break;
         }
         System.setProperty("cukes.techstack", newTechStack);
-        List<Map<String, String>> listOfTechstacks = JSONHelper.getJSONAsListOfMaps(CukesConstants.TECHSTACK_PATH.replace(currentTechStack, newTechStack));
+        List<Map<String, String>> listOfTechstacks = JSONHelper.getJSONAsListOfMaps(Constants.TECHSTACK_PATH.replace(currentTechStack, newTechStack));
         DriverContext.getInstance().setDriverContext(listOfTechstacks.get(0));
 
     }

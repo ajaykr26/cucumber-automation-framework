@@ -7,15 +7,14 @@ import io.qameta.allure.model.Status;
 import io.qameta.allure.model.StatusDetails;
 import io.qameta.allure.model.StepResult;
 import io.qameta.allure.util.ResultsUtils;
+import library.common.Constants;
 import library.common.Property;
 import library.common.TestContext;
-import library.selenium.exec.ExecConstants;
 import org.apache.commons.io.IOUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
@@ -110,7 +109,7 @@ public class Reporter {
     }
 
     public static String getReportPath() {
-        String defaultReportPath = ExecConstants.ALLURE_RESULT_PATH;
+        String defaultReportPath = Constants.ALLURE_RESULT_PATH;
         String reportPath = Property.getVariable("reportPath");
         return (reportPath == null ? defaultReportPath : reportPath);
     }

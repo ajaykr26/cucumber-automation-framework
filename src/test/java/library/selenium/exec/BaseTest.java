@@ -1,12 +1,8 @@
 package library.selenium.exec;
 
-import library.common.JSONHelper;
 import library.common.Property;
 import library.common.TestContext;
-import library.cucumber.core.CukesConstants;
 import library.selenium.exec.driver.factory.DriverContext;
-import library.selenium.exec.driver.factory.DriverFactory;
-import org.apache.commons.configuration2.PropertiesConfiguration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.assertj.core.api.SoftAssertions;
@@ -15,13 +11,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.lang.reflect.Method;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class BaseTest {

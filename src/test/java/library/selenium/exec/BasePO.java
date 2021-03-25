@@ -1,11 +1,11 @@
 package library.selenium.exec;
 
+import library.common.Constants;
 import library.common.Property;
 import library.common.TestContext;
-import library.cucumber.core.CukesConstants;
+import library.selenium.core.LocatorType;
 import library.selenium.core.PageObject;
 import library.selenium.exec.driver.factory.DriverContext;
-import library.selenium.exec.driver.factory.DriverFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -34,32 +34,31 @@ public class BasePO extends PageObject {
         return DriverContext.getInstance().getWait();
     }
 
-
-    public By getObjectBy(String type, String access_name) {
-        switch (type) {
-            case "id":
-                return By.id(access_name);
-            case "name":
-                return By.name(access_name);
-            case "class":
-                return By.className(access_name);
-            case "xpath":
-                return By.xpath(access_name);
-            case "css":
-                return By.cssSelector(access_name);
-            case "linkText":
-                return By.linkText(access_name);
-            case "partialLinkText":
-                return By.partialLinkText(access_name);
-            case "tagName":
-                return By.tagName(access_name);
+    public By getObjectByLocatorType(String locatorType, String locatorText) {
+        switch (LocatorType.get(locatorType)) {
+            case ID:
+                return By.id(locatorText);
+            case NAME:
+                return By.name(locatorText);
+            case CLASS_NAME:
+                return By.className(locatorText);
+            case XPATH:
+                return By.xpath(locatorText);
+            case CSS:
+                return By.cssSelector(locatorText);
+            case LINK_TEXT:
+                return By.linkText(locatorText);
+            case PARTIAL_LINK_TEXT:
+                return By.partialLinkText(locatorText);
+            case TAGE_NAME:
+                return By.tagName(locatorText);
             default:
                 return null;
 
         }
     }
 
-    public By getObject(String objectName, String pageName) throws Throwable {
+    public By getObject(String objectName, String pageName) {
         String classname = "pageobjects." + pageName;
         Class<?> classInstance = null;
         try {
@@ -128,7 +127,7 @@ public class BasePO extends PageObject {
             parsed_value = TestContext.getInstance().testdataGet(parsedkeyJSON).toString();
             logger.info("returning the value from JSON");
         } else if (parsedkeyProps != null) {
-            parsed_value = Property.getProperty(CukesConstants.ENVIRONMENT_PATH, parse_keyProps(string));
+            parsed_value = Property.getProperty(Constants.ENVIRONMENT_PATH, parse_keyProps(string));
             logger.info("returning the value from config.properties file");
         } else {
             parsed_value = string;
@@ -138,7 +137,7 @@ public class BasePO extends PageObject {
     }
 
     public void waitForPageToLoad() {
-        long timeOut = Integer.parseInt(Property.getProperty(CukesConstants.RUNTIME_PATH, "waitForPageLoad")) * 1000;
+        long timeOut = Integer.parseInt(Property.getProperty(Constants.RUNTIME_PATH, "waitForPageLoad")) * 1000;
         long endTime = System.currentTimeMillis() + timeOut;
         while (System.currentTimeMillis() < endTime) {
             if (String.valueOf(((JavascriptExecutor) getDriver()).executeScript("return document.readyState")).equals("complete")) {

@@ -1,8 +1,7 @@
-package library.cucumber.core;
+package library.common;
 
-import library.common.Property;
+public class Constants {
 
-public class CukesConstants {
     public static final String USER_DIR = System.getProperty("user.dir");
     public static final String BASE_PATH = USER_DIR + "/src/test/resources/";
     public static final String DRIVER_PATH = USER_DIR + "/lib/drivers/";
@@ -16,5 +15,6 @@ public class CukesConstants {
     public static final String TESTDATA_EXCEL_PATH = BASE_PATH + "testdata/TestData.xlsx";;
     public static final String TECHSTACK_PATH = BASE_PATH + "config/techstacks/"+ Property.getVariable("cukes.techstack")+".json";
     public static final String ENVIRONMENT_PATH = BASE_PATH + "config/environment/"+ Property.getVariable("cukes.environment")+".properties";
+
 
 }

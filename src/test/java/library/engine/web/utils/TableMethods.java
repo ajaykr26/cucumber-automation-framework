@@ -1,4 +1,4 @@
-package library.selenium.utils;
+package library.engine.web.utils;
 
 import library.selenium.exec.BasePO;
 import org.openqa.selenium.By;
@@ -9,8 +9,8 @@ import java.util.List;
 
 public class TableMethods extends BasePO {
 
-    public WebElement getMatchingCellElement(String textToFind, String type, String access_name) throws Exception {
-        WebElement table = getDriver().findElement(getObjectBy(type, access_name));
+    public WebElement getMatchingCellElement(String textToFind, String locatorType, String locatorText) throws Exception {
+        WebElement table = getDriver().findElement(getObject(locatorType, locatorText));
         List<WebElement> table_rows = table.findElements(By.tagName("tr"));
         int rows_count = table_rows.size();
         int row = 0;
@@ -34,8 +34,8 @@ public class TableMethods extends BasePO {
         }
     }
 
-    public WebElement getMatchingCellElement(String textToFind, String columnName, String type, String access_name) throws Exception {
-        WebElement table = getDriver().findElement(getObjectBy(type, access_name));
+    public WebElement getMatchingCellElement(String textToFind, String columnName, String locatorType, String locatorText) throws Exception {
+        WebElement table = getDriver().findElement(getObject(locatorType, locatorText));
         List<WebElement> table_headers = table.findElements(By.xpath("//th | //div/span[@class='ui-grid-header-cell-label ng-binding']"));
         List<WebElement> table_rows = table.findElements(By.xpath("//tr | //div[@class='ui-grid-canvas']/div"));
         int col;

@@ -2,10 +2,9 @@ package library.cucumber.selenium;
 
 import io.cucumber.java8.En;
 import io.cucumber.core.api.Scenario;
+import library.common.Constants;
 import library.common.Property;
-import library.cucumber.core.CukesConstants;
 import library.selenium.exec.driver.factory.DriverContext;
-import library.selenium.exec.driver.factory.DriverFactory;
 import org.apache.commons.configuration2.PropertiesConfiguration;
 
 public class Hooks implements En {
@@ -30,7 +29,7 @@ public class Hooks implements En {
 
     private void setRuntimeProperties() {
 
-        PropertiesConfiguration props = Property.getProperties(CukesConstants.RUNTIME_PATH);
+        PropertiesConfiguration props = Property.getProperties(Constants.RUNTIME_PATH);
         if (props != null) {
             String screenshotOnEveryStep = props.getString("screenshotOnEveryStep");
 

@@ -1,4 +1,4 @@
-package library.selenium.utils;
+package library.engine.web.utils;
 
 public class TestCaseFailed extends Exception {
 	/**

@@ -1,9 +1,9 @@
 package library.engine.core;
 
 import io.cucumber.java8.En;
+import library.common.Constants;
 import library.common.Property;
 import library.common.TestContext;
-import library.cucumber.core.CukesConstants;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,7 +20,7 @@ public class EngParser implements En {
         if (parsedkeyJSON != null) {
             parsed_value = TestContext.getInstance().testdataGet(parsedkeyJSON).toString();
         } else if (parsedkeyProps != null) {
-            parsed_value = Property.getProperty(CukesConstants.ENVIRONMENT_PATH, parse_keyProps(string));
+            parsed_value = Property.getProperty(Constants.ENVIRONMENT_PATH, parse_keyProps(string));
         } else {
             parsed_value = string;
         }

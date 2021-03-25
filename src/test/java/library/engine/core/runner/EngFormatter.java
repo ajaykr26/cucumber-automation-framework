@@ -4,21 +4,16 @@ import cucumber.api.PickleStepTestStep;
 import cucumber.api.Result;
 import cucumber.api.event.*;
 import cucumber.runtime.formatter.TestSourcesModelProxy;
-import library.common.FileHelper;
 import library.common.JSONHelper;
-import library.common.StringHelper;
 import library.common.TestContext;
-import library.cucumber.core.CukesConstants;
 import library.engine.core.EngBaseStep;
 import org.apache.logging.log4j.ThreadContext;
 
-import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
 import static cucumber.api.Result.Type.FAILED;
 import static cucumber.api.Result.Type.PASSED;
-import static library.common.FileHelper.copyDir;
 import static library.common.StringHelper.getClassShortName;
 import static library.engine.core.EngConstants.*;
 import static library.reporting.Reporter.addScreenCaptureFromPath;

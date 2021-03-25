@@ -6,7 +6,7 @@ import library.common.Property;
 import library.common.TestContext;
 
 import static library.reporting.Reporter.addScreenCaptureFromPath;
-import static library.selenium.utils.ScreenShotMethods.insertImageToWord;
+import static library.selenium.core.Screenshot.insertImageToWord;
 
 public class Hooks implements En {
 

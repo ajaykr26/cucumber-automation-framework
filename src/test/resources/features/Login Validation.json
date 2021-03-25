@@ -4,7 +4,8 @@
 		"logoUrl": "https://www.seleniumeasy.com/sites/all/themes/seasy/logo.png",
 		"lastname": "kumar",
 		"mobile": "11111111",
-		"password": "ajay@1234"
+		"password": "ajay@1234",
+		"pdfFilepath": "C:\\Users\\SA210517\\OneDrive\\Documents\\Personal Documets\\Resume_Ajay Kumar.pdf"
 	},
 	"Facebook Registration Two": {
 		"firstname": "Two",

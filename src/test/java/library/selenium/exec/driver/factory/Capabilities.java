@@ -1,9 +1,9 @@
 package library.selenium.exec.driver.factory;
 
 
+import library.common.Constants;
 import library.common.Property;
 import library.common.TestContext;
-import library.cucumber.core.CukesConstants;
 import org.apache.commons.configuration2.PropertiesConfiguration;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.remote.CapabilityType;
@@ -47,7 +47,7 @@ public class Capabilities {
                 }
         }
 
-        PropertiesConfiguration props = Property.getProperties(CukesConstants.RUNTIME_PATH);
+        PropertiesConfiguration props = Property.getProperties(Constants.RUNTIME_PATH);
         List<String> desiredCapsList = Arrays.asList(props.getStringArray("desiredCapabilities" + DriverContext.getInstance().getBrowserName().replaceAll("\\s", "")));
 
         desiredCapsList.forEach(desiredCap -> {
