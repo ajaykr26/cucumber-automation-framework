@@ -7,7 +7,7 @@ public enum BrowserType {
     CHROME("chrome"),
     FIREFOX("firefox"),
     IE("internet explorer"),
-    MICROSOFTEDGE("microsoftedge"),
+    MSEDGE("microsoft edge"),
     HTMLUNIT("htmlunit"),
     PHANTOMJS("phantomjs");
 

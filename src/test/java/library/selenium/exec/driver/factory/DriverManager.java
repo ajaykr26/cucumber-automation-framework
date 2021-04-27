@@ -18,6 +18,12 @@ public abstract class DriverManager {
     protected DriverManager() {
     }
 
+    public WebDriverWait getWebDriverWait() {
+        if (wait == null) {
+            wait = new WebDriverWait(driver, getWaitDuration());
+        }
+        return wait;
+    }
     public WebDriverWait getWait() {
         if (wait == null) {
             wait = new WebDriverWait(driver, getWaitDuration());

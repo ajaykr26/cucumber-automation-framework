@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class BaseStepsPdf extends BaseSteps implements En {
+public class BaseStepsPdf extends BaseSteps  {
     protected static final String VALIDATION_TAG = "VALIDATION.";
     protected static final String STATUS_FAILED = "FAIL";
     protected static final String VALIDATION_FAILED = "Validation Failed: ";

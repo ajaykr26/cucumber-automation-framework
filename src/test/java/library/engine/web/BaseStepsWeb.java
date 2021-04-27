@@ -8,6 +8,7 @@ import library.engine.web.utils.*;
 import library.selenium.core.LocatorType;
 import library.selenium.exec.BasePO;
 import library.selenium.exec.driver.factory.DriverContext;
+import library.selenium.utils.ClickMethods;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;

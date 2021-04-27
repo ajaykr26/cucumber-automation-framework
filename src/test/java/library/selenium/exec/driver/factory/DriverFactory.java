@@ -35,7 +35,7 @@ public class DriverFactory {
                         return new FirefoxDriverManager();
                     case IE:
                         return new IEDriverManager();
-                    case MICROSOFTEDGE:
+                    case MSEDGE:
                         return new EdgeDriverManager();
                     default:
                         throw new UnsupportedOperationException("invalid driver type provide" + browserType);

@@ -11,15 +11,6 @@ import java.util.Date;
 
 import static library.common.FileHelper.copyDir;
 
-@CucumberOptions(tags = {"@SmokeSuite"})
+@CucumberOptions(tags = {"@SmokeSuite", "not @ignore"})
 public class Regression extends EngBaseTest {
-
-    @AfterClass
-    private void copyAllureResult() {
-        if (Boolean.parseBoolean(Property.getProperty(Constants.RUNTIME_PATH, "saveAllureResult"))) {
-            String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-            String target = Constants.USER_DIR + "/allure-results/" + timeStamp;
-            copyDir(Constants.ALLURE_RESULT_PATH, target, false);
-        }
-    }
 }

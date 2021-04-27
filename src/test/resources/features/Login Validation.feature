@@ -1,9 +1,7 @@
 Feature: Login Validation
   Validating login functionality
 
-  @SmokeSuite @ScenarioOne
   Scenario: Facebook Registration One
-#  Given the user opens the pdf at "#(pdfFilepath)" path
     Then the user launch the "@(facebook)" application in new window
     Then the user wait for page to load
     Then the user validate that the page title exactly matched with "Facebook – log in or sign up"
@@ -17,6 +15,13 @@ Feature: Login Validation
     Then the user select "2005" option by text from dropdown having name "birthday_year"
     Then the user select "2" option by value from radio button group having xpath "//input[@name='sex']"
     Then the user validates image at "#(logoUrl)" url matches with "logo.png" image file
+
+  @SmokeSuite @ScenarioOne
+  Scenario: Facebook Registration One
+    Given the user opens the "Resume_Ajay Kumar" pdf kept in testdata folder
+    And the user validates the orientation is in portrait mode "orientation" "HardStopOnFailure"
+    And the user takes a screenshot of the active pdf
+    Then the active pdf is closed
 
 #  @SmokeSuite @ScenarioTwo
 #  Scenario: Facebook Registration Two

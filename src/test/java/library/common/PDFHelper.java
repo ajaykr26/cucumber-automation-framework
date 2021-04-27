@@ -14,6 +14,7 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -138,7 +139,7 @@ public class PDFHelper {
         for (int pageNum = 0; pageNum < document.getNumberOfPages(); pageNum++) {
             try {
                 file = new File(String.format(FILENAME_PATTERN, filepath, StringHelper.removeSpecialChars(getPDFFileName(document)), pageNum + 1, ".png"));
-                file.getParentFile().mkdir();
+                file.getParentFile().mkdirs();
                 ImageIO.write(pdfRenderer.renderImage(pageNum), "PNG", file);
                 listOfScreenShorts.add(file);
             } catch (IOException exception) {
@@ -172,5 +173,51 @@ public class PDFHelper {
             title = "PDF";
         }
         return String.format("%s%s", title, UUID.randomUUID());
+    }
+
+    public static int getPDFPageNumber(PDDocument document, String valueToFind) {
+        String extractText = null;
+        int pageNum = 0;
+        for (int i = 0; i < document.getNumberOfPages(); i++) {
+            try {
+                PDFTextStripper pdfTextStripper = new PDFTextStripper();
+                pdfTextStripper.setStartPage(i);
+                pdfTextStripper.setEndPage(i + 1);
+                extractText = pdfTextStripper.getText(document);
+                if (Boolean.parseBoolean(System.getProperty("fw.ignoreWhiteSpaceOnPDFCompare"))) {
+                    extractText = String.join(" ", Arrays.asList(extractText.split("\\s+")));
+                }
+                if (extractText.contains(valueToFind.trim())) {
+                    pageNum = i + 1;
+                    break;
+                }
+            } catch (IOException ioException) {
+                getLogger().error(ioException);
+            }
+        }
+        return pageNum;
+    }
+
+    public static int getPageNumberInBetweenDoc(PDDocument document, String valueToFind, int pageStart, int pageEnd) {
+        String extractText = null;
+        int pageNum = 0;
+        for (int i = pageStart; i < pageEnd; i++) {
+            try {
+                PDFTextStripper pdfTextStripper = new PDFTextStripper();
+                pdfTextStripper.setStartPage(i - 1);
+                pdfTextStripper.setEndPage(i);
+                extractText = pdfTextStripper.getText(document);
+                if (Boolean.parseBoolean(System.getProperty("fw.ignoreWhiteSpaceOnPDFCompare"))) {
+                    extractText = String.join(" ", Arrays.asList(extractText.split("\\s+")));
+                }
+                if (extractText.contains(valueToFind.trim())) {
+                    pageNum = i;
+                    break;
+                }
+            } catch (IOException ioException) {
+                getLogger().error(ioException);
+            }
+        }
+        return pageNum;
     }
 }

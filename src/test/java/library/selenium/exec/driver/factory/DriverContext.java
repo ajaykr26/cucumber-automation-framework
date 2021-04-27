@@ -27,6 +27,9 @@ public class DriverContext {
         instance.remove();
     }
 
+    public WebDriverWait getWebDriverWait() {
+        return webDriverManager.getWebDriverWait();
+    }
     public void setDriverContext(Map<String, String> techStack) {
         setTechStack(techStack);
     }

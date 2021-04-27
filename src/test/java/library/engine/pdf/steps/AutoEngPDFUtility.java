@@ -1,4 +1,14 @@
 package library.engine.pdf.steps;
 
-public class AutoEngPDFUtility {
+import io.cucumber.java.en.Given;
+import library.engine.pdf.BaseStepsPdf;
+import org.apache.pdfbox.pdmodel.PDDocument;
+
+public class AutoEngPDFUtility extends BaseStepsPdf {
+    @Given("^the user takes a screenshot of the active pdf$")
+    public void takePdfScreenshot() throws IllegalAccessException {
+        PDDocument document = getActivePDF();
+        addPDFScreenshots(document);
+    }
+
 }

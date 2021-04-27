@@ -14,7 +14,7 @@ public class Hooks implements En {
             setRuntimeProperties();
         });
         After(30, (Scenario scenario) -> {
-            if (DriverContext.getInstance().getTechStack() != null) {
+            if (DriverContext.getInstance().getWebDriverManager()!= null) {
                 if (scenario.isFailed()) {
                     takeScrenShotOnFailure();
                     if (!DriverContext.getInstance().getKeepBrowserOpen())

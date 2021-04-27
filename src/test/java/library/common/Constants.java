@@ -13,6 +13,7 @@ public class Constants {
     public static final String RUNTIME_PATH = BASE_PATH + "config/properties/runtime.properties";
     public static final String FEATURE_PATH = BASE_PATH + "features/";;
     public static final String TESTDATA_EXCEL_PATH = BASE_PATH + "testdata/TestData.xlsx";;
+    public static final String TESTDATA_PATH = BASE_PATH + "testdata/";;
     public static final String TECHSTACK_PATH = BASE_PATH + "config/techstacks/"+ Property.getVariable("cukes.techstack")+".json";
     public static final String ENVIRONMENT_PATH = BASE_PATH + "config/environment/"+ Property.getVariable("cukes.environment")+".properties";
 

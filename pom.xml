@@ -28,7 +28,7 @@
         <cucumber-java>1.2.5</cucumber-java>
         <cucumber-maven-reporting>3.0.0</cucumber-maven-reporting>
         <testng>7.4.0</testng>
-        <aspectj>1.8.10</aspectj>
+        <aspectj>1.9.6</aspectj>
         <assertj-core>3.18.1</assertj-core>
         <log4j-slf4j-impl>2.13.3</log4j-slf4j-impl>
         <allure-cucumber4-jvm>2.13.6</allure-cucumber4-jvm>
