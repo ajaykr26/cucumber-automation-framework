@@ -1,4 +1,4 @@
 [{
-  "serverName": "local",
+  "seleniumServer": "local",
   "browserName": "firefox"
 }]

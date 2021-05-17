@@ -1,4 +1,4 @@
 [{
-  "serverType": "remote",
+  "seleniumServer": "remote",
   "browserName": "chrome"
 }]

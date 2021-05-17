@@ -22,12 +22,18 @@ public class DriverFactory {
     }
 
     private DriverManager setDriverManager() {
-        ServerType serverType = ServerType.get(DriverContext.getInstance().getTechStack().get("serverType"));
+        ServerType serverType = ServerType.get(DriverContext.getInstance().getTechStack().get("seleniumServer"));
         BrowserType browserType = BrowserType.get(DriverContext.getInstance().getBrowserName());
         switch (serverType) {
+            case GRID:
+                return new GridDriverManager();
+            case BROWSERSTACK:
+            case SAUCELABS:
+            case APPIUM:
+            case PERFECTO:
             case REMOTE:
                 return new HtmlUnitDriverManager();
-            default:
+            case LOCAL:
                 switch (browserType) {
                     case CHROME:
                         return new ChromeDriverManager();
@@ -40,9 +46,11 @@ public class DriverFactory {
                     default:
                         throw new UnsupportedOperationException("invalid driver type provide" + browserType);
                 }
+            default:
+                throw new UnsupportedOperationException("invalid server type provide" + serverType);
+
         }
     }
-
 
 }
 

@@ -52,6 +52,10 @@ public class Hooks implements En {
             if (screenshotOnFailure != null) {
                 System.setProperty("fw.screenshotOnFailure", screenshotOnFailure);
             }
+            String seleniumGridURL = props.getString("seleniumGridURL");
+            if (seleniumGridURL != null) {
+                System.setProperty("fw.seleniumGrid", seleniumGridURL);
+            }
         }
     }
 

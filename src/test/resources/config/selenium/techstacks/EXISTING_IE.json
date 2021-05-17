@@ -1,5 +1,5 @@
 [
   {
-    "serverName": "local",
+    "seleniumServer": "local",
     "browserName": "internet explorer"
   }]

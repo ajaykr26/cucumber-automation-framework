@@ -1,6 +1,6 @@
 [
   {
-    "serverType": "local",
+    "seleniumServer": "local",
     "browserName": "chrome"
   }
 ]

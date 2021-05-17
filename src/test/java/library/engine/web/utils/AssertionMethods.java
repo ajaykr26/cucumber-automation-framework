@@ -1,6 +1,7 @@
 package library.engine.web.utils;
 
 import library.common.TestContext;
+import library.reporting.Reporter;
 import library.selenium.exec.BasePO;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -40,7 +41,7 @@ public class AssertionMethods extends BasePO {
     }
 
     public String getElementText(String locatorType, String locatorText) {
-        element = getWait().until(ExpectedConditions.presenceOfElementLocated(getObject(locatorType, locatorText)));
+        element = getWait().until(ExpectedConditions.presenceOfElementLocated(getObjectByLocatorType(locatorType, locatorText)));
         return element.getText();
 
     }
@@ -75,17 +76,15 @@ public class AssertionMethods extends BasePO {
     public void validateElementText(String matchType, String locatorType, String actualValue, String locatorText) throws TestCaseFailed {
         String elementText = getElementText(locatorType, locatorText);
         switch (matchType) {
-            case "partial-match":
-                if (!elementText.contains(actualValue)) {
-                    throw new TestCaseFailed("Text Not Matched");
-                } else if (elementText.contains(actualValue)) {
-                    throw new TestCaseFailed("Text Matched");
-                }
             case "exact-match":
                 if (!elementText.equals(actualValue)) {
-                    throw new TestCaseFailed("Text Not Matched");
-                } else if (elementText.contains(actualValue)) {
-                    throw new TestCaseFailed("Text Matched");
+                    Reporter.addStepLog("Text Matched");
+                }
+            case "not matched":
+                if (!elementText.equals(actualValue)) {
+                    Reporter.addStepLog("Text Not Matched");
+                } else {
+                    throw new TestCaseFailed(String.format("Expected: not \"%s\" but was found \"%s\"", actualValue, elementText));
                 }
         }
 

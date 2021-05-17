@@ -1,4 +1,4 @@
 [{
-  "serverName": "remote",
+  "seleniumServer": "remote",
   "browserName": "firefox"
 }]

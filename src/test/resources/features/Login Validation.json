@@ -1,16 +1,22 @@
 {
-	"Facebook Registration One": {
-		"firstname": "One",
-		"logoUrl": "https://www.seleniumeasy.com/sites/all/themes/seasy/logo.png",
-		"lastname": "kumar",
-		"mobile": "11111111",
-		"password": "ajay@1234",
-		"pdfFilepath": "C:\\Users\\SA210517\\OneDrive\\Documents\\Personal Documets\\Resume_Ajay Kumar.pdf"
-	},
-	"Facebook Registration Two": {
-		"firstname": "Two",
-		"lastname": "kumar",
-		"mobile": "222222222",
-		"password": "ajay@1234"
-	}
+  "Facebook Registration One": {
+    "firstname": "One",
+    "logoUrl": "https://www.seleniumeasy.com/sites/all/themes/seasy/logo.png",
+    "lastname": "kumar",
+    "mobile": "11111111",
+    "password": "ajay@1234",
+    "pdfFilepath": "C:\\Users\\SA210517\\OneDrive\\Documents\\Personal Documets\\Resume_Ajay Kumar.pdf"
+  },
+  "Facebook Registration Two": {
+    "firstname": "Two",
+    "lastname": "kumar",
+    "mobile": "222222222",
+    "password": "ajay@1234"
+  },
+  "Cowin Availability check": {
+    "firstname": "Two",
+    "lastname": "kumar",
+    "mobile": "222222222",
+    "password": "ajay@1234"
+  }
 }
