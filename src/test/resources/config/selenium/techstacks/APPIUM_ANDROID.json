@@ -1,0 +1,8 @@
+[
+  {
+    "seleniumServer": "appium",
+    "browserName": "chrome",
+    "platformName": "android",
+    "deviceName":"realme 6"
+  }
+]

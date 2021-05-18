@@ -4,6 +4,7 @@ import io.cucumber.java8.En;
 import library.common.Constants;
 import library.common.Property;
 import library.common.TestContext;
+import library.engine.core.EngBaseStep;
 import library.engine.web.utils.*;
 import library.selenium.core.LocatorType;
 import library.selenium.exec.BasePO;
@@ -24,7 +25,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class BaseStepsWeb implements En {
+public class BaseStepsWeb extends EngBaseStep {
 
     public BaseStepsWeb() {
     }

@@ -51,6 +51,10 @@ public class DriverContext {
         this.techStack = techStack;
     }
 
+    public void setMobileTechStack(Map<String, String> mobileTechStack) {
+        this.mobileTechStack = mobileTechStack;
+    }
+
     public String getBrowserName() {
         if (techStack == null) {
             return null;
@@ -102,9 +106,33 @@ public class DriverContext {
         return mobileDriverManager;
     }
 
+    public Map<String, String> getMobileTechStack() {
+        return this.mobileTechStack;
+    }
+
+    public WebDriver getMobileDriver() {
+        if (mobileDriverManager == null) {
+            mobileDriverManager = DriverFactory.createDriver();
+        }
+        return mobileDriverManager.getDriver();
+    }
+
+    public void switchContext(String context) {
+        if (mobileDriverManager != null) {
+            mobileDriverManager.switchContext(context);
+        }
+    }
+
     public void quit() {
         if (webDriverManager != null) {
             webDriverManager.quitDriver();
+        }
+    }
+
+    public void quitMobile() {
+        if (mobileDriverManager != null) {
+            mobileDriverManager.quitDriver();
+            mobileDriverManager = null;
         }
     }
 }

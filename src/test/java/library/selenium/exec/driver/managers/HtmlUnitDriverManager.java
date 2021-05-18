@@ -2,7 +2,7 @@ package library.selenium.exec.driver.managers;
 
 
 import com.gargoylesoftware.htmlunit.BrowserVersion;
-import library.selenium.exec.driver.enums.BrowserType;
+import library.selenium.exec.driver.enums.Browsers;
 import library.selenium.exec.driver.factory.DriverContext;
 import library.selenium.exec.driver.factory.DriverManager;
 import org.apache.logging.log4j.LogManager;
@@ -16,7 +16,7 @@ public class HtmlUnitDriverManager extends DriverManager {
 
     @Override
     public void createDriver() {
-        BrowserType browserType = BrowserType.get(DriverContext.getInstance().getBrowserName());
+        Browsers browserType = Browsers.get(DriverContext.getInstance().getBrowserName());
 
         switch (browserType) {
             case CHROME:

@@ -11,6 +11,6 @@ import java.util.Date;
 
 import static library.common.FileHelper.copyDir;
 
-@CucumberOptions(tags = {"@SmokeSuite", "not @ignore"})
+@CucumberOptions(tags = {"@SmokeTest", "not @ignore"})
 public class Regression extends EngBaseTest {
 }

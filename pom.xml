@@ -28,6 +28,7 @@
         <cucumber-java>1.2.5</cucumber-java>
         <testng>7.4.0</testng>
         <aspectj>1.8.10</aspectj>
+        <java-client>7.5.0</java-client>
         <assertj-core>3.18.1</assertj-core>
         <allure-cucumber4-jvm>2.13.6</allure-cucumber4-jvm>
         <allure-maven>2.10.0</allure-maven>
@@ -44,6 +45,12 @@
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>${selenium}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>${java-client}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>

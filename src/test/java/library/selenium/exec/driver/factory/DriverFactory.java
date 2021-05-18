@@ -1,17 +1,14 @@
 package library.selenium.exec.driver.factory;
 
-import library.selenium.exec.driver.enums.BrowserType;
-import library.selenium.exec.driver.enums.ServerType;
+import library.selenium.exec.driver.enums.Browsers;
+import library.selenium.exec.driver.enums.Servers;
 import library.selenium.exec.driver.managers.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.regexp.RE;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class DriverFactory {
-    private Logger logger = LogManager.getLogger(this.getClass().getName());
+    private final Logger logger = LogManager.getLogger(this.getClass().getName());
 
     protected DriverFactory() {
     }
@@ -22,19 +19,20 @@ public class DriverFactory {
     }
 
     private DriverManager setDriverManager() {
-        ServerType serverType = ServerType.get(DriverContext.getInstance().getTechStack().get("seleniumServer"));
-        BrowserType browserType = BrowserType.get(DriverContext.getInstance().getBrowserName());
-        switch (serverType) {
+        Servers seleniumServer = Servers.get(DriverContext.getInstance().getTechStack().get("seleniumServer"));
+        Browsers browserName = Browsers.get(DriverContext.getInstance().getBrowserName());
+        switch (seleniumServer) {
             case GRID:
                 return new GridDriverManager();
             case BROWSERSTACK:
             case SAUCELABS:
             case APPIUM:
+                return new AppiumDriverManager();
             case PERFECTO:
-            case REMOTE:
+            case HTMLUNIT:
                 return new HtmlUnitDriverManager();
             case LOCAL:
-                switch (browserType) {
+                switch (browserName) {
                     case CHROME:
                         return new ChromeDriverManager();
                     case FIREFOX:
@@ -44,10 +42,10 @@ public class DriverFactory {
                     case MSEDGE:
                         return new EdgeDriverManager();
                     default:
-                        throw new UnsupportedOperationException("invalid driver type provide" + browserType);
+                        throw new UnsupportedOperationException("invalid driver type provide" + browserName);
                 }
             default:
-                throw new UnsupportedOperationException("invalid server type provide" + serverType);
+                throw new UnsupportedOperationException("invalid server type provide" + seleniumServer);
 
         }
     }

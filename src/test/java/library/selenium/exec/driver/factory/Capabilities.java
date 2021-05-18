@@ -48,7 +48,7 @@ public class Capabilities {
         }
 
         PropertiesConfiguration props = Property.getProperties(Constants.RUNTIME_PATH);
-        List<String> desiredCapsList = Arrays.asList(props.getStringArray("desiredCapabilities" + DriverContext.getInstance().getBrowserName().replaceAll("\\s", "")));
+        List<String> desiredCapsList = Arrays.asList(props.getStringArray("desiredCapabilities." + DriverContext.getInstance().getBrowserName().replaceAll("\\s", "")));
 
         desiredCapsList.forEach(desiredCap -> {
             String[] par = desiredCap.split("==");

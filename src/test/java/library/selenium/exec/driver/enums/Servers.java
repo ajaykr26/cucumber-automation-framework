@@ -3,18 +3,18 @@ package library.selenium.exec.driver.enums;
 import java.util.Arrays;
 import java.util.Optional;
 
-public enum ServerType {
+public enum Servers {
     LOCAL("local"),
     GRID("grid"),
     SAUCELABS("saucelabs"),
     BROWSERSTACK("browserstack"),
     APPIUM("appium"),
     PERFECTO("perfecto"),
-    REMOTE("remote");
+    HTMLUNIT("htmlunit");
 
     private String serverName;
 
-    ServerType(String serverName) {
+    Servers(String serverName) {
         this.serverName = serverName;
     }
 
@@ -22,8 +22,8 @@ public enum ServerType {
         return serverName;
     }
 
-    public static ServerType get(String serverName) {
-        Optional<ServerType> first = Arrays.stream(ServerType.values())
+    public static Servers get(String serverName) {
+        Optional<Servers> first = Arrays.stream(Servers.values())
                 .filter(server -> server.getserverName()
                         .equalsIgnoreCase(serverName))
                 .findFirst();

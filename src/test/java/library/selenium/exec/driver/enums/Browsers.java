@@ -3,17 +3,17 @@ package library.selenium.exec.driver.enums;
 import java.util.Arrays;
 import java.util.Optional;
 
-public enum BrowserType {
+public enum Browsers {
     CHROME("chrome"),
     FIREFOX("firefox"),
     IE("internet explorer"),
-    MSEDGE("microsoft edge"),
+    MSEDGE("MicrosoftEdge"),
     HTMLUNIT("htmlunit"),
     PHANTOMJS("phantomjs");
 
     private String browserName;
 
-    BrowserType(String browserName) {
+    Browsers(String browserName) {
         this.browserName = browserName;
     }
 
@@ -21,8 +21,8 @@ public enum BrowserType {
         return browserName;
     }
 
-    public static BrowserType get(String browserName) {
-        Optional<BrowserType> first = Arrays.stream(BrowserType.values())
+    public static Browsers get(String browserName) {
+        Optional<Browsers> first = Arrays.stream(Browsers.values())
                 .filter(browser -> browser.getBrowserName()
                         .equalsIgnoreCase(browserName))
                 .findFirst();
