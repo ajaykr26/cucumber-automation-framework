@@ -1,0 +1,11 @@
+[
+  {
+    "appiumServer": "appium",
+    "browserName": "chrome",
+    "platformName": "android",
+    "automationName":"uiautomator2",
+    "deviceName":"realme 6",
+    "appPackage":"com.android.chrome",
+    "appActivity":"com.google.android.apps.chrome.Main"
+  }
+]

@@ -1,7 +1,7 @@
 package library.engine.web.steps;
 
-import library.selenium.exec.BasePO;
+import library.engine.web.BaseStepsWeb;
 
-public class Steps_Window extends BasePO {
+public class Steps_Window extends BaseStepsWeb {
 
 }

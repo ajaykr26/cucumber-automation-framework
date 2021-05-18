@@ -24,9 +24,15 @@ EXIT /B 0
 
 :FinalStep
 set finalRunCmd=mvn clean install %cmdtestOption% %cmdenvironmentOption% %cmdtechstackOption% %cmdsuiteXmlFileOption% -Dorg.apache.logging.log4j.level=DEBUG -Dcukes.selenium.defaultFindRetries=2
+
+:RunAllure
+set RunAllureCmd=mvn allure:serve
+
 cls
 echo %finalRunCmd%
 CALL %finalRunCmd%
+echo %RunAllureCmd%
+CALL %RunAllureCmd%
 PAUSE
 EXIT
 

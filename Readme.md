@@ -1,5 +1,5 @@
 # automation-framework-bdd
-This is an sample project to demonstrate how to work with Selenium and cucumber for Java.
+This is a sample project to demonstrate how to work with Selenium and cucumber for Java.
 
 ## Data Setup
 1. JSON file name should be same as the Feature Name.
@@ -12,8 +12,8 @@ This is an sample project to demonstrate how to work with Selenium and cucumber 
 
 ## vm arguments
 -ea
--Denvironment=UAT
--DtechStack=LOCAL_CHROME
+-Dcukes.environment=UAT
+-Dcukes.techStack=LOCAL_CHROME
 -Dorg.apache.logging.log4j.level=DEBUG
 -Dcukes.selenium.defaultFindRetries=2
 
@@ -31,7 +31,7 @@ This is an sample project to demonstrate how to work with Selenium and cucumber 
 ## To implement
 1. cross browser testing
 2. save allure result os each run
-3. save screenshot and add to wrod doc
+3. save screenshot and add to word doc
 4. screenshot on every step
 5. allure result dashboard
 

@@ -1,0 +1,4 @@
+[{
+  "seleniumServer": "remote",
+  "browserName": "chrome"
+}]

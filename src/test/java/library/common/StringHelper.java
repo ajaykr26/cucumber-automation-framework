@@ -17,5 +17,4 @@ public class StringHelper {
         return Arrays.asList(classLocation.split("\\.")).get(0);
     }
 
-
 }

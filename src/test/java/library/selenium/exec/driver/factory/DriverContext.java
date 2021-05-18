@@ -27,12 +27,16 @@ public class DriverContext {
         instance.remove();
     }
 
+    public WebDriverWait getWebDriverWait() {
+        return webDriverManager.getWebDriverWait();
+    }
+
     public void setDriverContext(Map<String, String> techStack) {
         setTechStack(techStack);
     }
 
-    public void updateDriverContext(Map<String, String> newTechStack) {
-        DriverContextUtil.updateDriverContext(newTechStack);
+    public void updateDriverContext(String browserName) {
+        DriverContextUtil.updateDriverContext(browserName);
     }
 
     public void updateDriverPath(String browserName) {
@@ -45,6 +49,10 @@ public class DriverContext {
 
     public void setTechStack(Map<String, String> techStack) {
         this.techStack = techStack;
+    }
+
+    public void setMobileTechStack(Map<String, String> mobileTechStack) {
+        this.mobileTechStack = mobileTechStack;
     }
 
     public String getBrowserName() {
@@ -98,9 +106,33 @@ public class DriverContext {
         return mobileDriverManager;
     }
 
+    public Map<String, String> getMobileTechStack() {
+        return this.mobileTechStack;
+    }
+
+    public WebDriver getMobileDriver() {
+        if (mobileDriverManager == null) {
+            mobileDriverManager = DriverFactory.createDriver();
+        }
+        return mobileDriverManager.getDriver();
+    }
+
+    public void switchContext(String context) {
+        if (mobileDriverManager != null) {
+            mobileDriverManager.switchContext(context);
+        }
+    }
+
     public void quit() {
         if (webDriverManager != null) {
             webDriverManager.quitDriver();
+        }
+    }
+
+    public void quitMobile() {
+        if (mobileDriverManager != null) {
+            mobileDriverManager.quitDriver();
+            mobileDriverManager = null;
         }
     }
 }

@@ -2,16 +2,14 @@ package library.engine.core.runner;
 
 import cucumber.api.Result;
 import io.cucumber.java8.En;
+import library.common.Constants;
 import library.common.Property;
 import library.common.TestContext;
-import library.cucumber.core.CukesConstants;
-import library.selenium.exec.ExecConstants;
 import library.selenium.exec.driver.factory.DriverContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.File;
-import java.util.concurrent.TimeoutException;
 
 import static cucumber.api.Result.Type.FAILED;
 import static cucumber.api.Result.Type.PASSED;
@@ -86,7 +84,7 @@ public class ScrenshotHandler implements En {
     private void setWaitForPageLoad(String stepText) {
         waitForPageToLoad = Boolean.parseBoolean(String.valueOf(TestContext.getInstance().testdataGet("fw.waitForPageLoad"))) &&
                 isStepRefreshRequired(stepText);
-        if (Boolean.parseBoolean(Property.getProperties(CukesConstants.RUNTIME_PATH).getString("scrollingScreenshot"))) {
+        if (Boolean.parseBoolean(Property.getProperties(Constants.RUNTIME_PATH).getString("scrollingScreenshot"))) {
             try {
                 if (stepText.contains(VALIDATES)) {
                     System.setProperty(SCROLLING_SCREENSHOT_FLAG, "true");
