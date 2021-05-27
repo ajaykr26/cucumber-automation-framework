@@ -1,0 +1,8 @@
+[
+  {
+    "appiumServer": "appium",
+    "browserName": "chrome",
+    "platformName": "android",
+    "deviceName": "Redmi Note 9 Pro"
+  }
+]

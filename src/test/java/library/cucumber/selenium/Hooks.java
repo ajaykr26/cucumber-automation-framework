@@ -14,15 +14,15 @@ public class Hooks implements En {
             setRuntimeProperties();
         });
         After(30, (Scenario scenario) -> {
-            if (DriverContext.getInstance().getWebDriverManager()!= null) {
+            if (DriverContext.getInstance().getDriverManager()!= null) {
                 if (scenario.isFailed()) {
-                    takeScrenShotOnFailure();
+                    takeScreenShotOnFailure();
                     if (!DriverContext.getInstance().getKeepBrowserOpen())
                         DriverContext.getInstance().quit();
                 } else {
                     DriverContext.getInstance().quit();
                 }
-                DriverContext.getInstance().getWebDriverManager().updateResults(scenario.isFailed() ? "failed" : "passed");
+                DriverContext.getInstance().getDriverManager().updateResults(scenario.isFailed() ? "failed" : "passed");
             }
         });
     }
@@ -60,7 +60,7 @@ public class Hooks implements En {
     }
 
 
-    private void takeScrenShotOnFailure() {
+    private void takeScreenShotOnFailure() {
 
 
     }

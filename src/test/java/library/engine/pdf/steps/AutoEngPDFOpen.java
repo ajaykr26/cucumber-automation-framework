@@ -4,13 +4,12 @@ import io.cucumber.java.en.Given;
 import library.common.Constants;
 import library.common.PDFHelper;
 import library.common.TestContext;
-import library.engine.pdf.BaseStepsPdf;
+import library.engine.pdf.AutoEngBasePDFSteps;
 import org.apache.pdfbox.pdmodel.PDDocument;
 
-import static library.engine.core.EngConstants.PDF;
-import static library.engine.core.EngParser.parseValue;
+import static library.engine.core.AutoEngCoreConstants.PDF;
 
-public class AutoEngPDFOpen extends BaseStepsPdf {
+public class AutoEngPDFOpen extends AutoEngBasePDFSteps {
     public static final String PDF_EXTENSION = ".pdf";
 
     @Given("^the user opens the \"([^\"]*)\" pdf kept in testdata folder$")

@@ -39,7 +39,7 @@ public class Screenshot {
 
     public static File grabScreenshot(WebDriver driver) {
         String screenshotType = null;
-        screenshotType = System.getProperty("fw.scrollinScreenshot");
+        screenshotType = System.getProperty("fw.scrollingScreenshot");
 
         try {
             if (driver != null) {

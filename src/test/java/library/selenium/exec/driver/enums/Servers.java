@@ -5,7 +5,7 @@ import java.util.Optional;
 
 public enum Servers {
     LOCAL("local"),
-    GRID("grid"),
+    REMOTE("remote"),
     SAUCELABS("saucelabs"),
     BROWSERSTACK("browserstack"),
     APPIUM("appium"),

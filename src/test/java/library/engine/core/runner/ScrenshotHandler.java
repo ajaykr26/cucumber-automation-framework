@@ -13,8 +13,8 @@ import java.io.File;
 
 import static cucumber.api.Result.Type.FAILED;
 import static cucumber.api.Result.Type.PASSED;
-import static library.engine.core.EngConstants.PDF;
-import static library.engine.core.EngConstants.SELENIUM;
+import static library.engine.core.AutoEngCoreConstants.PDF;
+import static library.engine.core.AutoEngCoreConstants.SELENIUM;
 import static library.reporting.Reporter.getScreenshotPath;
 import static library.selenium.core.Screenshot.grabScreenshot;
 import static library.selenium.core.Screenshot.saveScreenshot;
@@ -35,19 +35,19 @@ public class ScrenshotHandler implements En {
         setWaitForPageLoad(stepText);
         if (isStepExecuted(status) && !isStepRequiredScreenshot(stepText)) {
             if (Boolean.parseBoolean(System.getProperty("fw.screenshotOnEveryStep"))) {
-                screenshotPath = takeScrenshot();
+                screenshotPath = takeScreenshot();
             } else if (isValidationStep(stepText) && Boolean.parseBoolean(System.getProperty("fw.screenshotOnValidation"))) {
-                screenshotPath = takeScrenshot();
+                screenshotPath = takeScreenshot();
             } else if (status == FAILED || isSoftAssertionFailure(stepText) && Boolean.parseBoolean(System.getProperty("fw.screenshotOnFailure"))) {
                 System.setProperty("screenshotOnFailure", "true");
-                screenshotPath = takeScrenshot();
+                screenshotPath = takeScreenshot();
             }
         }
         return screenshotPath;
 
     }
 
-    private String takeScrenshot() {
+    private String takeScreenshot() {
         String screenshotPath = ERROR_RESPONSE;
         File file = null;
         String activeWindowType = TestContext.getInstance().getActiveWindowType();
@@ -55,11 +55,11 @@ public class ScrenshotHandler implements En {
             switch (activeWindowType) {
                 case SELENIUM:
 //                    highlightActiveWebElement();
-                    file = getWebScreenshot(file);
+                    file = getWebScreenshot();
 //                    unhighlightActiveWebElement();
                     break;
                 case PDF:
-//                    file = takePDFScrenshot();
+//                    file = takePDFScreenshot();
                     break;
                 default:
                     break;
@@ -71,12 +71,15 @@ public class ScrenshotHandler implements En {
         return screenshotPath;
     }
 
-    private File getWebScreenshot(File file) {
-        if (DriverContext.getInstance().getWebDriverManager() != null) {
-            if (waitForPageToLoad) {
-                logger.info("implement");
+    private File getWebScreenshot() {
+        File file=null;
+        if (!Property.getVariable("cukes.techstack").startsWith("HTMLUNIT")){
+            if (DriverContext.getInstance().getDriverManager() != null) {
+                if (waitForPageToLoad) {
+                    logger.info("implement");
+                }
+                file = saveScreenshot(grabScreenshot(DriverContext.getInstance().getDriver()), getScreenshotPath());
             }
-            file = saveScreenshot(grabScreenshot(DriverContext.getInstance().getWebDriver()), getScreenshotPath());
         }
         return file;
     }

@@ -20,11 +20,11 @@ public class HtmlUnitDriverManager extends DriverManager {
 
         switch (browserType) {
             case CHROME:
-                driver = new HtmlUnitDriver(BrowserVersion.CHROME);
+                driver = new HtmlUnitDriver(BrowserVersion.CHROME, true);
             case FIREFOX:
-                driver = new HtmlUnitDriver(BrowserVersion.FIREFOX);
+                driver = new HtmlUnitDriver(BrowserVersion.FIREFOX, true);
             case IE:
-                driver = new HtmlUnitDriver(BrowserVersion.INTERNET_EXPLORER);
+                driver = new HtmlUnitDriver(BrowserVersion.INTERNET_EXPLORER, true);
         }
 
     }

@@ -6,7 +6,7 @@ import cucumber.api.event.*;
 import cucumber.runtime.formatter.TestSourcesModelProxy;
 import library.common.JSONHelper;
 import library.common.TestContext;
-import library.engine.core.EngBaseStep;
+import library.engine.core.AutoEngBaseCoreStep;
 import org.apache.logging.log4j.ThreadContext;
 
 import java.util.*;
@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 import static cucumber.api.Result.Type.FAILED;
 import static cucumber.api.Result.Type.PASSED;
 import static library.common.StringHelper.getClassShortName;
-import static library.engine.core.EngConstants.*;
+import static library.engine.core.AutoEngCoreConstants.*;
 import static library.reporting.Reporter.addScreenCaptureFromPath;
 
 public class EngFormatter implements ConcurrentEventListener {
@@ -154,16 +154,16 @@ public class EngFormatter implements ConcurrentEventListener {
         final String stepKeyword = Optional.ofNullable(testSources.getKeywordFromSource(currentFeatureFile.get(), testStep.getStepLine())).orElse("UNDEFINED");
         final String stepText;
         if (isStepExecuted(status)) {
-            stepText = replaceDirectoryKeysWithVals(testStep.getPickleStep().getText());
+            stepText = replaceDirectoryKeysWithValues(testStep.getPickleStep().getText());
         } else {
             stepText = testStep.getPickleStep().getText();
         }
         return String.format("%s %s", stepKeyword, stepText);
     }
 
-    private String replaceDirectoryKeysWithVals(String textToReplace) {
+    private String replaceDirectoryKeysWithValues(String textToReplace) {
         if (!isStoreSentence(textToReplace)) {
-            return new EngBaseStep().replaceParameterVals(textToReplace);
+            return new AutoEngBaseCoreStep().replaceParameterValues(textToReplace);
         } else {
             return textToReplace;
         }

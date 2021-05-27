@@ -24,16 +24,6 @@ import java.util.regex.Pattern;
 public class BasePO extends PageObject {
     protected Logger logger = LogManager.getLogger(this.getClass().getName());
 
-    public WebDriver getDriver() {
-        logger.debug("obtaining the driver for current thread");
-        return DriverContext.getInstance().getWebDriver();
-    }
-
-    public WebDriverWait getWait() {
-        logger.debug("obtaining the wait for current thread");
-        return DriverContext.getInstance().getWait();
-    }
-
     public By getObjectByLocatorType(String locatorType, String locatorText) {
         switch (LocatorType.get(locatorType)) {
             case ID:
@@ -136,8 +126,8 @@ public class BasePO extends PageObject {
         return parsed_value;
     }
 
-    public void waitForPageToLoad() {
-        long timeOut = Integer.parseInt(Property.getProperty(Constants.RUNTIME_PATH, "waitForPageLoad")) * 1000;
+    public void waitForPageLoad() {
+        long timeOut = Integer.parseInt(Property.getProperty(Constants.RUNTIME_PATH, "waitForPageLoad"));
         long endTime = System.currentTimeMillis() + timeOut;
         while (System.currentTimeMillis() < endTime) {
             if (String.valueOf(((JavascriptExecutor) getDriver()).executeScript("return document.readyState")).equals("complete")) {

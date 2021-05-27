@@ -48,29 +48,6 @@ public class BaseTest extends library.selenium.exec.BaseTest {
         }
     }
 
-//    @DataProvider(name = "techStackExcel", parallel = true)
-//    private Object[][] techStackExcel() {
-//        logger.debug("spnning up parallel executio thread for multi browser testing");
-//
-//        List<ArrayList<Object>> browsers = ExcelHelper.getDataAsArrayList(ExecConstants);
-//        if (!listOfTechStack.isEmpty()) {
-//            Object[][] objects = new Object[listOfTechStack.size()][1];
-//            for (int i = 0; i < listOfTechStack.size(); i++) {
-//                objects[i][0] = listOfTechStack.get(i);
-//            }
-//            return objects;
-//
-//        } else {
-//            if (Property.getVariable("techstack") != null) {
-//                logger.warn("techstack json file not found {}. defaulting to local chrome driver.", ExecConstants.TECHSTACK_PATH);
-//            }
-//            Map<String, String> techStack = new HashMap<>();
-//            techStack.put("serverName", "local");
-//            techStack.put("browserName", "chrome");
-//            return new Object[][]{Collections.singletonList(techStack).toArray()};
-//        }
-//    }
-
     @DataProvider(name = "techStackWithScenarioList", parallel = true)
     public Object[][] combineDataProvider() {
         List<Object[]> techStackList = Lists.newArrayList();

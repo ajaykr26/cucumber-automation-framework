@@ -1,7 +1,7 @@
 Feature: Login Validation
 
   Scenario: Web Automation
-    Then the user launches the "facebook" application in a "NewWindow"
+    Then the user launches the "@(facebook)" application in a "NewWindow"
     Then the user wait for page to load
     Then the user clicks on the element "register" at the page "FacebookRegistration"
     And the user enters "#(firstname)" into the input field "firstname" at the page "FacebookRegistration"
@@ -14,7 +14,8 @@ Feature: Login Validation
     And the user validates the orientation is in portrait mode "orientation" "HardStopOnFailure"
     And the user takes a screenshot of the active pdf
     Then the active pdf is closed
+    And the user wait for page to load
 
   @SmokeTest
   Scenario: Mobile Automation
-    Given the user launch the mobile application "facebook"
+    Given the user launch the mobile application "@(facebook)"

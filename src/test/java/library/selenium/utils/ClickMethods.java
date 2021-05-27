@@ -27,4 +27,18 @@ public class ClickMethods extends BasePO {
         Actions action = new Actions(getDriver());
         action.moveToElement(element).doubleClick().perform();
     }
+
+    public void rightClick(String accessType, String accessValue) {
+        element = getWait().until(ExpectedConditions.presenceOfElementLocated(getObjectByLocatorType(accessType, accessValue)));
+
+        Actions action = new Actions(getDriver());
+        action.moveToElement(element).contextClick().perform();
+    }
+
+    public void hoverElement(String accessType, String accessValue) {
+        element = getWait().until(ExpectedConditions.presenceOfElementLocated(getObjectByLocatorType(accessType, accessValue)));
+
+        Actions action = new Actions(getDriver());
+        action.moveToElement(element).perform();
+    }
 }
