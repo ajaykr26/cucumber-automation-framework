@@ -6,25 +6,24 @@ import org.openqa.selenium.*;
 
 public class FacebookRegistration extends BasePO {
 
-
-    private By register = By.xpath("//a[text()='Create New Account']");
-    private By searchByPinBtn = By.xpath("//div[text()='Search by PIN']");
-    private By searchByPinInput = By.xpath("//input[@placeholder='Enter your PIN']");
-    private By searchBtn = By.xpath("//button[normalize-space()='Search']");
-    private By username = By.xpath("//input[@name='email']");
-    private By password = By.xpath("//input[@id='pass']");
-    private By firstname = By.name("firstname");
-    private By lastname = By.name("lastname");
-    private By mobile = By.xpath("//input[@aria-label='Mobile number or email address']");
-    private By day = By.xpath("//select[@title='Day']");
-    private By month = By.xpath("//select[@title='Month']");
-    private By year = By.xpath("//select[@title='Year']");
-    private By sex = By.name("sex");
-    private By radio = By.xpath("//span[@data-type='radio']//input");
-    private By tableLoc = By.xpath("//div[@class='ui-grid-contents-wrapper']");
-    private By headerLoc = By.xpath("//div/span[@class='ui-grid-header-cell-label ng-binding']");
-    private By rowLoc = By.xpath("//div[@class='ui-grid-canvas']/div");
-    private By colLoc = By.xpath("//div[@role='gridcell']");
+    private final By register = By.xpath("//a[text()='Create New Account']");
+    private final By searchByPinBtn = By.xpath("//div[text()='Search by PIN']");
+    private final By searchByPinInput = By.xpath("//input[@placeholder='Enter your PIN']");
+    private final By searchBtn = By.xpath("//button[normalize-space()='Search']");
+    private final By username = By.xpath("//input[@name='email']");
+    private final By password = By.xpath("//input[@id='pass']");
+    private final By firstname = By.name("firstname");
+    private final By lastname = By.name("lastname");
+    private final By mobile = By.xpath("//input[@aria-label='Mobile number or email address']");
+    private final By day = By.xpath("//select[@title='Day']");
+    private final By month = By.xpath("//select[@title='Month']");
+    private final By year = By.xpath("//select[@title='Year']");
+    private final By sex = By.name("sex");
+    private final By radio = By.xpath("//span[@data-type='radio']//input");
+    private final By tableLoc = By.xpath("//div[@class='ui-grid-contents-wrapper']");
+    private final By headerLoc = By.xpath("//div/span[@class='ui-grid-header-cell-label ng-binding']");
+    private final By rowLoc = By.xpath("//div[@class='ui-grid-canvas']/div");
+    private final By colLoc = By.xpath("//div[@role='gridcell']");
 
     public By getRegister() {
         return register;

@@ -23,18 +23,18 @@ public class AppiumDriverManager extends DriverManager {
     public void createDriver() {
         MobileCapabilities capabilities = new MobileCapabilities();
         try {
-            if (capabilities.getDesiredCapabilities().getCapability(PLATFORM_NAME).toString().equalsIgnoreCase("android")) {
-                capabilities.getDesiredCapabilities().setCapability(AUTOMATION_NAME, "uiautomator2");
-                driver = new AndroidDriver(BaseTest.getServiceUrl(), capabilities.getDesiredCapabilities());
+            if (capabilities.getCap().getCapability(PLATFORM_NAME).toString().equalsIgnoreCase("android")) {
+                capabilities.getCap().setCapability(AUTOMATION_NAME, "uiautomator2");
+                driver = new AndroidDriver(new URL(Property.getVariable(CUKES_APPIUM_END_POINT)), capabilities.getCap());
             }
-            if (capabilities.getDesiredCapabilities().getCapability(PLATFORM_NAME).toString().equalsIgnoreCase("iOS")) {
-                capabilities.getDesiredCapabilities().setCapability(AUTOMATION_NAME, "XCUITest");
-                driver = new IOSDriver<>(new URL(Property.getVariable(CUKES_APPIUM_END_POINT)), capabilities.getDesiredCapabilities());
+            if (capabilities.getCap().getCapability(PLATFORM_NAME).toString().equalsIgnoreCase("iOS")) {
+                capabilities.getCap().setCapability(AUTOMATION_NAME, "XCUITest");
+                driver = new IOSDriver<>(new URL(Property.getVariable(CUKES_APPIUM_END_POINT)), capabilities.getCap());
             }
 
-            if (capabilities.getDesiredCapabilities().getCapability(PLATFORM_NAME).toString().equalsIgnoreCase("windows")) {
-                capabilities.getDesiredCapabilities().setCapability(AUTOMATION_NAME, "Windows");
-                driver = new WindowsDriver<>(new URL(Property.getVariable(CUKES_APPIUM_END_POINT)), capabilities.getDesiredCapabilities());
+            if (capabilities.getCap().getCapability(PLATFORM_NAME).toString().equalsIgnoreCase("windows")) {
+                capabilities.getCap().setCapability(AUTOMATION_NAME, "Windows");
+                driver = new WindowsDriver<>(new URL(Property.getVariable(CUKES_APPIUM_END_POINT)), capabilities.getCap());
             }
 
 

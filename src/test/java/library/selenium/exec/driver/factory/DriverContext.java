@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class DriverContext {
 
-    private static ThreadLocal<DriverContext> instance = ThreadLocal.withInitial(DriverContext::new);
+    private static final ThreadLocal<DriverContext> instance = ThreadLocal.withInitial(DriverContext::new);
     private Map<String, String> techStack = null;
     private boolean keepBrowserOpen = false;
     private DriverManager driverManager;
@@ -70,12 +70,11 @@ public class DriverContext {
     }
 
     public String getBrowserName() {
-        return this.techStack.get("browserName") == null ? this.techStack.get("browser") : this.techStack.get("browserName");
+        return this.techStack.get("browserName");
     }
 
     public String getServerName() {
-        String serverName = Property.getVariable("cukes.techstack").contains("APPIUM") ? "appiumServer" : "seleniumServer";
-        return DriverContext.getInstance().getTechStack().get(serverName);
+        return this.techStack.get("serverName");
     }
 
     public String getBrowserVersion() {

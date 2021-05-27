@@ -1,8 +1,14 @@
 [
   {
-    "appiumServer": "appium",
+    "serverName": "appium",
+    "automationName": "UiAutomator2",
+    "platformName": "android emulator",
+    "platformVersion": "",
+    "deviceName": "Pixel_4_XL_API_30",
+    "app": "",
+    "appPackage": "",
+    "appActivity": "",
     "browserName": "chrome",
-    "platformName": "android",
-    "deviceName": "Redmi Note 9 Pro"
+    "chromedriverExecutableDir": "lib/drivers/windows"
   }
 ]

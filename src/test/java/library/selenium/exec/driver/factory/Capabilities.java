@@ -22,7 +22,7 @@ public class Capabilities {
 
         desiredCapabilities = new DesiredCapabilities();
 
-        if (!map.get("seleniumServer").equalsIgnoreCase("grid")) {
+        if (!map.get("serverName").equalsIgnoreCase("grid")) {
             desiredCapabilities.setCapability("name", TestContext.getInstance().testdataGet("fw.testDescription"));
         }
         if (TestContext.getInstance().testdata().containsKey("fw.projectName")) {

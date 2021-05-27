@@ -9,7 +9,7 @@ import static library.engine.core.AutoEngCoreConstants.MOBILE;
 
 public class AutoEngMobileLaunch extends AutoEngBaseMobileSteps {
 
-    @Given("^the user launch the mobile application \"([^\"]*)\"$")
+    @Given("^the user launches \"([^\"]*)\" in mobile browser$")
     public void launchMobileApplication(String applicationName) {
         TestContext.getInstance().setActiveWindowType(MOBILE);
         applicationName = parseValue(applicationName);
