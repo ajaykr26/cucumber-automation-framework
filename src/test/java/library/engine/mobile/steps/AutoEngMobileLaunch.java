@@ -1,26 +1,21 @@
 package library.engine.mobile.steps;
 
 import io.cucumber.java.en.Given;
-import library.engine.mobile.BaseMobileSteps;
+import library.common.TestContext;
+import library.engine.mobile.AutoEngMobileBaseSteps;
+import library.reporting.Reporter;
 
-public class AutoEngMobileLaunch extends BaseMobileSteps {
+import static library.engine.core.AutoEngCoreConstants.MOBILE;
+import static library.engine.core.AutoEngCoreParser.parseValue;
 
-//    @Given("^the user launch the mobile application \"([^\"]*)\"$")
-//    public void launchMobileApplication(String applicationName) {
-//        System.setProperty("fw.mobileAppName", applicationName);
-//        launchMobile();
-//        launchMobileApplication(applicationName, getMobileDriver());
-//    }
+public class AutoEngMobileLaunch extends AutoEngMobileBaseSteps {
 
-
-    @Given("^the user closes the mobile application \"([^\"]*)\"$")
-    public void closeMobileApplication(String applicationName) {
-        closeMobileApplication(applicationName, getMobileDriver());
-    }
-
-    @Given("^the user switches to the mobile context \"([^\"]*)\"$")
-    public void switchesMobileContext(String context) {
-        switchContext(context);
+    @Given("^the user launches \"([^\"]*)\" in mobile browser$")
+    public void launchMobileApplication(String applicationName) {
+        TestContext.getInstance().setActiveWindowType(MOBILE);
+        applicationName = parseValue(applicationName);
+        getDriver().navigate().to(applicationName);
+        Reporter.addStepLog(String.format("application \"%s\" launched in new window", applicationName));
     }
 
 }

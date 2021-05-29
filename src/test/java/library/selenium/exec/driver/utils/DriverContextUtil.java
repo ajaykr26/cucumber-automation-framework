@@ -30,7 +30,7 @@ public class DriverContextUtil {
                 break;
         }
         System.setProperty("cukes.techstack", newTechStack);
-        List<Map<String, String>> listOfTechstacks = JSONHelper.getJSONAsListOfMaps(Constants.TECHSTACK_PATH.replace(currentTechStack, newTechStack));
+        List<Map<String, String>> listOfTechstacks = JSONHelper.getJSONAsListOfMaps(Constants.TECHSTACKS.replace(currentTechStack, newTechStack));
         DriverContext.getInstance().setDriverContext(listOfTechstacks.get(0));
 
     }

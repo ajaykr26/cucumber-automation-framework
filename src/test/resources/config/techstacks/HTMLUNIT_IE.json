@@ -1,0 +1,6 @@
+[
+  {
+    "seleniumServer": "htmlunit",
+    "browserName": "internet explorer"
+  }
+]

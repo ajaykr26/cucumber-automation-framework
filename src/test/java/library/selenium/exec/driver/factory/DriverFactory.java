@@ -1,5 +1,6 @@
 package library.selenium.exec.driver.factory;
 
+import library.common.Property;
 import library.selenium.exec.driver.enums.Browsers;
 import library.selenium.exec.driver.enums.Servers;
 import library.selenium.exec.driver.managers.*;
@@ -14,16 +15,15 @@ public class DriverFactory {
     }
 
     public static DriverManager createDriver() {
-
-        return new DriverFactory().setDriverManager();
+        return setDriverManager();
     }
 
-    private DriverManager setDriverManager() {
-        Servers seleniumServer = Servers.get(DriverContext.getInstance().getTechStack().get("seleniumServer"));
-        Browsers browserName = Browsers.get(DriverContext.getInstance().getBrowserName());
-        switch (seleniumServer) {
-            case GRID:
-                return new GridDriverManager();
+    private static DriverManager setDriverManager() {
+        Servers server = Servers.get(DriverContext.getInstance().getServerName());
+        Browsers browser = Browsers.get(DriverContext.getInstance().getBrowserName());
+        switch (server) {
+            case REMOTE:
+                return new RemoteDriverManager();
             case BROWSERSTACK:
             case SAUCELABS:
             case APPIUM:
@@ -32,7 +32,7 @@ public class DriverFactory {
             case HTMLUNIT:
                 return new HtmlUnitDriverManager();
             case LOCAL:
-                switch (browserName) {
+                switch (browser) {
                     case CHROME:
                         return new ChromeDriverManager();
                     case FIREFOX:
@@ -42,10 +42,10 @@ public class DriverFactory {
                     case MSEDGE:
                         return new EdgeDriverManager();
                     default:
-                        throw new UnsupportedOperationException("invalid driver type provide" + browserName);
+                        throw new UnsupportedOperationException("invalid driver type provide" + browser);
                 }
             default:
-                throw new UnsupportedOperationException("invalid server type provide" + seleniumServer);
+                throw new UnsupportedOperationException("invalid server type provide" + server);
 
         }
     }

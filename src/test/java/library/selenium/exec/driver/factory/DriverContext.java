@@ -1,5 +1,6 @@
 package library.selenium.exec.driver.factory;
 
+import library.common.Property;
 import library.selenium.exec.driver.utils.DriverContextUtil;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -9,12 +10,10 @@ import java.util.Map;
 
 public class DriverContext {
 
-    private static ThreadLocal<DriverContext> instance = ThreadLocal.withInitial(DriverContext::new);
+    private static final ThreadLocal<DriverContext> instance = ThreadLocal.withInitial(DriverContext::new);
     private Map<String, String> techStack = null;
-    private Map<String, String> mobileTechStack = null;
     private boolean keepBrowserOpen = false;
-    private DriverManager webDriverManager;
-    private DriverManager mobileDriverManager;
+    private DriverManager driverManager;
 
     private DriverContext() {
     }
@@ -27,8 +26,15 @@ public class DriverContext {
         instance.remove();
     }
 
-    public WebDriverWait getWebDriverWait() {
-        return webDriverManager.getWebDriverWait();
+    public WebDriver getDriver() {
+        if (driverManager == null) {
+            driverManager = DriverFactory.createDriver();
+        }
+        return driverManager.getDriver();
+    }
+
+    public WebDriverWait getDriverWait() {
+        return driverManager.getDriverWait();
     }
 
     public void setDriverContext(Map<String, String> techStack) {
@@ -51,16 +57,24 @@ public class DriverContext {
         this.techStack = techStack;
     }
 
-    public void setMobileTechStack(Map<String, String> mobileTechStack) {
-        this.mobileTechStack = mobileTechStack;
+    public DriverManager getDriverManager() {
+        return driverManager;
+    }
+
+    public Boolean getKeepBrowserOpen() {
+        return this.keepBrowserOpen;
+    }
+
+    public void setKeepBrowserOpen(Boolean keepBrowserOpen) {
+        this.keepBrowserOpen = keepBrowserOpen;
     }
 
     public String getBrowserName() {
-        if (techStack == null) {
-            return null;
-        } else {
-            return this.techStack.get("browserName") == null ? this.techStack.get("browser") : this.techStack.get("browserName");
-        }
+        return this.techStack.get("browserName");
+    }
+
+    public String getServerName() {
+        return this.techStack.get("serverName");
     }
 
     public String getBrowserVersion() {
@@ -79,62 +93,12 @@ public class DriverContext {
         }
     }
 
-    public Boolean getKeepBrowserOpen() {
-        return this.keepBrowserOpen;
-    }
-
-    public void setKeepBrowserOpen(Boolean keepBrowserOpen) {
-        this.keepBrowserOpen = keepBrowserOpen;
-    }
-
-    public WebDriver getWebDriver() {
-        if (webDriverManager == null) {
-            webDriverManager = DriverFactory.createDriver();
-        }
-        return webDriverManager.getDriver();
-    }
-
-    public WebDriverWait getWait() {
-        return webDriverManager.getWait();
-    }
-
-    public DriverManager getWebDriverManager() {
-        return webDriverManager;
-    }
-
-    public DriverManager getMobileDriverManager() {
-        return mobileDriverManager;
-    }
-
-    public Map<String, String> getMobileTechStack() {
-        return this.mobileTechStack;
-    }
-
-    public WebDriver getMobileDriver() {
-        if (mobileDriverManager == null) {
-            mobileDriverManager = DriverFactory.createDriver();
-        }
-        return mobileDriverManager.getDriver();
-    }
-
-    public void switchContext(String context) {
-        if (mobileDriverManager != null) {
-            mobileDriverManager.switchContext(context);
-        }
-    }
-
     public void quit() {
-        if (webDriverManager != null) {
-            webDriverManager.quitDriver();
+        if (driverManager != null) {
+            driverManager.quitDriver();
         }
     }
 
-    public void quitMobile() {
-        if (mobileDriverManager != null) {
-            mobileDriverManager.quitDriver();
-            mobileDriverManager = null;
-        }
-    }
 }
 
 

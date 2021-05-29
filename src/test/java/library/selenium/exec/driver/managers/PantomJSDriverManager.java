@@ -19,7 +19,7 @@ public class PantomJSDriverManager extends DriverManager {
 
     @Override
     public void createDriver() {
-        PropertiesConfiguration propertiesConfiguration = Property.getProperties(Constants.RUNTIME_PATH);
+        PropertiesConfiguration propertiesConfiguration = Property.getProperties(Constants.RUNTIME_PROP);
 
         if (Property.getVariable("cukes.webdrivermanager") != null && Property.getVariable("cukes.webdrivermanager").equalsIgnoreCase("true")) {
             if (Property.getVariable("cukes.chromedriver") != null) {

@@ -17,22 +17,9 @@ import java.util.Set;
 public abstract class DriverManager {
     protected WebDriver driver;
     protected WebDriverWait wait;
-    private Logger logger = LogManager.getLogger(this.getClass().getName());
+    private final Logger logger = LogManager.getLogger(this.getClass().getName());
 
     protected DriverManager() {
-    }
-
-    public WebDriverWait getWebDriverWait() {
-        if (wait == null) {
-            wait = new WebDriverWait(driver, getWaitDuration());
-        }
-        return wait;
-    }
-    public WebDriverWait getWait() {
-        if (wait == null) {
-            wait = new WebDriverWait(driver, getWaitDuration());
-        }
-        return wait;
     }
 
     public WebDriver getDriver() {
@@ -43,6 +30,13 @@ public abstract class DriverManager {
             ((AppiumDriver) driver).hideKeyboard();
         }
         return driver;
+    }
+
+    public WebDriverWait getDriverWait() {
+        if (wait == null) {
+            wait = new WebDriverWait(driver, getWaitDuration());
+        }
+        return wait;
     }
 
     public void quitDriver() {
@@ -56,7 +50,7 @@ public abstract class DriverManager {
         final int defaultWait = 30;
         int duration;
         try {
-            duration = Property.getProperties(Constants.RUNTIME_PATH).getInt("defaultWait");
+            duration = Property.getProperties(Constants.RUNTIME_PROP).getInt("defaultWait");
         } catch (Exception e) {
             duration = defaultWait;
         }
@@ -64,10 +58,9 @@ public abstract class DriverManager {
     }
 
     public String getDriverPath(String driver) {
-        String extention = System.getProperty("os.name").split(" ")[0].toLowerCase().equalsIgnoreCase("windows") ? ".exe" : " ";
-        String drivername = driver + extention;
+        String extension = System.getProperty("os.name").split(" ")[0].toLowerCase().equalsIgnoreCase("windows") ? ".exe" : " ";
         String driverPath = Property.getVariable("cukes.driverPath");
-        return (driverPath == null ? Constants.DRIVER_PATH + System.getProperty("os.name").split(" ")[0].toLowerCase() + File.separator + drivername : driverPath);
+        return (driverPath == null ? Constants.DRIVER_PATH + System.getProperty("os.name").split(" ")[0].toLowerCase() + File.separator + driver + extension : driverPath);
     }
 
     public boolean switchContext(String contextToFind) {
@@ -104,6 +97,7 @@ public abstract class DriverManager {
         }
         return false;
     }
+
     protected abstract void createDriver();
 
     public abstract void updateResults(String result);

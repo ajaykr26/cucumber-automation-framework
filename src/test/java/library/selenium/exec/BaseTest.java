@@ -1,5 +1,6 @@
 package library.selenium.exec;
 
+import io.appium.java_client.service.local.AppiumDriverLocalService;
 import library.common.Property;
 import library.common.TestContext;
 import library.selenium.exec.driver.factory.DriverContext;
@@ -9,11 +10,11 @@ import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
+import java.io.IOException;
 import java.lang.reflect.Method;
+import java.net.URL;
 import java.util.Map;
 
 public class BaseTest {
@@ -21,65 +22,30 @@ public class BaseTest {
 
     private static final String PROJECT_NAME = "PROJECT_NAME";
     private static final String BUILD_NUMBER = "BUILD_NUMBER";
-    protected BasePO po;
     protected Logger logger = LogManager.getLogger(this.getClass().getName());
-
+    private static AppiumDriverLocalService service;
 
     public BaseTest() {
     }
 
-    public WebDriver getDriver() {
-        logger.debug("obtaining the driver for current thread");
-        return DriverContext.getInstance().getWebDriver();
-    }
-
-    public WebDriverWait getWait() {
-        logger.debug("obtaining the wait for current thread");
-        return DriverContext.getInstance().getWait();
-    }
-
-    public BasePO getPO() {
-        logger.debug("obtaining an instance of the base page object");
-        if (this.po == null) {
-            this.po = new BasePO();
+    @BeforeSuite
+    public void globalSetup() {
+        if (Property.getVariable("cukes.techstack").startsWith("APPIUM")) {
+            service = AppiumDriverLocalService.buildDefaultService();
+            service.start();
         }
-        return po;
     }
 
-    public void setPO() {
-        logger.debug("obtaining an instance of the base page object");
-        this.po = new BasePO();
+    @AfterSuite
+    public void globalTearDown() {
+        if (service != null) {
+            service.stop();
+        }
     }
 
-    protected SoftAssertions softAssertions() {
-        return TestContext.getInstance().softAssertions();
+    public static URL getServiceUrl() {
+        return service.getUrl();
     }
-
-//    @DataProvider(name = "getTechStack", parallel = true)
-//    public Object[][] getTechStack() {
-//        Map<String, String> techStack = new HashMap<>();
-//        PropertiesConfiguration props = Property.getProperties(Constants.RUNTIME_PATH);
-//        if (Property.getVariable("techstack") != null) {
-//            techStack = JSONHelper.getJSONObjectToMap(Constants.TECHSTACK_PATH);
-//            if (!techStack.isEmpty()) {
-//                techStack.putAll(techStack);
-//            } else {
-//                logger.warn("Tech stack JSON file not found: {}. defaulting to local chrome driver instance.", Constants.TECHSTACK_PATH);
-//                techStack.put("serverName", "local");
-//                techStack.put("browserName", "chrome");
-//            }
-//        } else if (props.containsKey("serverName") && props.containsKey("browserName")) {
-//            logger.info("techstack is not defined in vm arguments. getting the configuration from runtime.properties file");
-//            techStack.put("serverName", Property.getProperty(Constants.RUNTIME_PATH, "serverName").toLowerCase());
-//            techStack.put("browserName", Property.getProperty(Constants.RUNTIME_PATH, "browserName").toLowerCase());
-//        } else {
-//            logger.info("nether techstack is not defined in vm arguments nor the configuration is defined in runtime.properties file");
-//            techStack.put("serverName", Property.getProperty(Constants.RUNTIME_PATH, "serverName").toLowerCase());
-//            techStack.put("browserName", Property.getProperty(Constants.RUNTIME_PATH, "browserName").toLowerCase());
-//        }
-//        return new Object[][]{Collections.singletonList(techStack).toArray()};
-//
-//    }
 
     @BeforeMethod
     public void startUp(Method method, Object[] args) {
@@ -98,7 +64,7 @@ public class BaseTest {
     @AfterMethod(groups = {"quitDriver"})
     public void closeDown(ITestResult result) {
         if (!TestContext.getInstance().testdata().containsKey(("fw.cucumberTest"))) {
-            DriverContext.getInstance().getWebDriverManager().updateResults(result.isSuccess() ? "passed" : "failed");
+            DriverContext.getInstance().getDriverManager().updateResults(result.isSuccess() ? "passed" : "failed");
             DriverContext.getInstance().quit();
         }
     }

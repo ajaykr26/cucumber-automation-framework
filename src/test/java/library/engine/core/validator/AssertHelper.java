@@ -6,9 +6,9 @@ import library.reporting.Reporter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import static library.engine.core.AutoEngCoreConstants.VALIDATION_TAG;
 
 public class AssertHelper {
-    protected static final String VALIDATION_TAG = "VALIDATION.";
 
     private ThreadLocal<ValidatorManager> validatorManager = new InheritableThreadLocal<>();
     private ThreadLocal<ComparisonType> comparisonType = new InheritableThreadLocal<>();

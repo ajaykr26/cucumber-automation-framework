@@ -1,0 +1,14 @@
+[
+  {
+    "serverName": "appium",
+    "automationName": "UiAutomator2",
+    "platformName": "android",
+    "platformVersion": "",
+    "deviceName": "Pixel_4_XL_API_30",
+    "app": "",
+    "appPackage": "",
+    "appActivity": "",
+    "browserName": "chrome",
+    "chromedriverExecutableDir": "lib/drivers/windows"
+  }
+]

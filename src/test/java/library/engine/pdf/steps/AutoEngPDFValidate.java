@@ -6,16 +6,16 @@ import library.common.TestContext;
 import library.engine.core.validator.AssertHelper;
 import library.engine.core.validator.ComparisonOperator;
 import library.engine.core.validator.ComparisonType;
-import library.engine.pdf.BaseStepsPdf;
+import library.engine.pdf.AutoEngPDFBaseSteps;
 import library.reporting.Reporter;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.assertj.core.api.Assertions;
 
-import static library.engine.core.EngParser.parseValue;
+import static library.engine.core.AutoEngCoreParser.parseValue;
 
-public class AutoEngPDFValidate extends BaseStepsPdf {
+public class AutoEngPDFValidate extends AutoEngPDFBaseSteps {
 
     private static final String HARD_STOP_ON_FAILURE = "HardStopOnFailure";
 

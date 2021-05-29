@@ -1,7 +1,7 @@
 package library.engine.mobile.steps;
 
-import library.engine.mobile.BaseMobileSteps;
+import library.engine.mobile.AutoEngMobileBaseSteps;
 
-public class AutoEngMobileSetSelect extends BaseMobileSteps {
+public class AutoEngMobileSetSelect extends AutoEngMobileBaseSteps {
 
 }

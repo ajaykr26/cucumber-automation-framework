@@ -3,8 +3,8 @@ package library.selenium.exec.driver.managers;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.windows.WindowsDriver;
+import library.appium.MobileCapabilities;
 import library.common.Property;
-import library.selenium.exec.driver.factory.Capabilities;
 import library.selenium.exec.driver.factory.DriverManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -20,20 +20,20 @@ public class AppiumDriverManager extends DriverManager {
 
     @Override
     public void createDriver() {
-        Capabilities capabilities = new Capabilities();
+        MobileCapabilities capabilities = new MobileCapabilities();
         try {
-            if (capabilities.getDesiredCapabilities().getCapability(PLATFORM_NAME).toString().equalsIgnoreCase("android")) {
-                capabilities.getDesiredCapabilities().setCapability(AUTOMATION_NAME, "uiautomator2");
-                driver = new AndroidDriver(new URL(Property.getVariable(CUKES_APPIUM_END_POINT)), capabilities.getDesiredCapabilities());
+            if (capabilities.getCap().getCapability(PLATFORM_NAME).toString().equalsIgnoreCase("android")) {
+                capabilities.getCap().setCapability(AUTOMATION_NAME, "uiautomator2");
+                driver = new AndroidDriver(new URL(Property.getVariable(CUKES_APPIUM_END_POINT)), capabilities.getCap());
             }
-            if (capabilities.getDesiredCapabilities().getCapability(PLATFORM_NAME).toString().equalsIgnoreCase("iOS")) {
-                capabilities.getDesiredCapabilities().setCapability(AUTOMATION_NAME, "XCUITest");
-                driver = new IOSDriver<>(new URL(Property.getVariable(CUKES_APPIUM_END_POINT)), capabilities.getDesiredCapabilities());
+            if (capabilities.getCap().getCapability(PLATFORM_NAME).toString().equalsIgnoreCase("iOS")) {
+                capabilities.getCap().setCapability(AUTOMATION_NAME, "XCUITest");
+                driver = new IOSDriver<>(new URL(Property.getVariable(CUKES_APPIUM_END_POINT)), capabilities.getCap());
             }
 
-            if (capabilities.getDesiredCapabilities().getCapability(PLATFORM_NAME).toString().equalsIgnoreCase("windows")) {
-                capabilities.getDesiredCapabilities().setCapability(AUTOMATION_NAME, "Windows");
-                driver = new WindowsDriver<>(new URL(Property.getVariable(CUKES_APPIUM_END_POINT)), capabilities.getDesiredCapabilities());
+            if (capabilities.getCap().getCapability(PLATFORM_NAME).toString().equalsIgnoreCase("windows")) {
+                capabilities.getCap().setCapability(AUTOMATION_NAME, "Windows");
+                driver = new WindowsDriver<>(new URL(Property.getVariable(CUKES_APPIUM_END_POINT)), capabilities.getCap());
             }
 
 
