@@ -2,7 +2,7 @@
   {
     "serverName": "appium",
     "automationName": "UiAutomator2",
-    "platformName": "android emulator",
+    "platformName": "android",
     "platformVersion": "",
     "deviceName": "Pixel_4_XL_API_30",
     "app": "",

@@ -2,7 +2,7 @@ package library.engine.pdf;
 
 import library.common.PDFHelper;
 import library.common.TestContext;
-import library.engine.core.AutoEngBaseCoreStep;
+import library.engine.core.AutoEngCoreBaseStep;
 import library.reporting.Reporter;
 import org.apache.pdfbox.pdmodel.PDDocument;
 
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class AutoEngBasePDFSteps extends AutoEngBaseCoreStep {
+public class AutoEngPDFBaseSteps extends AutoEngCoreBaseStep {
     protected static final String VALIDATION_TAG = "VALIDATION.";
     protected static final String STATUS_FAILED = "FAIL";
     protected static final String VALIDATION_FAILED = "Validation Failed: ";

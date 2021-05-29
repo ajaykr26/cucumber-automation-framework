@@ -3,10 +3,12 @@ package library.engine.pdf.steps;
 import io.cucumber.java.en.Given;
 import library.common.PDFHelper;
 import library.common.TestContext;
-import library.engine.pdf.AutoEngBasePDFSteps;
+import library.engine.pdf.AutoEngPDFBaseSteps;
 import org.apache.pdfbox.pdmodel.PDDocument;
 
-public class AutoEngPDFStore extends AutoEngBasePDFSteps {
+import static library.engine.core.AutoEngCoreParser.parseValue;
+
+public class AutoEngPDFStore extends AutoEngPDFBaseSteps {
     @Given("^the user store the content of the currently active pdf into the data dictionary with key \"([^\"]*)\"$")
     public void storePDFContent(String dictionaryKey) throws IllegalAccessException {
         PDDocument document = getActivePDF();

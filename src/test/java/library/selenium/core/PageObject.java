@@ -1,5 +1,6 @@
 package library.selenium.core;
 
+import library.common.CommonPageObject;
 import library.selenium.exec.driver.factory.DriverContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -8,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class PageObject extends library.common.PageObject {
+public class PageObject extends CommonPageObject {
     protected Logger logger = LogManager.getLogger(this.getClass().getName());
 
     public WebDriver getDriver() {

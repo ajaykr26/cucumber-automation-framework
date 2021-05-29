@@ -5,7 +5,6 @@ import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.windows.WindowsDriver;
 import library.appium.MobileCapabilities;
 import library.common.Property;
-import library.selenium.exec.BaseTest;
 import library.selenium.exec.driver.factory.DriverManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

@@ -24,36 +24,8 @@ public class BaseTest {
     private static final String BUILD_NUMBER = "BUILD_NUMBER";
     protected Logger logger = LogManager.getLogger(this.getClass().getName());
     private static AppiumDriverLocalService service;
-    protected BasePO po;
 
     public BaseTest() {
-    }
-
-    public WebDriver getDriver() {
-        logger.debug("obtaining the driver for current thread");
-        return DriverContext.getInstance().getDriver();
-    }
-
-    public WebDriverWait getWait() {
-        logger.debug("obtaining the wait for current thread");
-        return DriverContext.getInstance().getDriverWait();
-    }
-
-    public BasePO getPO() {
-        logger.debug("obtaining an instance of the base page object");
-        if (this.po == null) {
-            this.po = new BasePO();
-        }
-        return po;
-    }
-
-    public void setPO() {
-        logger.debug("obtaining an instance of the base page object");
-        this.po = new BasePO();
-    }
-
-    protected SoftAssertions softAssertions() {
-        return TestContext.getInstance().softAssertions();
     }
 
     @BeforeSuite

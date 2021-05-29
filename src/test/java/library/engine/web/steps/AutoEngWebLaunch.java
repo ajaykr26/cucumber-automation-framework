@@ -2,13 +2,14 @@ package library.engine.web.steps;
 
 import io.cucumber.java.en.Given;
 import library.common.TestContext;
-import library.engine.web.AutoEngBaseWebSteps;
+import library.engine.web.AutoEngWebBaseSteps;
 import library.reporting.Reporter;
 import library.selenium.exec.driver.factory.DriverContext;
 
 import static library.engine.core.AutoEngCoreConstants.SELENIUM;
+import static library.engine.core.AutoEngCoreParser.parseValue;
 
-public class AutoEngWebLaunch extends AutoEngBaseWebSteps {
+public class AutoEngWebLaunch extends AutoEngWebBaseSteps {
 
     @Given("^the user launches the \"([^\"]*)\" application in new window$")
     public void launchApplication(String applicationName) {

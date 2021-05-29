@@ -38,6 +38,14 @@
         <commons.configuration2>2.7</commons.configuration2>
         <commons.text>1.9</commons.text>
         <commons.io>2.8.0</commons.io>
+        <ojdbc8>19.3.0.0</ojdbc8>
+        <db2jcc>db2jcc4</db2jcc>
+        <teradata4>17.00.00.03</teradata4>
+        <mongodb>3.12.7</mongodb>
+        <json-path>2.4.0</json-path>
+        <mssql-jdbc8>8.4.1.jre8</mssql-jdbc8>
+        <java-string-similarity>2.0.0</java-string-similarity>
+
         <suiteXmlFile>suiteXmlFile</suiteXmlFile>
     </properties>
     <dependencies>
@@ -86,6 +94,12 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>info.debatty</groupId>
+            <artifactId>java-string-similarity</artifactId>
+            <version>${java-string-similarity}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -206,6 +220,41 @@
             <groupId>xml-apis</groupId>
             <artifactId>xml-apis</artifactId>
             <version>1.4.01</version>
+        </dependency>
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>${mssql-jdbc8}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.oracle.ojdbc</groupId>
+            <artifactId>ojdbc8</artifactId>
+            <version>${ojdbc8}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ibm.db2.jcc</groupId>
+            <artifactId>db2jcc</artifactId>
+            <version>${db2jcc}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.teradata.jdbc</groupId>
+            <artifactId>terajdbc4</artifactId>
+            <version>${teradata4}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.teradata.jdbc</groupId>
+            <artifactId>tdgssconfig</artifactId>
+            <version>${teradata4}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
+            <version>${mongodb}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jayway.jsonpath</groupId>
+            <artifactId>json-path</artifactId>
+            <version>${json-path}</version>
         </dependency>
     </dependencies>
     <build>

@@ -25,13 +25,13 @@ public class FacebookRegistration extends BasePO {
     private final By rowLoc = By.xpath("//div[@class='ui-grid-canvas']/div");
     private final By colLoc = By.xpath("//div[@role='gridcell']");
 
-    public By getRegister() {
-        return register;
-    }
+    public By getRegister() {return register;}
 
     public By getSearchByPinBtn() {
         return searchByPinBtn;
-    } public By getSearchBtn() {
+    }
+
+    public By getSearchBtn() {
         return searchBtn;
     }
 

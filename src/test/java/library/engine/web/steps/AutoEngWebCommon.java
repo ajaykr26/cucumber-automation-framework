@@ -1,10 +1,12 @@
 package library.engine.web.steps;
 
 import io.cucumber.java.en.Then;
-import library.engine.web.AutoEngBaseWebSteps;
+import library.engine.web.AutoEngWebBaseSteps;
+
+import static library.engine.core.AutoEngCoreParser.parseValue;
 
 
-public class AutoEngWebCommon extends AutoEngBaseWebSteps {
+public class AutoEngWebCommon extends AutoEngWebBaseSteps {
 
     //Step to navigate to the url************************************
     @Then("^the user navigate to \"([^\"]*)\"$")

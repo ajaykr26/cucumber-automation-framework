@@ -2,17 +2,18 @@ package library.engine.web.steps;
 
 import io.cucumber.java.en.Then;
 import library.common.Constants;
-import library.engine.web.AutoEngBaseWebSteps;
+import library.engine.web.AutoEngWebBaseSteps;
 import library.engine.web.utils.TestCaseFailed;
 import library.reporting.Reporter;
 import org.testng.Assert;
 
 import java.io.File;
 
+import static library.engine.core.AutoEngCoreParser.parseValue;
 import static library.selenium.core.Screenshot.compareScreenshot;
 import static library.selenium.core.Screenshot.getImageFromUrl;
 
-public class AutoEngWebValidates extends AutoEngBaseWebSteps {
+public class AutoEngWebValidates extends AutoEngWebBaseSteps {
 
     @Then("^the user validate that the page title exactly matched with \"([^\"]*)\"$")
     public void validatePageTitle(String expectedPageTitle) {

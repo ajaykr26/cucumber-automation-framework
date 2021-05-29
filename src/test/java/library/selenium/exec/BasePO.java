@@ -117,7 +117,7 @@ public class BasePO extends PageObject {
             parsed_value = TestContext.getInstance().testdataGet(parsedkeyJSON).toString();
             logger.info("returning the value from JSON");
         } else if (parsedkeyProps != null) {
-            parsed_value = Property.getProperty(Constants.ENVIRONMENT_PATH, parse_keyProps(string));
+            parsed_value = Property.getProperty(Constants.ENVIRONMENTS, parse_keyProps(string));
             logger.info("returning the value from config.properties file");
         } else {
             parsed_value = string;
@@ -127,7 +127,7 @@ public class BasePO extends PageObject {
     }
 
     public void waitForPageLoad() {
-        long timeOut = Integer.parseInt(Property.getProperty(Constants.RUNTIME_PATH, "waitForPageLoad"));
+        long timeOut = Integer.parseInt(Property.getProperty(Constants.RUNTIME_PROP, "waitForPageLoad"));
         long endTime = System.currentTimeMillis() + timeOut;
         while (System.currentTimeMillis() < endTime) {
             if (String.valueOf(((JavascriptExecutor) getDriver()).executeScript("return document.readyState")).equals("complete")) {

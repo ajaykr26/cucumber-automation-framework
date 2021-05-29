@@ -30,11 +30,11 @@ public class DriverContext {
         if (driverManager == null) {
             driverManager = DriverFactory.createDriver();
         }
-        return driverManager.getWebDriver();
+        return driverManager.getDriver();
     }
 
     public WebDriverWait getDriverWait() {
-        return driverManager.getWebDriverWait();
+        return driverManager.getDriverWait();
     }
 
     public void setDriverContext(Map<String, String> techStack) {

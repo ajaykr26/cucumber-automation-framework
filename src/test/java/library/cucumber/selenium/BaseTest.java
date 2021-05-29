@@ -20,7 +20,7 @@ import java.util.*;
 )
 public class BaseTest extends library.selenium.exec.BaseTest {
 
-    private TestNGCucumberRunner testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
+    private final TestNGCucumberRunner testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
 
 
     @Test(groups = "cucumber", description = "Run Cucumber Scenarios", dataProvider = "techStackWithScenarioList")
@@ -30,7 +30,7 @@ public class BaseTest extends library.selenium.exec.BaseTest {
 
     @DataProvider(name = "techStackJSON", parallel = true)
     private Object[][] techStackJSON() {
-        List<Map<String, String>> listOfTechStack = JSONHelper.getJSONAsListOfMaps(Constants.TECHSTACK_PATH);
+        List<Map<String, String>> listOfTechStack = JSONHelper.getJSONAsListOfMaps(Constants.TECHSTACKS);
         if (!listOfTechStack.isEmpty()) {
             Object[][] objects = new Object[listOfTechStack.size()][1];
             for (int i = 0; i < listOfTechStack.size(); i++) {
@@ -39,7 +39,7 @@ public class BaseTest extends library.selenium.exec.BaseTest {
             return objects;
         } else {
             if (Property.getVariable("cukes.techstack") != null) {
-                logger.warn("techstack json file not found {}. defaulting to local chrome driver.", Constants.TECHSTACK_PATH);
+                logger.warn("techstack json file not found {}. defaulting to local chrome driver.", Constants.TECHSTACKS);
             }
             Map<String, String> techStack = new HashMap<>();
             techStack.put("serverName", "local");

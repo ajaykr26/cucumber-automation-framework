@@ -22,7 +22,7 @@ public abstract class DriverManager {
     protected DriverManager() {
     }
 
-    public WebDriver getWebDriver() {
+    public WebDriver getDriver() {
         if (driver == null) {
             createDriver();
         }
@@ -32,7 +32,7 @@ public abstract class DriverManager {
         return driver;
     }
 
-    public WebDriverWait getWebDriverWait() {
+    public WebDriverWait getDriverWait() {
         if (wait == null) {
             wait = new WebDriverWait(driver, getWaitDuration());
         }
@@ -50,7 +50,7 @@ public abstract class DriverManager {
         final int defaultWait = 30;
         int duration;
         try {
-            duration = Property.getProperties(Constants.RUNTIME_PATH).getInt("defaultWait");
+            duration = Property.getProperties(Constants.RUNTIME_PROP).getInt("defaultWait");
         } catch (Exception e) {
             duration = defaultWait;
         }

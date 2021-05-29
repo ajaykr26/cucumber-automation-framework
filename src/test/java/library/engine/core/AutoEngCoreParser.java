@@ -11,25 +11,25 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class AutoEngCoreParser implements En {
-    protected Logger logger = LogManager.getLogger(this.getClass().getName());
-
     protected static final String ERROR = "ERROR";
-    protected static final String REGEX_KEY = "#\\((.*)\\)";
+    protected static final String REGEX_KEYNAME = "#\\((.*)\\)";
     protected static final String ENV_PROP = "cukes.env";
     protected static final String PROPERTIES_EXT = ".properties";
 
+    protected Logger logger = LogManager.getLogger(this.getClass().getName());
+
     public static String parseValue(String string) {
-        String parsed_value = null;
+        String parsedValue = null;
         String parsedKeyJSON = parseKeyJSON(string);
         String parsedKeyProps = parseKeyProps(string);
         if (parsedKeyJSON != null) {
-            parsed_value = TestContext.getInstance().testdataGet(parsedKeyJSON).toString();
+            parsedValue = TestContext.getInstance().testdataGet(parsedKeyJSON).toString();
         } else if (parsedKeyProps != null) {
-            parsed_value = Property.getProperty(Constants.ENVIRONMENT_PATH, parseKeyProps(string));
+            parsedValue = Property.getProperty(Constants.ENVIRONMENTS, parseKeyProps(string));
         } else {
-            parsed_value = string;
+            parsedValue = string;
         }
-        return parsed_value;
+        return parsedValue;
     }
 
     public static String parseKeyJSON(String string) {
@@ -58,9 +58,24 @@ public class AutoEngCoreParser implements En {
 
     }
 
+//    public static String getValueOrVariable(String value){
+//        String valToParse;
+//        Pattern pattern = Pattern.compile(REGEX_KEYNAME);
+//        Matcher matcher = pattern.matcher(value);
+//
+//        if (matcher.matches()){
+//            String valToRetrieve = matcher.group(1);
+//            if (TestContext.getInstance().testdataGet(valToRetrieve) == null){
+//                throw new IllegalArgumentException(String.format("entry not found in the data dictionary for key: \"%s\".", valToRetrieve));
+//            }else {
+//                re
+//            }
+//        }
+//    }
+
     public static String getValueOrVariable(String value) {
         String valToParse;
-        Pattern pattern = Pattern.compile(REGEX_KEY);
+        Pattern pattern = Pattern.compile(REGEX_KEYNAME);
         Matcher matcher = pattern.matcher(value);
 
         if (matcher.matches()) {
@@ -73,7 +88,7 @@ public class AutoEngCoreParser implements En {
 
     public static Object getValueToObject(String value) {
         Object valToParse;
-        Pattern pattern = Pattern.compile(REGEX_KEY);
+        Pattern pattern = Pattern.compile(REGEX_KEYNAME);
         Matcher matcher = pattern.matcher(value);
 
         if (matcher.matches()) {

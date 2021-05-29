@@ -1,14 +1,14 @@
 package library.engine.web;
 
-import library.engine.core.AutoEngBaseCoreStep;
+import library.engine.core.AutoEngCoreBaseStep;
 import library.engine.web.utils.*;
 import library.selenium.utils.ClickMethods;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class AutoEngBaseWebSteps extends AutoEngBaseCoreStep {
+public class AutoEngWebBaseSteps extends AutoEngCoreBaseStep {
 
-    public AutoEngBaseWebSteps() {
+    public AutoEngWebBaseSteps() {
     }
 
     protected Logger logger = LogManager.getLogger(this.getClass().getName());
@@ -39,5 +39,9 @@ public class AutoEngBaseWebSteps extends AutoEngBaseCoreStep {
 
     public static NavigationMethods getNavigationMethods() {
         return new NavigationMethods();
+    }
+
+    public static JSMethods getJSMethods() {
+        return new JSMethods();
     }
 }

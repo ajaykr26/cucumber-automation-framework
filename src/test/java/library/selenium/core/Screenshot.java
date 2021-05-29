@@ -63,7 +63,7 @@ public class Screenshot {
 
     public static File grabDisplayAreScreenshot(WebDriver driver) {
         try {
-            Thread.sleep(Property.getProperties(Constants.RUNTIME_PATH).getInt("screenshotDelay", 0));
+            Thread.sleep(Property.getProperties(Constants.RUNTIME_PROP).getInt("screenshotDelay", 0));
         } catch (InterruptedException | NumberFormatException exception) {
             logger.error(exception.getMessage());
             Thread.currentThread().interrupt();
@@ -73,7 +73,7 @@ public class Screenshot {
 
     public static File grabScrollingScreenshot(WebDriver driver) {
         try {
-            Thread.sleep(Property.getProperties(Constants.RUNTIME_PATH).getInt("screenshotDelay", 0));
+            Thread.sleep(Property.getProperties(Constants.RUNTIME_PROP).getInt("screenshotDelay", 0));
         } catch (InterruptedException | NumberFormatException exception) {
             logger.error(exception.getMessage());
             Thread.currentThread().interrupt();

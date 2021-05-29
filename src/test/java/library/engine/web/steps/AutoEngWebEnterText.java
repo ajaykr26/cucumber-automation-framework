@@ -1,10 +1,12 @@
 package library.engine.web.steps;
 
 import io.cucumber.java.en.Then;
-import library.engine.web.AutoEngBaseWebSteps;
+import library.engine.web.AutoEngWebBaseSteps;
 import library.reporting.Reporter;
 
-public class AutoEngWebEnterText extends AutoEngBaseWebSteps {
+import static library.engine.core.AutoEngCoreParser.parseValue;
+
+public class AutoEngWebEnterText extends AutoEngWebBaseSteps {
 
     @Then("^the user enters \"([^\"]*)\" into the input field \"([^\"]*)\" at the page \"([^\"]*)\"$")
     public void enterTextIntoTheInputFieldPage(String textToEnter, String objectName, String pageName) throws Throwable {

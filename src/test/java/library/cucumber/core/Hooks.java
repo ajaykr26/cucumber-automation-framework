@@ -24,10 +24,10 @@ public class Hooks implements En {
                     TestContext.getInstance().testdataGet("fw.featureName"),
                     TestContext.getInstance().testdataGet("fw.scenarioName")));
             Map<String, String> jsonDataTable = JSONHelper.getJSONToMap(JSONHelper.getJSONObject(dataFileJSON, scenarioName));
-            Map<String, Object> excelDataTable = ExcelHelper.getDataAsMap(Constants.TESTDATA_EXCEL_PATH, TestContext.getInstance().testdataGet("fw.featureName").toString()).get(scenarioName);
+            Map<String, Object> excelDataTable = ExcelHelper.getDataAsMap(Constants.TESTDATA_EXCEL, TestContext.getInstance().testdataGet("fw.featureName").toString()).get(scenarioName);
             TestContext.getInstance().testdata().putAll(jsonDataTable);
 //            TestContext.getInstance().testdata().putAll(excelDataTable);
-            TestContext.getInstance().propData().putAll(Property.getPropertiesAsMap(Constants.RUNTIME_PATH));
+            TestContext.getInstance().propData().putAll(Property.getPropertiesAsMap(Constants.RUNTIME_PROP));
         });
         After(20, (Scenario scenario) -> {
             logger.info(Formatter.getDataDictionaryAsFormattedTable());

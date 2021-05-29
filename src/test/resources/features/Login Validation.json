@@ -10,5 +10,23 @@
     "lastname": "kumar",
     "mobile": "222222222",
     "password": "ajay@1234"
+  },
+  "PDF Automation": {
+    "firstname": "Two",
+    "lastname": "kumar",
+    "mobile": "222222222",
+    "password": "ajay@1234"
+  },
+  "API Automation": {
+    "firstname": "Two",
+    "lastname": "kumar",
+    "mobile": "222222222",
+    "password": "ajay@1234"
+  },
+  "Database Automation": {
+    "firstname": "Two",
+    "lastname": "kumar",
+    "mobile": "222222222",
+    "password": "ajay@1234"
   }
 }

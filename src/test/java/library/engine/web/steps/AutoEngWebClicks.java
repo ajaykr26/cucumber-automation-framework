@@ -1,10 +1,10 @@
 package library.engine.web.steps;
 
 import io.cucumber.java.en.Then;
-import library.engine.web.AutoEngBaseWebSteps;
+import library.engine.web.AutoEngWebBaseSteps;
 import library.reporting.Reporter;
 
-public class AutoEngWebClicks extends AutoEngBaseWebSteps {
+public class AutoEngWebClicks extends AutoEngWebBaseSteps {
 
     @Then("^the user clicks on the element \"([^\"]*)\" at the page \"([^\"]*)\"$")
     public void userClickOnElementPage(String objectName, String pageName) throws Throwable {

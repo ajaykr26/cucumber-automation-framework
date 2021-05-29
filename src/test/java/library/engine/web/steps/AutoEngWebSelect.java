@@ -1,10 +1,10 @@
 package library.engine.web.steps;
 
 import io.cucumber.java.en.Then;
-import library.engine.web.AutoEngBaseWebSteps;
+import library.engine.web.AutoEngWebBaseSteps;
 import library.reporting.Reporter;
 
-public class AutoEngWebSelect extends AutoEngBaseWebSteps {
+public class AutoEngWebSelect extends AutoEngWebBaseSteps {
 
     @Then("^the user select (.+) option by (.+) from dropdown (.+) at the page (.+)$")
     public void select_option_from_dropdownAtPage(String option, String optionBy, String objectName, String pageName) throws Exception {

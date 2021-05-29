@@ -2,12 +2,13 @@ package library.engine.mobile.steps;
 
 import io.cucumber.java.en.Given;
 import library.common.TestContext;
-import library.engine.mobile.AutoEngBaseMobileSteps;
+import library.engine.mobile.AutoEngMobileBaseSteps;
 import library.reporting.Reporter;
 
 import static library.engine.core.AutoEngCoreConstants.MOBILE;
+import static library.engine.core.AutoEngCoreParser.parseValue;
 
-public class AutoEngMobileLaunch extends AutoEngBaseMobileSteps {
+public class AutoEngMobileLaunch extends AutoEngMobileBaseSteps {
 
     @Given("^the user launches \"([^\"]*)\" in mobile browser$")
     public void launchMobileApplication(String applicationName) {

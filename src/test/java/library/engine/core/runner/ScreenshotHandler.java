@@ -5,6 +5,7 @@ import io.cucumber.java8.En;
 import library.common.Constants;
 import library.common.Property;
 import library.common.TestContext;
+import library.engine.core.AutoEngCoreConstants;
 import library.selenium.exec.driver.factory.DriverContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,7 +20,7 @@ import static library.reporting.Reporter.getScreenshotPath;
 import static library.selenium.core.Screenshot.grabScreenshot;
 import static library.selenium.core.Screenshot.saveScreenshot;
 
-public class ScrenshotHandler implements En {
+public class ScreenshotHandler implements En {
 
     private boolean waitForPageToLoad;
     private static final String ELEMENT_REF = "fw.elementRef";
@@ -55,11 +56,11 @@ public class ScrenshotHandler implements En {
             switch (activeWindowType) {
                 case SELENIUM:
 //                    highlightActiveWebElement();
-                    file = getWebScreenshot();
+                    file = getWebScreenshot(file);
 //                    unhighlightActiveWebElement();
                     break;
                 case PDF:
-//                    file = takePDFScreenshot();
+//                    file = takePDFScrenshot();
                     break;
                 default:
                     break;
@@ -71,15 +72,12 @@ public class ScrenshotHandler implements En {
         return screenshotPath;
     }
 
-    private File getWebScreenshot() {
-        File file=null;
-        if (!Property.getVariable("cukes.techstack").startsWith("HTMLUNIT")){
-            if (DriverContext.getInstance().getDriverManager() != null) {
-                if (waitForPageToLoad) {
-                    logger.info("implement");
-                }
-                file = saveScreenshot(grabScreenshot(DriverContext.getInstance().getDriver()), getScreenshotPath());
+    private File getWebScreenshot(File file) {
+        if (DriverContext.getInstance().getDriverManager() != null) {
+            if (waitForPageToLoad) {
+                logger.info("implement");
             }
+            file = saveScreenshot(grabScreenshot(DriverContext.getInstance().getDriver()), getScreenshotPath());
         }
         return file;
     }
@@ -87,7 +85,7 @@ public class ScrenshotHandler implements En {
     private void setWaitForPageLoad(String stepText) {
         waitForPageToLoad = Boolean.parseBoolean(String.valueOf(TestContext.getInstance().testdataGet("fw.waitForPageLoad"))) &&
                 isStepRefreshRequired(stepText);
-        if (Boolean.parseBoolean(Property.getProperties(Constants.RUNTIME_PATH).getString("scrollingScreenshot"))) {
+        if (Boolean.parseBoolean(Property.getProperties(Constants.RUNTIME_PROP).getString("scrollingScreenshot"))) {
             try {
                 if (stepText.contains(VALIDATES)) {
                     System.setProperty(SCROLLING_SCREENSHOT_FLAG, "true");

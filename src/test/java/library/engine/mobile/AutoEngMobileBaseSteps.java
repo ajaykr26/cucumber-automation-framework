@@ -1,13 +1,13 @@
 package library.engine.mobile;
 
-import library.engine.core.AutoEngBaseCoreStep;
+import library.engine.core.AutoEngCoreBaseStep;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class AutoEngBaseMobileSteps extends AutoEngBaseCoreStep {
+public class AutoEngMobileBaseSteps extends AutoEngCoreBaseStep {
 
     protected void launchMobileApplication(String applicationName, WebDriver driver) {
         JavascriptExecutor js = (JavascriptExecutor) driver;

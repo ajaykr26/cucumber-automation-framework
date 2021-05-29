@@ -29,7 +29,7 @@ public class Hooks implements En {
 
     private void setRuntimeProperties() {
 
-        PropertiesConfiguration props = Property.getProperties(Constants.RUNTIME_PATH);
+        PropertiesConfiguration props = Property.getProperties(Constants.RUNTIME_PROP);
         if (props != null) {
             String screenshotOnEveryStep = props.getString("screenshotOnEveryStep");
 

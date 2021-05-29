@@ -15,11 +15,10 @@ public class DriverFactory {
     }
 
     public static DriverManager createDriver() {
-
-        return new DriverFactory().setDriverManager();
+        return setDriverManager();
     }
 
-    private DriverManager setDriverManager() {
+    private static DriverManager setDriverManager() {
         Servers server = Servers.get(DriverContext.getInstance().getServerName());
         Browsers browser = Browsers.get(DriverContext.getInstance().getBrowserName());
         switch (server) {
