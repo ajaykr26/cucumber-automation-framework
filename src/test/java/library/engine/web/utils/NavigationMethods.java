@@ -11,23 +11,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class NavigationMethods extends BasePO {
     private WebElement element = null;
-    private String old_win = null;
-    private String lastWinHandle;
-
-    public void navigateTo(String url) {
-        getDriver().get(url);
-    }
-
-    public void navigate(String direction) {
-        if (direction.equals("back"))
-            getDriver().navigate().back();
-        else
-            getDriver().navigate().forward();
-    }
-
-    public void closeDriver() {
-        getDriver().close();
-    }
 
     public Keys getKey() {
         String os = System.getProperty("os.name").toLowerCase();
@@ -92,47 +75,4 @@ public class NavigationMethods extends BasePO {
             throw new Exception("Exception : Invalid Direction (only scroll \"top\" or \"end\")");
     }
 
-    public void switchToNewWindow() {
-        old_win = getDriver().getWindowHandle();
-        for (String winHandle : getDriver().getWindowHandles())
-            lastWinHandle = winHandle;
-        getDriver().switchTo().window(lastWinHandle);
-    }
-
-    public void switchToOldWindow() {
-        getDriver().switchTo().window(old_win);
-    }
-
-    public void switchToWindowByTitle(String windowTitle) throws Exception {
-        old_win = getDriver().getWindowHandle();
-        boolean winFound = false;
-        for (String winHandle : getDriver().getWindowHandles()) {
-            String str = getDriver().switchTo().window(winHandle).getTitle();
-            if (str.equals(windowTitle)) {
-                winFound = true;
-                break;
-            }
-        }
-        if (!winFound)
-            throw new Exception("Window having title " + windowTitle + " not found");
-    }
-
-    public void closeNewWindow() {
-        getDriver().close();
-    }
-
-    public void switchFrame(String locatorType, String locatorText) throws Throwable {
-        if (locatorType.equalsIgnoreCase("index"))
-            getDriver().switchTo().frame(locatorText);
-        else if (locatorType.equalsIgnoreCase("ID") || locatorType.equalsIgnoreCase("name")) {
-            getDriver().switchTo().frame(locatorText);
-        } else {
-            element = getWait().until(ExpectedConditions.presenceOfElementLocated(getObject(locatorType, locatorText)));
-            getDriver().switchTo().frame(element);
-        }
-    }
-
-    public void switchToDefaultContent() {
-        getDriver().switchTo().defaultContent();
-    }
 }

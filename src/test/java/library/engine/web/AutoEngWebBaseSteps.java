@@ -2,7 +2,7 @@ package library.engine.web;
 
 import library.engine.core.AutoEngCoreBaseStep;
 import library.engine.web.utils.*;
-import library.selenium.utils.ClickMethods;
+import library.engine.web.utils.ClickMethods;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

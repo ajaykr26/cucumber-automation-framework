@@ -14,8 +14,8 @@ public class InputMethods extends BasePO {
     private Select selectList = null;
 
     public void enterText(String locatorType, String text, String locatorText) {
-        getWait().until(ExpectedConditions.presenceOfElementLocated(getObjectByLocatorType(locatorType, locatorText)));
-        getDriver().findElement(getObjectByLocatorType(locatorType, locatorText)).sendKeys(text);
+        getWait().until(ExpectedConditions.presenceOfElementLocated(getObjectLocatedBy(locatorType, locatorText)));
+        getDriver().findElement(getObjectLocatedBy(locatorType, locatorText)).sendKeys(text);
     }
 
     public void clearText(String locatorType, String locatorText) {
@@ -39,7 +39,7 @@ public class InputMethods extends BasePO {
     }
 
     public void selectOptionFromDropdown(String locatorType, String optionBy, String option, String locatorText) {
-        dropdown = getWait().until(ExpectedConditions.presenceOfElementLocated(getObjectByLocatorType(locatorType, locatorText)));
+        dropdown = getWait().until(ExpectedConditions.presenceOfElementLocated(getObjectLocatedBy(locatorType, locatorText)));
         selectList = new Select(dropdown);
 
         switch (optionBy) {
@@ -135,7 +135,7 @@ public class InputMethods extends BasePO {
     }
 
     public void selectOptionFromRadioButtonGroup(String locatorType, String option, String by, String locatorText) {
-        List<WebElement> radioButtonGroup = getDriver().findElements(getObjectByLocatorType(locatorType, locatorText));
+        List<WebElement> radioButtonGroup = getDriver().findElements(getObjectLocatedBy(locatorType, locatorText));
         for (WebElement rb : radioButtonGroup) {
             if (by.equals("value")) {
                 if (rb.getAttribute("value").equals(option) && !rb.isSelected())

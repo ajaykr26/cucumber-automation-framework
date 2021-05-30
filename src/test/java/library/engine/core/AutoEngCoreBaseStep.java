@@ -8,6 +8,7 @@ import library.engine.core.objectmatcher.ObjectNotFoundException;
 import library.engine.web.utils.*;
 import library.reporting.Reporter;
 import library.selenium.core.Element;
+import library.selenium.core.LocatorType;
 import library.selenium.exec.BasePO;
 import library.selenium.exec.driver.factory.DriverContext;
 import org.apache.logging.log4j.LogManager;
@@ -19,8 +20,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -47,6 +50,12 @@ public class AutoEngCoreBaseStep implements En {
     public static final String WINDOW_SWITCH_DELAY = "fw.windowSwitchDelay";
     public static final String COULD_NOT_FIND_UNIQUE_ROW = "Could not find unique row with {} having and {} having and {} having {}";
     private BasePO baseWebPO;
+    protected static WebElement element = null;
+    protected static By byObject = null;
+    protected static List<WebElement> elements = new ArrayList<>();
+    protected static String currentWindowHandle;
+    protected static String defaultWindowHandle;
+    protected static Set<String> windowHandles ;
 
     public AutoEngCoreBaseStep() {
     }
@@ -67,9 +76,46 @@ public class AutoEngCoreBaseStep implements En {
         return DriverContext.getInstance().getDriver();
     }
 
-    public WebDriverWait getDriverWait() {
+    public WebDriverWait getWait() {
         logger.debug("obtaining the wait for current thread");
         return DriverContext.getInstance().getDriverWait();
+    }
+
+    public By getObjectLocatedBy(String locatorType, String locatorText) {
+        switch (LocatorType.get(locatorType)) {
+            case ID:
+                return By.id(locatorText);
+            case NAME:
+                return By.name(locatorText);
+            case CLASS_NAME:
+                return By.className(locatorText);
+            case XPATH:
+                return By.xpath(locatorText);
+            case CSS:
+                return By.cssSelector(locatorText);
+            case LINK_TEXT:
+                return By.linkText(locatorText);
+            case PARTIAL_LINK_TEXT:
+                return By.partialLinkText(locatorText);
+            case TAGE_NAME:
+                return By.tagName(locatorText);
+            default:
+                return null;
+
+        }
+    }
+
+    public WebElement getElementLocatedBy(String locatorType, String locatorValue) {
+        byObject = getObjectLocatedBy(locatorType, locatorValue);
+        getWait().until(ExpectedConditions.presenceOfElementLocated(byObject));
+        return getDriver().findElement(byObject);
+
+    }
+
+    public List<WebElement> getElementsLocatedBy(String locatorType, String locatorValue) {
+        byObject = getObjectLocatedBy(locatorType, locatorValue);
+        getWait().until(ExpectedConditions.presenceOfAllElementsLocatedBy(byObject));
+        return getDriver().findElements(byObject);
     }
 
     public By getObject(String objectName, String pageName) {
@@ -95,12 +141,12 @@ public class AutoEngCoreBaseStep implements En {
     }
 
     public List<WebElement> getElements(String objectName, String pageName) {
-        getDriverWait().until(ExpectedConditions.presenceOfElementLocated(getObject(objectName, pageName)));
+        getWait().until(ExpectedConditions.presenceOfElementLocated(getObject(objectName, pageName)));
         return getDriver().findElements(getObject(objectName, pageName));
     }
 
     public WebElement getElement(String objectName, String pageName) {
-        getDriverWait().until(ExpectedConditions.presenceOfElementLocated(getObject(objectName, pageName)));
+        getWait().until(ExpectedConditions.presenceOfElementLocated(getObject(objectName, pageName)));
         return getDriver().findElement(getObject(objectName, pageName));
     }
 
