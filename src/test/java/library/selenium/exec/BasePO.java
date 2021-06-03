@@ -24,6 +24,7 @@ import java.util.regex.Pattern;
 import static library.engine.core.objectmatcher.ObjectFinder.getMatchingObject;
 
 public class BasePO extends PageObject {
+
     protected Logger logger = LogManager.getLogger(this.getClass().getName());
 
     public By getObjectLocatedBy(String locatorType, String locatorText) {
@@ -63,6 +64,7 @@ public class BasePO extends PageObject {
         return getDriver().findElements(byObject);
     }
 
+
     public By getObject(String objectName, String pageName) {
         String methodName = "get" + objectName.substring(0, 1).toUpperCase() + objectName.substring(1);
         return getMatchingObject(methodName, pageName);
@@ -73,6 +75,7 @@ public class BasePO extends PageObject {
         getWait().until(ExpectedConditions.presenceOfElementLocated(byObject));
         return getDriver().findElement(byObject);
 
+
     }
 
     public List<WebElement> getElements(String objectName, String pageName) throws Throwable {
@@ -80,4 +83,15 @@ public class BasePO extends PageObject {
         getWait().until(ExpectedConditions.presenceOfAllElementsLocatedBy(byObject));
         return getDriver().findElements(byObject);
     }
+
+
+
+    }
+
+    public List<WebElement> getElements(String objectName, String pageName) throws Throwable {
+        By byObject = getObject(objectName, pageName);
+        getWait().until(ExpectedConditions.presenceOfAllElementsLocatedBy(byObject));
+        return getDriver().findElements(byObject);
+    }
+
 }

@@ -11,6 +11,7 @@ import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
+import java.util.Objects;
 import java.util.Set;
 
 
@@ -50,7 +51,7 @@ public abstract class DriverManager {
         final int defaultWait = 30;
         int duration;
         try {
-            duration = Property.getProperties(Constants.RUNTIME_PROP).getInt("defaultWait");
+            duration = Objects.requireNonNull(Property.getProperties(Constants.RUNTIME_PROP)).getInt("explicitWait");
         } catch (Exception e) {
             duration = defaultWait;
         }

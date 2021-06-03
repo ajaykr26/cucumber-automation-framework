@@ -33,6 +33,6 @@ Feature: Login Validation
 
   @API
   Scenario: API Automation
-    Given the user launches "@(google)" in mobile browser
+    Given the user launches "MyJio" app in mobile
     Then the user wait for page to load
     And the user click on element having xpath "//android.widget.Button[@text='Google Search']"
