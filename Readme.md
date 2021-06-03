@@ -41,9 +41,11 @@ It includes:
 ## vm arguments
 -ea
 -Dcukes.environment=UAT
--Dcukes.techStack=LOCAL_CHROME (e.g: LOCAL_IE, LOCAL_MSEDGE, LOCAL_FIREFOX, REMOTE_CHROME, REMOTE_IE, REMOTE_MSEDGE, REMOTE_FIREFOX, APPIUM_ANDROID)
+-Dcukes.techstack=LOCAL_CHROME
 -Dorg.apache.logging.log4j.level=DEBUG
 -Dcukes.selenium.defaultFindRetries=2
+
+(e.g: LOCAL_IE, LOCAL_MSEDGE, LOCAL_FIREFOX, REMOTE_CHROME, REMOTE_IE, REMOTE_MSEDGE, REMOTE_FIREFOX, APPIUM_ANDROID)
 
 ## Writing feature file
 1. use "@(testdata)" format to read data from config.properties file.

@@ -27,6 +27,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -58,15 +59,14 @@ public class AutoEngCoreBaseStep implements En {
     protected static final String ELEMENT_REF = "fw.elementRef";
     public static final String WINDOW_SWITCH_DELAY = "fw.windowSwitchDelay";
     public static final String COULD_NOT_FIND_UNIQUE_ROW = "Could not find unique row with {} having and {} having and {} having {}";
-
     private BasePO baseWebPO;
- protected static WebElement element = null;
+    protected static WebElement element = null;
     protected static By byObject = null;
     protected static List<WebElement> elements = new ArrayList<>();
     protected static String currentWindowHandle;
     protected static String defaultWindowHandle;
 
-    protected static Set<String> windowHandles ;
+    protected static Set<String> windowHandles;
 
 
     public AutoEngCoreBaseStep() {

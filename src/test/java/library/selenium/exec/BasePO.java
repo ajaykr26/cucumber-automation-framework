@@ -84,14 +84,4 @@ public class BasePO extends PageObject {
         return getDriver().findElements(byObject);
     }
 
-
-
-    }
-
-    public List<WebElement> getElements(String objectName, String pageName) throws Throwable {
-        By byObject = getObject(objectName, pageName);
-        getWait().until(ExpectedConditions.presenceOfAllElementsLocatedBy(byObject));
-        return getDriver().findElements(byObject);
-    }
-
 }
