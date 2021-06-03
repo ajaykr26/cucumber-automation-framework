@@ -1,23 +1,17 @@
 package library.engine.web.steps;
 
 import io.cucumber.java.en.Then;
-import library.common.Constants;
-import library.selenium.utils.FileDownloadHelper;
-import library.common.FileHelper;
 import library.common.TestContext;
 import library.engine.web.AutoEngWebBaseSteps;
-import library.reporting.Reporter;
 import library.selenium.core.Element;
 import library.selenium.core.LocatorType;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.io.File;
-import java.net.URISyntaxException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Set;
 
 import static library.engine.core.AutoEngCoreParser.parseValue;
 
@@ -222,56 +216,6 @@ public class AutoEngWebUtils extends AutoEngWebBaseSteps {
     @Then("^the user delete all cookies from the current session$")
     public void deleteAllCookies() {
         getDriver().manage().deleteAllCookies();
-    }
-
-    @Then("^the user hover on the \"([^\"]*)\" element on the \"([^\"]*)\" page$")
-    public void hoverOnElementOnPage(String objectName, String pageName) {
-        Actions action = new Actions(getDriver());
-        action.moveToElement(getElement(objectName, pageName)).build().perform();
-    }
-
-    @Then("^the user hover on the element having \"([^\"]*)\": \"([^\"]*)\"$")
-    public void hoverOnElement(String method, String locator) {
-        Actions action = new Actions(getDriver());
-        action.moveToElement(getElementLocatedBy(method, locator)).build().perform();
-    }
-
-    @Then("^the user uploads the file \"([^\"]*)\" using \"([^\"]*)\" element at the \"([^\"]*)\" page$")
-    public void uploadFiles(String filepath, String objectName, String pageName) {
-        filepath = parseValue(filepath);
-        File fileToUpload = new File(filepath);
-        if (!fileToUpload.isAbsolute()) {
-            fileToUpload = new File(Paths.get(Constants.TESTDATA_PATH + filepath).toString());
-        }
-        if (fileToUpload.exists()) {
-            final Path pathToFile = fileToUpload.toPath();
-            final String fileContent = replaceParameterValues(FileHelper.getFileAsString(pathToFile.toAbsolutePath().toString(), "\n"));
-            Path tempFileToUpload = FileHelper.writeTempFile(FileHelper.getFileNameWithoutExtension(pathToFile),
-                    FileHelper.getFileNameExtension(pathToFile), fileContent);
-            assert tempFileToUpload != null;
-            getElement(objectName, pageName).sendKeys(tempFileToUpload.toAbsolutePath().toString());
-        } else {
-            String message = String.format("file not found at path: %s", fileToUpload);
-            logger.error(message);
-            Reporter.addStepLog("ERROR", message);
-        }
-    }
-
-    @Then("^the user downloads the file from \"([^\"]*)\" element at the \"([^\"]*)\" page and save full path to data dictionary with key \"([^\"]*)\"$")
-    public void downloadFiles(String objectName, String pageName, String dictionaryKey) throws URISyntaxException {
-        String pathToCurrentCerts = setTrustStoreBasedOnEnv();
-        FileDownloadHelper downloadHelper = new FileDownloadHelper(getDriver());
-        Element downloadLink = new Element(getDriver(), getElement(objectName, pageName));
-
-        downloadHelper.setURISpecifiedInAnchorElement(downloadLink);
-        File downloadedFile = downloadHelper.downloadFile("");
-        if (downloadedFile != null && downloadedFile.exists()) {
-            TestContext.getInstance().testdataPut(parseDictionaryKey(dictionaryKey), downloadedFile.getAbsolutePath());
-            logStepMessage(String.format("file downloaded to path: %s", downloadedFile.getAbsolutePath()));
-        } else {
-            logStepMessage("unable to download file");
-        }
-        setTrustStore(pathToCurrentCerts);
     }
 
 
