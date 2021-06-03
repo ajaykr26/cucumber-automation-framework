@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static library.engine.core.AutoEngCoreParser.parseValue;
 
-public class AutoEngWebWindowHandles extends AutoEngWebBaseSteps {
+public class AutoEngWebUtils extends AutoEngWebBaseSteps {
 
     @Then("^the user wait for page to load$")
     public void waitForPageLoad() {
