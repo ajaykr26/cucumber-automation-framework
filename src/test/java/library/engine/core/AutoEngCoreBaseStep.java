@@ -3,23 +3,30 @@ package library.engine.core;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import io.cucumber.java8.En;
+import library.common.Constants;
+import library.common.Property;
 import library.common.TestContext;
 import library.engine.core.objectmatcher.ObjectNotFoundException;
-import library.engine.web.utils.*;
 import library.reporting.Reporter;
 import library.selenium.core.Element;
 import library.selenium.core.LocatorType;
+
 import library.selenium.exec.BasePO;
+
 import library.selenium.exec.driver.factory.DriverContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.assertj.core.api.SoftAssertions;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NotFoundException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -46,29 +53,27 @@ public class AutoEngCoreBaseStep implements En {
     protected static final String FORMATTED_AS = "Formatted as Day suffix {}";
     protected static final String JSON = ".json";
     protected static final String ZONE = "ZONE_";
+    protected static final String JAVAX_NET_SSL_TRUST_STORE = "javax.net.ssl.trustStore";
+
     protected static final String ELEMENT_REF = "fw.elementRef";
     public static final String WINDOW_SWITCH_DELAY = "fw.windowSwitchDelay";
     public static final String COULD_NOT_FIND_UNIQUE_ROW = "Could not find unique row with {} having and {} having and {} having {}";
+
     private BasePO baseWebPO;
-    protected static WebElement element = null;
+ protected static WebElement element = null;
     protected static By byObject = null;
     protected static List<WebElement> elements = new ArrayList<>();
     protected static String currentWindowHandle;
     protected static String defaultWindowHandle;
+
     protected static Set<String> windowHandles ;
+
 
     public AutoEngCoreBaseStep() {
     }
 
     public enum ScreenshotType {
         DISPLAY, AREA, SCROLLING;
-    }
-
-    public BasePO getBasePO() {
-        logger.debug("obtaining an instance of base page object");
-        if (baseWebPO == null)
-            baseWebPO = new BasePO();
-        return baseWebPO;
     }
 
     public WebDriver getDriver() {
@@ -213,5 +218,25 @@ public class AutoEngCoreBaseStep implements En {
         logger.debug(message);
     }
 
+    protected String setTrustStoreBasedOnEnv() {
+        String envPropsFile = Constants.ENVIRONMENTS;
+        String certFile = Property.getProperty(envPropsFile, "certFileForEnv");
+        if (certFile != null) {
+            String pathForCerts = Paths.get(Constants.ENVIRONMENTS + certFile).toAbsolutePath().toString();
+            String currentCertFile = Property.getVariable(JAVAX_NET_SSL_TRUST_STORE);
+            logger.debug(currentCertFile);
+            return currentCertFile;
+        } else {
+            logger.warn("path not defined");
+            return "";
+        }
+    }
+
+    protected void setTrustStore(String pathToCertFile) {
+        if (pathToCertFile != null) {
+            System.setProperty(JAVAX_NET_SSL_TRUST_STORE, pathToCertFile);
+            logger.debug("switching {} to {}", JAVAX_NET_SSL_TRUST_STORE, pathToCertFile);
+        }
+    }
 
 }

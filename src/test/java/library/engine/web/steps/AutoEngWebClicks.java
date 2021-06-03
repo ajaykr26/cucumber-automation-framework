@@ -24,9 +24,10 @@ public class AutoEngWebClicks extends AutoEngWebBaseSteps {
 
     @Then("^the user clicks at matching cell where the value \"([^\"]*)\" is present in the column \"([^\"]*)\" in the table \"([^\"]*)\" at the page \"([^\"]*)\"$")
     public void clickOnMatchingCellInColumnOnPage(String textToFind, String columnName, String objectName, String pageName) throws Exception {
+
         getTableMethods().getMatchingCellElement(textToFind, columnName, getElement(objectName, pageName)).click();
-        Reporter.addStepLog(String.format("user clicked at the cell contains \"%s\" in the table having \"%s\" \"%s\"", textToFind, columnName, pageName));
-    }
+
+ }
 
     @Then("^the user click on element having \"([^\"]*)\": \"([^\"]*)\"$")
     public void click(String locatorType, String locatorText) throws Exception {

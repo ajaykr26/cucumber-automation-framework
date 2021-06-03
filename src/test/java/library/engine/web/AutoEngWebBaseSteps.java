@@ -3,12 +3,22 @@ package library.engine.web;
 import library.engine.core.AutoEngCoreBaseStep;
 import library.engine.web.utils.*;
 import library.engine.web.utils.ClickMethods;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class AutoEngWebBaseSteps extends AutoEngCoreBaseStep {
 
+    private BasePO baseWebPO;
+
     public AutoEngWebBaseSteps() {
+    }
+
+    public BasePO getBasePO() {
+        logger.debug("obtaining an instance of base page object");
+        if (baseWebPO == null)
+            baseWebPO = new BasePO();
+        return baseWebPO;
     }
 
     protected Logger logger = LogManager.getLogger(this.getClass().getName());

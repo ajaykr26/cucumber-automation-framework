@@ -63,15 +63,6 @@ public class AutoEngWebCommon extends AutoEngWebBaseSteps {
         getNavigationMethods().scrollToElement(locatorType, locatorText);
     }
 
-    // hover over element************************************
-
-    // Note: Doesn't work on Windows firefox
-    @Then("^the user hover over element having (.+) \"(.*?)\"$")
-    public void hover_over_element(String locatorType, String locatorText) throws Throwable {
-        getMiscMethods().validateLocator(locatorType);
-        getNavigationMethods().hoverOverElement(locatorType, locatorText);
-    }
-
     // wait for specific period of time
     @Then("^the user wait for \"(.*?)\" sec$")
     public void wait(String time) throws NumberFormatException, InterruptedException {

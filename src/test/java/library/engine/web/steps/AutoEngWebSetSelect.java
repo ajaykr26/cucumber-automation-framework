@@ -4,6 +4,7 @@ import io.cucumber.java.en.Then;
 import library.engine.web.AutoEngWebBaseSteps;
 import library.reporting.Reporter;
 
+
 import static library.engine.core.AutoEngCoreParser.parseValue;
 
 public class AutoEngWebSetSelect extends AutoEngWebBaseSteps {
@@ -169,14 +170,18 @@ public class AutoEngWebSetSelect extends AutoEngWebBaseSteps {
     }
 
     @Then("^the user enters \"([^\"]*)\" into the input field \"([^\"]*)\" at the page \"([^\"]*)\"$")
-    public void enterTextIntoTheInputFieldPage(String textToEnter, String objectName, String pageName) throws Throwable {
+
+    public void enterTextIntoTheInputFieldPage(String textToEnter, String objectName, String pageName) {
+
         textToEnter = parseValue(textToEnter);
         getElement(objectName, pageName).sendKeys(textToEnter);
         Reporter.addStepLog(String.format("\"%s\" is entered in the field \"%s\" at the \"%s\"", textToEnter, objectName, pageName));
     }
 
     @Then("^the user enters credential \"([^\"]*)\" into the input field \"([^\"]*)\" at the page \"([^\"]*)\"$")
-    public void entersCredentialIntoTheInputFieldPage(String credential, String objectName, String pageName) throws Throwable {
+
+    public void entersCredentialIntoTheInputFieldPage(String credential, String objectName, String pageName) {
+
         credential = parseValue(credential);
         getElement(objectName, pageName).sendKeys(credential);
         Reporter.addStepLog(String.format("credential is entered in the field \"%s\" at the \"%s\"", objectName, pageName));

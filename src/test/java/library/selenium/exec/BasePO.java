@@ -64,6 +64,7 @@ public class BasePO extends PageObject {
         return getDriver().findElements(byObject);
     }
 
+
     public By getObject(String objectName, String pageName) {
         String methodName = "get" + objectName.substring(0, 1).toUpperCase() + objectName.substring(1);
         return getMatchingObject(methodName, pageName);
@@ -74,6 +75,7 @@ public class BasePO extends PageObject {
         getWait().until(ExpectedConditions.presenceOfElementLocated(byObject));
         return getDriver().findElement(byObject);
 
+
     }
 
     public List<WebElement> getElements(String objectName, String pageName) throws Throwable {
@@ -83,71 +85,13 @@ public class BasePO extends PageObject {
     }
 
 
-    //    public By getObject(String objectName, String pageName) {
-//        String classname = "pageobjects." + pageName;
-//        Class<?> classInstance = null;
-//        try {
-//            classInstance = Class.forName(classname);
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//        Object object = null;
-//        By by = null;
-//        try {
-//
-//            object = classInstance != null ? classInstance.newInstance() : null;
-//            String methodName = "get" + objectName.substring(0, 1).toUpperCase() + objectName.substring(1);
-//            assert object != null;
-//            Method method = object.getClass().getMethod("" + methodName);
-//            by = (By) method.invoke(object);
-//
-//        } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
-//            e.printStackTrace();
-//        }
-//        return by;
-//    }
 
-//    public String parse_keyJSON(String string) {
-//        String parsed_data = null;
-//
-//        Pattern patternJSON = Pattern.compile("#\\((.*)\\)");
-//        Matcher matcherJSON = patternJSON.matcher(string);
-//
-//        if (matcherJSON.matches()) {
-//            return matcherJSON.group(1);
-//        } else {
-//            return null;
-//        }
-//    }
-//
-//    public String parse_keyProps(String string) {
-//        String parsed_data = null;
-//        Pattern patternProp = Pattern.compile("@\\((.*)\\)");
-//        Matcher matcherProp = patternProp.matcher(string);
-//
-//        if (matcherProp.matches()) {
-//            return matcherProp.group(1);
-//        } else {
-//            return null;
-//        }
-//
-//    }
-//
-//    public String parse_value(String string) {
-//        String parsed_value = null;
-//        String parsedkeyJSON = parse_keyJSON(string);
-//        String parsedkeyProps = parse_keyProps(string);
-//        if (parsedkeyJSON != null) {
-//            parsed_value = TestContext.getInstance().testdataGet(parsedkeyJSON).toString();
-//            logger.info("returning the value from JSON");
-//        } else if (parsedkeyProps != null) {
-//            parsed_value = Property.getProperty(Constants.ENVIRONMENTS, parse_keyProps(string));
-//            logger.info("returning the value from config.properties file");
-//        } else {
-//            parsed_value = string;
-//            logger.info("returning the value as it is provided in the steps");
-//        }
-//        return parsed_value;
-//    }
+    }
+
+    public List<WebElement> getElements(String objectName, String pageName) throws Throwable {
+        By byObject = getObject(objectName, pageName);
+        getWait().until(ExpectedConditions.presenceOfAllElementsLocatedBy(byObject));
+        return getDriver().findElements(byObject);
+    }
 
 }
