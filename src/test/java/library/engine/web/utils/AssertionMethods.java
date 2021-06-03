@@ -9,6 +9,8 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
+import static library.engine.core.AutoEngCoreParser.parseValue;
+
 public class AssertionMethods extends BasePO {
 
     private WebElement element = null;
@@ -41,13 +43,13 @@ public class AssertionMethods extends BasePO {
     }
 
     public String getElementText(String locatorType, String locatorText) {
-        element = getWait().until(ExpectedConditions.presenceOfElementLocated(getObjectByLocatorType(locatorType, locatorText)));
+        element = getWait().until(ExpectedConditions.presenceOfElementLocated(getObjectLocatedBy(locatorType, locatorText)));
         return element.getText();
 
     }
 
     public void StoreElementText(String locatorType, String locatorText, String dictionaryKey) {
-        dictionaryKey = parse_value(dictionaryKey);
+        dictionaryKey = parseValue(dictionaryKey);
 
         element = getWait().until(ExpectedConditions.presenceOfElementLocated(getObject(locatorType, locatorText)));
         String elementText = element.getText();

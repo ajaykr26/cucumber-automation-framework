@@ -9,6 +9,7 @@ public class Constants {
     public static final String TESTDATA_PATH = BASE_PATH + "testdata/";
     public static final String PROPERTIES_PATH = BASE_PATH + "config/properties/";
     public static final String TECHSTACK_PATH = BASE_PATH + "config/techstacks/";
+    public static final String DOWNLOAD_PATH = USER_DIR + "/downloads/";
 
     public static final String DRIVER_PATH = USER_DIR + "/lib/drivers/";
     public static final String SCREENSHOT_PATH = USER_DIR + "/target/allure-results/screenshots/";

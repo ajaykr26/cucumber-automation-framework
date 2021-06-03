@@ -18,7 +18,7 @@ public class ExcelHelper {
 
     }
 
-    private static Logger getlogger() {
+    private static Logger getLogger() {
         return LogManager.getLogger(ExcelHelper.class);
     }
 
@@ -59,7 +59,7 @@ public class ExcelHelper {
             }
 
         } catch (Exception exception) {
-            getlogger().error(EXCEPTION_PROCESSING_FILE, exception);
+            getLogger().error(EXCEPTION_PROCESSING_FILE, exception);
         }
         return data;
     }
@@ -93,7 +93,7 @@ public class ExcelHelper {
                 dataMap.put(dataset, mapTemp);
             }
         } catch (Exception exception) {
-            getlogger().error(EXCEPTION_PROCESSING_FILE);
+            getLogger().error(EXCEPTION_PROCESSING_FILE);
         }
         return dataMap;
     }
@@ -183,7 +183,7 @@ public class ExcelHelper {
                 dataMap.add(mapTemp);
             }
         } catch (Exception exception) {
-            getlogger().error(EXCEPTION_PROCESSING_FILE);
+            getLogger().error(EXCEPTION_PROCESSING_FILE);
         }
         return dataMap;
     }

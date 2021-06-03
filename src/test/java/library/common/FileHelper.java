@@ -1,6 +1,7 @@
 package library.common;
 
 import org.apache.commons.configuration2.PropertiesConfiguration;
+import org.apache.commons.io.FilenameUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -100,6 +101,33 @@ public class FileHelper {
                 TestContext.getInstance().testdataPut(param.split("\\.")[1], Property.getProperty(propsFilePath, param));
             }
         }
+    }
+    public static Path writeTempFile(String prefix, String extension, String fileContent) {
+        try {
+            if (!extension.contains(".")) {
+                extension = "." + extension;
+            }
+            Path tempFile = Files.createTempFile(prefix, extension);
+            tempFile.toFile().deleteOnExit();
+
+            Files.write(tempFile, fileContent.getBytes(StandardCharsets.UTF_8));
+            return tempFile;
+        } catch (IOException exception) {
+            logger.error(exception);
+            return null;
+        }
+    }
+
+    public static String getFileNameExtension(Path path) {
+        String filename = path.getFileName().toString();
+        filename = FilenameUtils.getExtension(filename);
+        return filename;
+    }
+
+    public static String getFileNameWithoutExtension(Path path) {
+        String filename = path.getFileName().toString();
+        filename = FilenameUtils.removeExtension(filename);
+        return filename;
     }
 }
 
