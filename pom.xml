@@ -14,7 +14,7 @@
         <reflection>0.9.12</reflection>
         <log4j-core>2.14.0</log4j-core>
         <jdk>8</jdk>
-        <pdfbox>2.0.21</pdfbox>
+        <pdfbox>2.0.24</pdfbox>
         <phatomjs>1.3.0</phatomjs>
         <htmlunit-driver>2.44.0</htmlunit-driver>
         <maven.compiler.plugin>3.8.1</maven.compiler.plugin>
