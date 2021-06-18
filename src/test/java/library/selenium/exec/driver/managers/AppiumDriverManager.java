@@ -10,6 +10,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
 
 public class AppiumDriverManager extends DriverManager {
     private static final String PLATFORM_NAME = "platformName";
@@ -25,6 +26,7 @@ public class AppiumDriverManager extends DriverManager {
             if (capabilities.getCap().getCapability(PLATFORM_NAME).toString().equalsIgnoreCase("android")) {
                 capabilities.getCap().setCapability(AUTOMATION_NAME, "uiautomator2");
                 driver = new AndroidDriver(new URL(Property.getVariable(CUKES_APPIUM_END_POINT)), capabilities.getCap());
+                driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
             }
             if (capabilities.getCap().getCapability(PLATFORM_NAME).toString().equalsIgnoreCase("iOS")) {
                 capabilities.getCap().setCapability(AUTOMATION_NAME, "XCUITest");

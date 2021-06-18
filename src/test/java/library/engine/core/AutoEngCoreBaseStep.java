@@ -10,6 +10,9 @@ import library.engine.core.objectmatcher.ObjectNotFoundException;
 import library.reporting.Reporter;
 import library.selenium.core.Element;
 import library.selenium.core.LocatorType;
+
+import library.selenium.exec.BasePO;
+
 import library.selenium.exec.driver.factory.DriverContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,6 +25,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -55,12 +61,15 @@ public class AutoEngCoreBaseStep implements En {
     protected static final String ELEMENT_REF = "fw.elementRef";
     public static final String WINDOW_SWITCH_DELAY = "fw.windowSwitchDelay";
     public static final String COULD_NOT_FIND_UNIQUE_ROW = "Could not find unique row with {} having and {} having and {} having {}";
+    private BasePO baseWebPO;
     protected static WebElement element = null;
     protected static By byObject = null;
     protected static List<WebElement> elements = new ArrayList<>();
     protected static String currentWindowHandle;
     protected static String defaultWindowHandle;
+
     protected static Set<String> windowHandles;
+
 
     public AutoEngCoreBaseStep() {
     }

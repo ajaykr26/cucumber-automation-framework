@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PageObject extends CommonPageObject {
+
     protected Logger logger = LogManager.getLogger(this.getClass().getName());
 
     public WebDriver getDriver() {
@@ -54,4 +55,5 @@ public class PageObject extends CommonPageObject {
             }
         }
     }
+
 }

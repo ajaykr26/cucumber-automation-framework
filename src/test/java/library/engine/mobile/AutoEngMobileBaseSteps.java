@@ -22,4 +22,5 @@ public class AutoEngMobileBaseSteps extends AutoEngCoreBaseStep {
         startapp.put("name", applicationName);
         js.executeScript("mobile:application:close", startapp);
     }
+
 }
