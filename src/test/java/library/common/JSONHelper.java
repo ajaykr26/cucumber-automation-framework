@@ -1,8 +1,6 @@
 package library.common;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonSyntaxException;
+import com.google.gson.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.JSONArray;
@@ -22,6 +20,29 @@ public class JSONHelper {
 
     private static Logger getLogger() {
         return LogManager.getLogger(JSONHelper.class);
+    }
+
+    public static String formatJSON(Object jsonString) {
+        try {
+            if (jsonString instanceof String) {
+                JsonElement jsonElement = JsonParser.parseString(jsonString.toString());
+                return new GsonBuilder().setPrettyPrinting().setLenient().create().toJson(jsonElement);
+            } else if (jsonString instanceof Map) {
+                return new GsonBuilder().setPrettyPrinting().create().toJson(jsonString, Map.class);
+            } else if (jsonString instanceof JSONArray) {
+                return new GsonBuilder().setPrettyPrinting().create().toJson(jsonString, JSONArray.class);
+            } else if (jsonString instanceof List) {
+                return new GsonBuilder().setPrettyPrinting().create().toJson(jsonString, List.class);
+            } else {
+                getLogger().warn("unrecognized response body type: {}", jsonString);
+                return jsonString.toString();
+            }
+        } catch (JsonSyntaxException exception) {
+            getLogger().debug("not a valid json: {}", jsonString);
+            return jsonString.toString();
+        }
+
+
     }
 
     public static JSONObject getJSONObject(String filepath, String... key) {

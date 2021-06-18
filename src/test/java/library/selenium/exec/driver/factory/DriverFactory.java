@@ -25,6 +25,7 @@ public class DriverFactory {
             case REMOTE:
                 return new RemoteDriverManager();
             case BROWSERSTACK:
+                return new BrowserStackDriverManager();
             case SAUCELABS:
             case APPIUM:
                 return new AppiumDriverManager();

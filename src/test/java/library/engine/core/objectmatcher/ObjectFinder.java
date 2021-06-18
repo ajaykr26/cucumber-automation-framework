@@ -3,7 +3,6 @@ package library.engine.core.objectmatcher;
 import info.debatty.java.stringsimilarity.JaroWinkler;
 import library.common.CommonPageObject;
 import library.common.TestContext;
-import library.engine.api.AutoEngAPIBaseSteps;
 import library.engine.core.objectmatcher.rating.FieldRating;
 import library.engine.core.objectmatcher.rating.FlatFileObjectRating;
 import library.engine.core.objectmatcher.rating.PageObjectRating;
@@ -14,7 +13,10 @@ import org.openqa.selenium.By;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import static library.common.StringHelper.removeSpecialChars;
@@ -258,29 +260,6 @@ public class ObjectFinder {
             logger.error(exception.getMessage(), exception);
         }
         return obj;
-    }
-
-    private static void invokeMethod(AutoEngAPIBaseSteps baseAPISteps, String objectName) {
-        Object obj = null;
-        try {
-            Method method = baseAPISteps.getClass().getMethod(objectName);
-            obj = method.invoke(baseAPISteps);
-        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException exception) {
-            logger.error(exception.getMessage(), exception);
-        }
-    }
-
-    public static void invokeMethod(String pageName, String methodName) throws IllegalAccessException, InstantiationException {
-        PageObjectRating matchingPage = ObjectFinder.findMatchingPage(pageName);
-        CommonPageObject commonPageObject;
-        AutoEngAPIBaseSteps baseAPISteps;
-        if (matchingPage.getPageObjectClazz().newInstance() instanceof CommonPageObject) {
-            commonPageObject = (CommonPageObject) matchingPage.getPageObjectClazz().newInstance();
-            invokeMethod(commonPageObject, methodName);
-        } else if (matchingPage.getPageObjectClazz().newInstance() instanceof AutoEngAPIBaseSteps) {
-            baseAPISteps = (AutoEngAPIBaseSteps) matchingPage.getPageObjectClazz().newInstance();
-            invokeMethod(baseAPISteps, methodName);
-        }
     }
 
     public static FlatFileObjectRating getMatchingAPIFeature(String featureName) {

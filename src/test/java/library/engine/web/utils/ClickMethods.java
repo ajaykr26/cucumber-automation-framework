@@ -2,6 +2,7 @@ package library.engine.web.utils;
 
 import library.selenium.exec.BasePO;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -40,6 +41,7 @@ public class ClickMethods extends BasePO {
 
         Actions action = new Actions(getDriver());
         action.moveToElement(element).doubleClick().perform();
+
     }
 
     public void rightClick(String accessType, String accessValue) {

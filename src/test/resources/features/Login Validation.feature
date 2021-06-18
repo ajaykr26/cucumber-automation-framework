@@ -17,22 +17,11 @@ Feature: Login Validation
     And the user validates the orientation is in portrait mode "orientation" "HardStopOnFailure"
     And the user takes a screenshot of the active pdf
     Then the active pdf is closed
-    And the user wait for page to load
 
   @Mobile
   Scenario: Mobile Automation
     Given the user launches "@(google)" in mobile browser
-    Then the user wait for page to load
-    And the user click on element having xpath "//android.widget.Button[@text='Google Search']"
 
   @Database
   Scenario: Database Automation
     Given the user launches "@(google)" in mobile browser
-    Then the user wait for page to load
-    And the user click on element having xpath "//android.widget.Button[@text='Google Search']"
-
-  @API
-  Scenario: API Automation
-    Given the user launches "@(google)" in mobile browser
-    Then the user wait for page to load
-    And the user click on element having xpath "//android.widget.Button[@text='Google Search']"

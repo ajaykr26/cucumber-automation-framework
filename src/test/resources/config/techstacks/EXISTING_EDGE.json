@@ -1,6 +1,6 @@
 [
   {
-    "seleniumServer": "local",
+    "serverName": "local",
     "browserName": "edge"
   }
 ]

@@ -18,13 +18,13 @@ public enum Servers {
         this.serverName = serverName;
     }
 
-    public String getserverName() {
+    public String getServerName() {
         return serverName;
     }
 
     public static Servers get(String serverName) {
         Optional<Servers> first = Arrays.stream(Servers.values())
-                .filter(server -> server.getserverName()
+                .filter(server -> server.getServerName()
                         .equalsIgnoreCase(serverName))
                 .findFirst();
 

@@ -1,6 +1,6 @@
 [
   {
-    "serverName": "local",
+    "serverName": "browserstack",
     "browserName": "firefox"
   }
 ]

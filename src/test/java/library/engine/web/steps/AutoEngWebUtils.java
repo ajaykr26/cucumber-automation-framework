@@ -12,7 +12,9 @@ import library.selenium.core.LocatorType;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.asserts.Assertion;
 
+import javax.net.ssl.HttpsURLConnection;
 import java.io.File;
 import java.net.URISyntaxException;
 import java.nio.file.Path;

@@ -41,7 +41,10 @@ It includes:
 ## vm arguments
 -ea
 -Dcukes.environment=UAT
--Dcukes.techStack=LOCAL_CHROME (e.g: LOCAL_IE, LOCAL_MSEDGE, LOCAL_FIREFOX, REMOTE_CHROME, REMOTE_IE, REMOTE_MSEDGE, REMOTE_FIREFOX, APPIUM_ANDROID)
+-Dcukes.techstack=BROWSERSTACK
+-Dcukes.browserstackUserName=ajaykumar_NcUJge
+-Dcukes.browserstackPassword=Vxx5nZwuKFEjHKj9LsnQ
+-Dcukes.browserstackEndPoint=@hub-cloud.browserstack.com/wd/hub
 -Dorg.apache.logging.log4j.level=DEBUG
 -Dcukes.selenium.defaultFindRetries=2
 

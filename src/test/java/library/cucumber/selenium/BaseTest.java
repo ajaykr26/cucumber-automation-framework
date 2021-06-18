@@ -20,7 +20,7 @@ import java.util.*;
 )
 public class BaseTest extends library.selenium.exec.BaseTest {
 
-    private final TestNGCucumberRunner testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
+    private TestNGCucumberRunner testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
 
 
     @Test(groups = "cucumber", description = "Run Cucumber Scenarios", dataProvider = "techStackWithScenarioList")
