@@ -1,6 +1,6 @@
 [
   {
-    "serverName": "local",
+    "serverName": "selenium-grid",
     "browserName": "chrome"
   }
 ]

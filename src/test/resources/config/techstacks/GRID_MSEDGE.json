@@ -1,6 +1,6 @@
 [
   {
-    "seleniumServer": "grid",
+    "serverName": "selenium-grid",
     "browserName": "MicrosoftEdge"
   }
 ]

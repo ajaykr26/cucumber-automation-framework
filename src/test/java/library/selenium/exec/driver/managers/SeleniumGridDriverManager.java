@@ -10,26 +10,23 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class RemoteDriverManager extends DriverManager {
+public class SeleniumGridDriverManager extends DriverManager {
     private static final String PLATFORM_NAME = "platformName";
     private static final String CUKES_SELENIUM_GRID = "fw.seleniumGrid";
     protected Logger logger = LogManager.getLogger(this.getClass().getName());
 
     @Override
     public void createDriver() {
-        Capabilities capabilities = new Capabilities();
+        Capabilities caps = new Capabilities();
         try {
-            if (capabilities.getDesiredCapabilities().getCapability(PLATFORM_NAME) != null) {
-                switch (capabilities.getDesiredCapabilities().getCapability(PLATFORM_NAME).toString().toLowerCase()) {
+            if (caps.getDc().getCapability(PLATFORM_NAME) != null) {
+                switch (caps.getDc().getCapability(PLATFORM_NAME).toString().toLowerCase()) {
                     case "ios":
                     case "android":
-                    case "windows-ui":
-                    default:
-                        driver = new RemoteWebDriver(new URL(System.getProperty(CUKES_SELENIUM_GRID)), capabilities.getDesiredCapabilities());
-
+                    case "windows":
                 }
             } else {
-                driver = new RemoteWebDriver(new URL(System.getProperty(CUKES_SELENIUM_GRID)), capabilities.getDesiredCapabilities());
+                driver = new RemoteWebDriver(new URL(System.getProperty(CUKES_SELENIUM_GRID)), caps.getDc());
             }
         } catch (MalformedURLException exception) {
             logger.error("unable to connect to selenium grid: ", exception);

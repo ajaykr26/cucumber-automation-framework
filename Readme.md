@@ -41,12 +41,18 @@ It includes:
 ## vm arguments
 -ea
 -Dcukes.environment=UAT
--Dcukes.techstack=BROWSERSTACK
--Dcukes.browserstackUserName=ajaykumar_NcUJge
--Dcukes.browserstackPassword=Vxx5nZwuKFEjHKj9LsnQ
--Dcukes.browserstackEndPoint=@hub-cloud.browserstack.com/wd/hub
+-Dcukes.techstack=BROWSERSTACKS
 -Dorg.apache.logging.log4j.level=DEBUG
 -Dcukes.selenium.defaultFindRetries=2
+
+##techstack
+BROWSERSTACKS
+
+
+## capabilities
+"platformName": "android",
+"device": "Google Pixel 3",
+"os_version": "9.0"
 
 ## Writing feature file
 1. use "@(testdata)" format to read data from config.properties file.

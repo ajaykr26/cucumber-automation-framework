@@ -5,14 +5,14 @@ import java.util.Optional;
 
 public enum Servers {
     LOCAL("local"),
-    REMOTE("remote"),
+    SELENIUMGRID("selenium-grid"),
     SAUCELABS("saucelabs"),
     BROWSERSTACK("browserstack"),
     APPIUM("appium"),
     PERFECTO("perfecto"),
     HTMLUNIT("htmlunit");
 
-    private String serverName;
+    private final String serverName;
 
     Servers(String serverName) {
         this.serverName = serverName;

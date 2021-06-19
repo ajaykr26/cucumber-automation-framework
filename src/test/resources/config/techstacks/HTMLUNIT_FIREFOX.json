@@ -1,6 +1,6 @@
 [
   {
-    "seleniumServer": "htmlunit",
+    "serverName": "htmlunit",
     "browserName": "firefox"
   }
 ]

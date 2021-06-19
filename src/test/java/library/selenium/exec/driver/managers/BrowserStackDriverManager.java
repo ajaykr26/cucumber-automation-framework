@@ -1,5 +1,11 @@
 package library.selenium.exec.driver.managers;
 
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.ios.IOSElement;
+import io.appium.java_client.windows.WindowsDriver;
+import io.appium.java_client.windows.WindowsElement;
 import library.common.Property;
 import library.selenium.exec.driver.factory.Capabilities;
 import library.selenium.exec.driver.factory.DriverManager;
@@ -16,24 +22,22 @@ public class BrowserStackDriverManager extends DriverManager {
 
     @Override
     public void createDriver() {
-        Capabilities capabilities = new Capabilities();
-        String browserstackUserName = Property.getVariable("cukes.browserstackUserName");
-        String browserstackPassword = Property.getVariable("cukes.browserstackPassword");
-        String browserstackEndPoint = Property.getVariable("cukes.browserstackEndPoint");
-        String browserstackServer = "https://" + browserstackUserName + ":" + browserstackPassword + browserstackEndPoint;
-
+        Capabilities caps = new Capabilities();
         try {
-            if (capabilities.getDesiredCapabilities().getCapability(PLATFORM_NAME) != null) {
-                switch (capabilities.getDesiredCapabilities().getCapability(PLATFORM_NAME).toString().toLowerCase()) {
+            if (caps.getDc().getCapability(PLATFORM_NAME) != null) {
+                switch (caps.getDc().getCapability(PLATFORM_NAME).toString().toLowerCase()) {
                     case "ios":
+                        driver = new IOSDriver<IOSElement>(new URL("http://hub.browserstack.com/wd/hub"), caps.getDc());
+                        break;
                     case "android":
-                    case "windows-ui":
-                    default:
-                        driver = new RemoteWebDriver(new URL(browserstackServer), capabilities.getDesiredCapabilities());
-
+                        driver = new AndroidDriver<AndroidElement>(new URL("http://hub.browserstack.com/wd/hub"), caps.getDc());
+                        break;
+                    case "windows":
+                        driver = new WindowsDriver<WindowsElement>(new URL("http://hub.browserstack.com/wd/hub"), caps.getDc());
+                        break;
                 }
             } else {
-                driver = new RemoteWebDriver(new URL(browserstackServer), capabilities.getDesiredCapabilities());
+                driver = new RemoteWebDriver(new URL("http://hub.browserstack.com/wd/hub"), caps.getDc());
             }
         } catch (MalformedURLException exception) {
             logger.error("unable to connect to selenium grid: ", exception);

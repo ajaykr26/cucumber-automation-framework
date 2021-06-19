@@ -1,6 +1,6 @@
 [
   {
-    "serverName": "browserstack",
+    "serverName": "selenium-grid",
     "browserName": "firefox"
   }
 ]

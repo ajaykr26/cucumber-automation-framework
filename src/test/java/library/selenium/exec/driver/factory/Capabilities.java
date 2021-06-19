@@ -15,62 +15,43 @@ import java.util.Map;
 
 public class Capabilities {
 
-    private DesiredCapabilities desiredCapabilities;
+    private final DesiredCapabilities dc;
 
     public Capabilities() {
         Map<String, String> map = DriverContext.getInstance().getTechStack();
 
-        desiredCapabilities = new DesiredCapabilities();
+        dc = new DesiredCapabilities();
 
-        if (!map.get("serverName").equalsIgnoreCase("grid")) {
-            desiredCapabilities.setCapability("name", TestContext.getInstance().testdataGet("fw.testDescription"));
+        if (TestContext.getInstance().testdata().containsKey("fw.testDescription")) {
+            dc.setCapability("name", TestContext.getInstance().testdataGet("fw.testDescription"));
         }
         if (TestContext.getInstance().testdata().containsKey("fw.projectName")) {
-            desiredCapabilities.setCapability("project", TestContext.getInstance().testdataGet("fw.projectName"));
+            dc.setCapability("project", TestContext.getInstance().testdataGet("fw.projectName"));
         }
         if (TestContext.getInstance().testdata().containsKey("fw.buildNumber")) {
-            desiredCapabilities.setCapability("build", TestContext.getInstance().testdataGet("fw.buildNumber"));
+            dc.setCapability("build", TestContext.getInstance().testdataGet("fw.buildNumber"));
         }
-        if (TestContext.getInstance().testdata().containsKey("fw.appPackage")) {
-            desiredCapabilities.setCapability("appPackage", TestContext.getInstance().testdataGet("fw.appPackage"));
-        }
-        if (TestContext.getInstance().testdata().containsKey("fw.appActivity")) {
-            desiredCapabilities.setCapability("appActivity", TestContext.getInstance().testdataGet("fw.appActivity"));
-        }
-        for (Map.Entry<String, String> pair : map.entrySet()) {
-            if (!pair.getKey().equalsIgnoreCase("seleniumServer") && !pair.getKey().equalsIgnoreCase("description"))
-                if (pair.getValue().equals("iexplorer")) {
-                    desiredCapabilities.setCapability(pair.getKey(), "internet explorer");
-                } else {
-                    desiredCapabilities.setCapability(pair.getKey(), pair.getValue());
 
-                }
+        for (Map.Entry<String, String> pair : map.entrySet()) {
+            if (!pair.getKey().equalsIgnoreCase("serverName")) {
+                dc.setCapability(pair.getKey(), pair.getValue());
+            }
         }
 
         PropertiesConfiguration props = Property.getProperties(Constants.RUNTIME_PROP);
-        List<String> desiredCapsList = Arrays.asList(props.getStringArray("desiredCapabilities." + DriverContext.getInstance().getBrowserName().replaceAll("\\s", "")));
-
-        desiredCapsList.forEach(desiredCap -> {
-            String[] par = desiredCap.split("==");
-            if (par[1].trim().equalsIgnoreCase("true") || par[1].trim().equalsIgnoreCase("false"))
-                desiredCapabilities.setCapability(par[0].trim(), Boolean.parseBoolean(par[1].trim()));
-            else
-                desiredCapabilities.setCapability(par[0].trim(), par[1].trim());
-        });
-
-        if (Boolean.parseBoolean(props.getString("useProxy"))) {
+        if (Boolean.parseBoolean(props != null ? props.getString("useProxy") : null)) {
             Proxy proxy = new Proxy();
             if (props.getString("httpProxyURL") != null && props.getString("sslProxyURL") != null) {
                 proxy.setHttpProxy(props.getString("httpProxyURL")).setSslProxy("sslProxyURL");
-                desiredCapabilities.setCapability(CapabilityType.PROXY, proxy);
+                dc.setCapability(CapabilityType.PROXY, proxy);
             } else {
                 throw new IllegalArgumentException("seProxy set to true, but the value not provided for httpProxyURL or sslProxyURL in runtime.properties file");
             }
         }
     }
 
-    public DesiredCapabilities getDesiredCapabilities() {
-        return desiredCapabilities;
+    public DesiredCapabilities getDc() {
+        return dc;
     }
 
 }

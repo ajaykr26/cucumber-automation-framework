@@ -1,6 +1,5 @@
 package library.selenium.exec.driver.factory;
 
-import library.common.Property;
 import library.selenium.exec.driver.enums.Browsers;
 import library.selenium.exec.driver.enums.Servers;
 import library.selenium.exec.driver.managers.*;
@@ -22,8 +21,8 @@ public class DriverFactory {
         Servers server = Servers.get(DriverContext.getInstance().getServerName());
         Browsers browser = Browsers.get(DriverContext.getInstance().getBrowserName());
         switch (server) {
-            case REMOTE:
-                return new RemoteDriverManager();
+            case SELENIUMGRID:
+                return new SeleniumGridDriverManager();
             case BROWSERSTACK:
                 return new BrowserStackDriverManager();
             case SAUCELABS:
